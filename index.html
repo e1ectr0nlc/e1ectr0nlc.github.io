@@ -1,316 +1,238 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="https://e1ectr0nlc.github.io/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://e1ectr0nlc.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-09-22 16:32:29'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
   
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
   
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://e1ectr0nlc.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-DLL注入之远程线程注入" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/05/20/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5/" class="article-date">
-  <time class="dt-published" datetime="2023-05-20T12:38:30.575Z" itemprop="datePublished">2023-05-20</time>
-</a>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Dll%E6%B3%A8%E5%85%A5%E7%9A%84%E5%85%AB%E7%A7%8D%E6%96%B9%E5%BC%8F/">Dll注入的八种方式</a>
-  </div>
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/05/web%E6%BC%8F%E6%B4%9E%E5%B0%8F%E7%BB%93/" title="No title">No title</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-09-05T10:00:44.585Z" title="Created 2023-09-05 18:00:44">2023-09-05</time></span></div><div class="content">SQL注入漏洞用户输入的未经检查的变量被带到了SQL语句中直接执行。
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/24/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/" title="No title">No title</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-07-24T09:38:28.729Z" title="Created 2023-07-24 17:38:28">2023-07-24</time></span></div><div class="content">映射注入1.为什么用映射注入？在映射注入中，目标进程中的远程线程会执行当前进程在内存中映射的地址。通过这种映射的方式，我们不必使用VirtualAllocEx,WriteProcessMemory等等被杀毒软件严密监视的API函数，同时创建Mapping对象本质上属于申请一块物理内存，而申请的物理内存又能比较方便的通过系统函数直接映射到进程的虚拟内存里，这也就避免使用经典的写入函数，增加了隐蔽性。
+2.映射注入的原理在Windows操作系统中，所有进程共享一个虚拟地址空间，这意味着同一个物理地址可以被多个进程映射到不同的虚拟地址上。我们只需要将我们的dll或者shellcode映射到当前进程，再通过MapViewOfFile2API映射到目标进程，创建远程线程去执行我们映射到目标进程的dll或者shellcode就完成了注入。
+总结一下分为以下几步：
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/05/20/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5/">远程线程注入</a>
-    </h1>
-  
+在当前进程创建mapping对象
+为创建的mapping对象映射到虚拟地址
+将dll或者shellcode写入映射的虚拟地址
+打开目标进程句柄
+将mapping对象映射到目标进程的虚拟地址
+创建远程线程，回调函数地址改为mapping对 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/21/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/" title="No title">No title</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-07-21T08:06:00.154Z" title="Created 2023-07-21 16:06:00">2023-07-21</time></span></div><div class="content">注册表注入1.原理注册表是 Microsoft Windows 中的一个重要的数据库，用于存储系统和应用程序的设置信息。而我们基于两个表项AppInit_Dlls和LoadAppInit_DLLs，就可以实现注入。AppInit_Dlls用于写入dll完整路径，LoadAppInit_DLLs写为1表示执行。指定DLL会注入到所有运行user32.dll的进程中。因为在user32.dll被加载到进程时，会读取AppInit_Dlls表项，如果存在值，并且LoadAppInit_DLLs为1，则会调用LoadLibrary来加载指定的dll
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><em>序言：笔者在开始接触键盘Hook和DLL注入时感觉二者实现的功能是差不多的(鉴定为：逆向工程核心原理看多了，不会敲敲代码？)，分不清二者的区别。但现在看开了，学就完了。</em></p>
-<p>​	在Windows操作系统中，程序运行时的资源和内存空间已经分配完成，各个进程之间的资源是被OS分开的，不能互相访问。但DLL可以被动态的加载到程序中使用，所以需要使用中转程序将我们自己编写的、需要注入的DLL写入目标程序中，让目标程序主动的去执行我们的代码。</p>
-<h3 id="注入步骤："><a href="#注入步骤：" class="headerlink" title="注入步骤："></a>注入步骤：</h3><h4 id="1-在目标进程中分配内存-VirtualAllocEx"><a href="#1-在目标进程中分配内存-VirtualAllocEx" class="headerlink" title="1.在目标进程中分配内存   VirtualAllocEx()"></a>1.在目标进程中分配内存   <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/api/memoryapi/nf-memoryapi-virtualallocex">VirtualAllocEx</a>()</h4><p>​	如果我们想让目标进程执行我们的代码，肯定需要先将我们的代码写入目标程序，接着再考虑执行。Windows的API提供VirtualAllocEx()函数来分配内存。如果函数成功，则返回值为已分配页面区域的基址。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LPVOID <span class="title function_">VirtualAllocEx</span><span class="params">(</span></span><br><span class="line"><span class="params">  [in]           HANDLE hProcess,</span></span><br><span class="line"><span class="params">  [in, optional] LPVOID lpAddress,		<span class="comment">//可以为NULL</span></span></span><br><span class="line"><span class="params">  [in]           SIZE_T dwSize,</span></span><br><span class="line"><span class="params">  [in]           DWORD  flAllocationType,	<span class="comment">//可以为MEM_COMMIT</span></span></span><br><span class="line"><span class="params">  [in]           DWORD  flProtect			<span class="comment">//可以为PAGE_EXECUTE_READWRITE</span></span></span><br><span class="line"><span class="params">)</span>;</span><br></pre></td></tr></table></figure>
+2.实现123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include &lt;Windows.h&gt;#include &lt;stdio.h&gt;#include &lt;string.h&gt;int main()&#123;	HKEY hKey;	char csAppInitValue[] = &quot;S ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/20/APC%E6%B3%A8%E5%85%A5/" title="No title">No title</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-07-20T11:08:18.081Z" title="Created 2023-07-20 19:08:18">2023-07-20</time></span></div><div class="content">APC注入1.什么是APCAPC是一种异步调用机制，用于在异步上下文中执行函数，分为用户态APC和内核态APC，本文只涉及到用户态。之所以有APC这个概念，是由于在线程执行过程中，其他线程无法干预当前执行线程(占用cpu)，如果需要干预当前执行线程的操作，就需要有一种让线程自身去调用的机制，windows实现了一种称之为APC的技术，这种技术可以通过插入队列(执行信息)让线程在一定条件下自己去调用，这样就实现了异步操作。在使用APC进行注入之前，我们需要搞清楚异步和同步的概念。
+例如需要读取文件内容，在同步下执行
 
-<p>这里我们需要关注第一个参数和第三个参数。第一个参数是<strong>目标进程的句柄</strong>，第三个参数是需要<strong>注入的DLL路径的大小。</strong>剩余参数可以参考微软文档。</p>
-<h4 id="2-使用LoadLibrary-函数加载DLL的路径"><a href="#2-使用LoadLibrary-函数加载DLL的路径" class="headerlink" title="2.使用LoadLibrary()函数加载DLL的路径"></a>2.使用<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibrarya">LoadLibrary</a>()函数加载DLL的路径</h4><p>​	这一步比较复杂，我们需要先获取到LoadLibrary被调用的地址，才能在我们远程创建的线程中去调用。这里我们使用 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/api/libloaderapi/nf-libloaderapi-getprocaddress">GetProcAddress</a>()来获取地址。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">FARPROC <span class="title">GetProcAddress</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] HMODULE hModule,</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] LPCSTR  lpProcName</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
 
-<p>第一个参数是加载模块后返回的(模块的)句柄，第二个参数是想要返回函数的名称。</p>
-<p>举例：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取LoadLibary函数的加载地址</span></span><br><span class="line">	<span class="comment">//返回值是Kernel32的句柄</span></span><br><span class="line">	HMODULE hMod = <span class="built_in">LoadLibrary</span>(<span class="string">&quot;Kernel32.dll&quot;</span>);</span><br><span class="line">	<span class="comment">//返回LoadLibrary的绝对地址(LoadLibraryA是LoadLibrary函数的ansi版本,如果你需要使用Unicode字符串，可以使用LoadLibraryW)</span></span><br><span class="line">	FARPROC fun = <span class="built_in">GetProcAddress</span>(hMod, <span class="string">&quot;LoadLibraryA&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>之所以先让LoadLibrary加载“Kernel32.dll”，是因为在目标进程中存在着“Kernel32.dll”，这个dll在每个进程中的地址相同，而Kernel32.dll作为Windows核心动态链接库，也是包含LoadLibrary函数的，我们在中转程序执行LoadLibrary()或者GetModuleHandle()，就可以获取到kernel32.dll的句柄，接着GetProcAddress返回LoadLibrary的绝对地址，就可以在目标进程创建的线程中调用了。</p>
-<h4 id="3-写入要注入的DLL路径"><a href="#3-写入要注入的DLL路径" class="headerlink" title="3.写入要注入的DLL路径"></a>3.写入要注入的DLL路径</h4><p>​	LoadLibrary()函数的参数只有1个，就是DLL模块的名称或者路径。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HMODULE <span class="title">LoadLibraryA</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in] LPCSTR lpLibFileName</span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>将刚才开辟的内存给用上，将路径写入目标进程。这样目标进程才能使用这个资源。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BOOL <span class="title">WriteProcessMemory</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  HANDLE  hProcess,		<span class="comment">//目标进程句柄</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  LPVOID  lpBaseAddress,	<span class="comment">//VirtualAllocEx()分配内存的基质</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  LPCVOID lpBuffer,		<span class="comment">//DLL的路径</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  SIZE_T  nSize,			<span class="comment">//DLL路径长度</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [out] SIZE_T  *lpNumberOfBytesWritten		<span class="comment">//可以置NULL</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+在异步下读取文件可以同时进行
 
 
 
-<h4 id="4-中转程序远程创建线程"><a href="#4-中转程序远程创建线程" class="headerlink" title="4.中转程序远程创建线程"></a>4.中转程序远程创建线程</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">HANDLE <span class="title">CreateRemoteThread</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  HANDLE                 hProcess,	<span class="comment">//目标进程句柄</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  LPSECURITY_ATTRIBUTES  lpThreadAttributes,	<span class="comment">//可为NULL，表示线程将获取默认安全描述符</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  SIZE_T                 dwStackSize,				<span class="comment">//设置为0,表示使用默认大小</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  LPTHREAD_START_ROUTINE lpStartAddress,			<span class="comment">//LoadLibrary的地址</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  LPVOID                 lpParameter,				<span class="comment">//目标进程开辟空间的基址</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [in]  DWORD                  dwCreationFlags,			<span class="comment">//设置为0,表示线程创建后立即执行</span></span></span></span><br><span class="line"><span class="params"><span class="function">  [out] LPDWORD                lpThreadId				<span class="comment">//设置为NULL,表示不返回线程标识符</span></span></span></span><br><span class="line"><span class="params"><span class="function">)</span></span>;</span><br></pre></td></tr></table></figure>
+2.如何利用在每个进程中都有自己的APC队列，当一个线程将一个APC请求添加到进程的APC队列中时，这个请求将被异步地执行，也就是说，在进程的上下文中执行相应的函数，也就是回调函数。
+回调函数的触发条件：使用SleepEx,signalObjectAndWait、WaitForMultioleObjectsEx…..等等这些函数，将自己处于挂起状态才会触发。
+由以上信息我们就可以总结出APC注入的场景：
 
-<p>使用这个函数需要先获取目标进程的句柄，才能在目标进程中创建线程。在这个线程创建后，会调用一个线程回调函数，也就是第四个参数。而我们的LoadLibrary函数原型与线程回调函数的类型一样，所以可以替换。</p>
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><p>一共三个程序，需要注入的dll，中转程序，测试程序</p>
-<h5 id="1-中转程序-dll-inject-cpp"><a href="#1-中转程序-dll-inject-cpp" class="headerlink" title="1.中转程序 dll_inject.cpp"></a>1.中转程序 dll_inject.cpp</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//进程标识符</span></span><br><span class="line">	DWORD pid = <span class="number">20032</span>;	</span><br><span class="line"></span><br><span class="line">	<span class="comment">//返回值为目标进程句柄</span></span><br><span class="line">	HANDLE hProcess = <span class="built_in">OpenProcess</span>(PROCESS_ALL_ACCESS,<span class="literal">NULL</span>, pid);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//获取LoadLibary函数的加载地址</span></span><br><span class="line">	HMODULE hMod = <span class="built_in">LoadLibrary</span>(<span class="string">&quot;Kernel32.dll&quot;</span>);<span class="comment">//返回值是Kernel32的句柄</span></span><br><span class="line">	FARPROC fun = <span class="built_in">GetProcAddress</span>(hMod, <span class="string">&quot;LoadLibraryA&quot;</span>);<span class="comment">//返回LoadLibrary的地址</span></span><br><span class="line">    			<span class="comment">//此路径修改为你自己的测试dll</span></span><br><span class="line">	<span class="type">char</span> DllPath[] = <span class="string">&quot;F:\\code\\vs2017\\MyDll\\test\\Debug\\test.dll&quot;</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//在目标进程中开辟内存空间</span></span><br><span class="line">	LPVOID address = <span class="built_in">VirtualAllocEx</span>(hProcess, <span class="literal">NULL</span>, <span class="built_in">strlen</span>(DllPath), MEM_COMMIT, PAGE_EXECUTE_READWRITE);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//将要注入的dll路径写入目标进程</span></span><br><span class="line">	<span class="built_in">WriteProcessMemory</span>(hProcess, address, DllPath, <span class="built_in">strlen</span>(DllPath), <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//目标程序创建线程</span></span><br><span class="line">	<span class="built_in">CreateRemoteThread</span>(hProcess, <span class="literal">NULL</span>, <span class="number">0</span>, (LPTHREAD_START_ROUTINE)fun, address, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+必须是多线程程序
+必须会调用上 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/18/%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5--%E7%AA%81%E7%A0%B4session0%E6%B3%A8%E5%85%A5/" title="No title">No title</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-07-18T06:58:55.699Z" title="Created 2023-07-18 14:58:55">2023-07-18</time></span></div><div class="content">远程线程注入–突破session0注入1.什么是session0session0 是一个专门的Windows 会话，其中完整显示&#x2F;实例化Windows 和FireDaemon Pro服务的所有方面，包括交互式 GUI 组件（例如窗口、对话框、弹出窗口等）和其他方面（例如映射驱动器、环境变量等）与定期登录的 Windows 桌面会话隔离。这种隔离是有意设计的，并由操作系统强制执行。
+而从Windows OS Kernel 6开始，采用session0隔离机制。例如在XP和Win7都登录了两个用户，但win7有三个会话（0，1，2），XP只有两个（0，1）。二者的系统进程和服务进程都在都在ID为0的session中运行，差别在于XP中第一个登录的用户进程的sessionID为0，Win7中，第一个登录的用户进程sessionID为1（非系统会话）。这样就隔离了服务和用户程序一起运行的风险，因为服务会使用提升后的权限（管理员）运行，用户应用程序的权限（非管理员）低，会使得恶意软件以某个服务为攻击目标，通过劫持服务，达到提权的目的。
 
-<h5 id="2-需要注入的Dll文件-test-dll"><a href="#2-需要注入的Dll文件-test-dll" class="headerlink" title="2.需要注入的Dll文件  test.dll"></a>2.需要注入的Dll文件  test.dll</h5><h6 id="头文件-framework-h"><a href="#头文件-framework-h" class="headerlink" title="头文件    framework.h"></a>头文件    framework.h</h6><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> WIN32_LEAN_AND_MEAN             <span class="comment">// 从 Windows 头文件中排除极少使用的内容</span></span></span><br><span class="line"><span class="comment">// Windows 头文件</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+2.为什么使用CreateRemoteThrea ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/17/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84----%E5%AF%BC%E5%85%A5%E8%A1%A8%E5%92%8C%E5%AF%BC%E5%87%BA%E8%A1%A8/" title="No title">No title</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-07-17T09:02:38.170Z" title="Created 2023-07-17 17:02:38">2023-07-17</time></span></div><div class="content">PE文件结构—-导入表和导出表一、导入表1.概念​	导入表在PE文件中扮演着描述程序运行时所需外部函数和模块的角色，帮助程序实现动态链接、函数调用和模块依赖等功能。
+2.结构关键字段：OriginalFirstThunk，Name，FirstThunk
+12345678910typedef struct _IMAGE_IMPORT_DESCRIPTOR &#123;      union &#123;          DWORD Characteristics;          DWORD OriginalFirstThunk;//INT的地址 (RVA)    &#125;;      DWORD   TimeDateStamp;  	 // 时间戳      DWORD   ForwarderChain; 	 // 转发链，如果不转发则此值为0     DWORD   Name;       		 // 库名称字符串的地址(RVA)    DWORD   FirstThunk; 		 // IAT的地址(RVA)&#125; IMAGE_IMPORT_DESCRIPTOR;
 
-<h6 id="头文件-pch-h"><a href="#头文件-pch-h" class="headerlink" title="头文件   pch.h"></a>头文件   pch.h</h6><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pch.h: 这是预编译标头文件。</span></span><br><span class="line"><span class="comment">// 下方列出的文件仅编译一次，提高了将来生成的生成性能。</span></span><br><span class="line"><span class="comment">// 这还将影响 IntelliSense 性能，包括代码完成和许多代码浏览功能。</span></span><br><span class="line"><span class="comment">// 但是，如果此处列出的文件中的任何一个在生成之间有更新，它们全部都将被重新编译。</span></span><br><span class="line"><span class="comment">// 请勿在此处添加要频繁更新的文件，这将使得性能优势无效。</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> PCH_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PCH_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加要在此处预编译的标头</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;framework.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">//PCH_H</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+ ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/07/ollvm%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8E%BB%E9%99%A4/" title="No title">No title</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-07-07T11:30:34.269Z" title="Created 2023-07-07 19:30:34">2023-07-07</time></span></div><div class="content">ollvm混淆与去除一、三种混淆方式1.控制流扁平化1clang -mllvm -fla test.c -o test1
 
-<h6 id="源程序-dllmain-cpp"><a href="#源程序-dllmain-cpp" class="headerlink" title="源程序 dllmain.cpp"></a>源程序 dllmain.cpp</h6><p>如果注入成功，会出现窗口</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dllmain.cpp : 定义 DLL 应用程序的入口点。</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;pch.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function">BOOL WINAPI <span class="title">DllMain</span><span class="params">(</span></span></span><br><span class="line"><span class="params"><span class="function">	HINSTANCE hinstDLL,  <span class="comment">// DLL 模块的句柄</span></span></span></span><br><span class="line"><span class="params"><span class="function">	DWORD fdwReason,     <span class="comment">// 指示调用 DLL 入口点函数的原因代码</span></span></span></span><br><span class="line"><span class="params"><span class="function">	LPVOID lpvReserved)</span>  <span class="comment">// 如果 fdwReason为DLL_PROCESS_ATTACH，则动态加载 的 lpvReserved 为 NULL</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// 根据调用原因执行操作</span></span><br><span class="line">	<span class="keyword">switch</span> (fdwReason)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> DLL_PROCESS_ATTACH:</span><br><span class="line">		<span class="comment">// 为每个新进程初始化一次</span></span><br><span class="line">		<span class="comment">// 如果DLL加载失败，返回false</span></span><br><span class="line">		<span class="built_in">MessageBoxA</span>(<span class="literal">NULL</span>, <span class="string">&quot;Dll test&quot;</span>, <span class="string">&quot;Notice&quot;</span>, MB_OK);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> DLL_THREAD_ATTACH:</span><br><span class="line">		<span class="comment">// 进行线程的特定初始化</span></span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> DLL_THREAD_DETACH:</span><br><span class="line">		<span class="comment">// 进行线程特定的清理</span></span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> DLL_PROCESS_DETACH:</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (lpvReserved != <span class="literal">nullptr</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>; <span class="comment">// 如果进程终止，则不要清理</span></span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 执行任何必要的清理</span></span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> TRUE;  <span class="comment">// 成功创建线程</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+2.指令替换1clang -mllvm -sub test.c -o test2
 
-<h6 id="源程序-pch-cpp"><a href="#源程序-pch-cpp" class="headerlink" title="源程序 pch.cpp"></a>源程序 pch.cpp</h6><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pch.cpp: 与预编译标头对应的源文件</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;pch.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当使用预编译的头时，需要使用此源文件，编译才能成功。</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+3.控制流伪造1clang -mllvm -bcf test.c -o test
 
-<h5 id="3-测试程序"><a href="#3-测试程序" class="headerlink" title="3.测试程序"></a>3.测试程序</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> WINAPI <span class="title">WinMain</span><span class="params">(HINSTANCE hInstance, HINSTANCE hPrevInstance,</span></span></span><br><span class="line"><span class="params"><span class="function">    LPSTR lpCmdLine, <span class="type">int</span> nCmdShow)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 在窗口中输出&quot;Hello&quot;</span></span><br><span class="line">    <span class="built_in">MessageBox</span>(<span class="literal">NULL</span>, <span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;Message&quot;</span>, MB_OK);</span><br><span class="line">	<span class="built_in">getchar</span>(); </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+4.合并混淆1clang -mllvm -fla -mllvm -sub test.c -o babyre
 
-<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>  需要在目标程序中远程创建线程来执行LoadLibrary()函数加载我们的DLL，所以我们需要在目标进程中分配一块内存空间来储存我们DLL路径这个资源（VirtualAllocEx（）），分配完之后需要写（WriteProcessMemory），之后在中转程序中创建远程线程来执行（CreateRemoteThread（））。</p>
+二、混淆去除（目前只有去除控制流扁平化和控制流伪造的脚本）需要在虚拟环境中运行
+环境信息：
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://e1ectr0nlc.github.io/2023/05/20/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5/" data-id="clhvz92um0000pcwsezws7xzf" data-title="远程线程注入" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dll%E6%B3%A8%E5%85%A5/" rel="tag">Dll注入</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
+python版本3.7
+angr版本8.19.4.5
 
 
+去除控制流扁平化1python3 deflat.py -f test1 --addr 0x400cb0
 
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/04/08/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-04-08T12:06:57.943Z" itemprop="datePublished">2023-04-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/04/08/hello-world/">Hello World</a>
-    </h1>
-  
+参数是（任意）函数的起始地址
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+控制流伪造1python3 debogus.py -f test --addr 0x400500
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://e1ectr0nlc.github.io/2023/04/08/hello-world/" data-id="clg7yrudd000054wsgjnd05ia" data-title="Hello World" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
+参数同样是（任意）函数的起始地址
 
 
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/05/20/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5/" title="远程线程注入">远程线程注入</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-05-20T12:38:30.575Z" title="Created 2023-05-20 20:38:30">2023-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Dll%E6%B3%A8%E5%85%A5%E7%9A%84%E5%85%AB%E7%A7%8D%E6%96%B9%E5%BC%8F/">Dll注入的八种方式</a></span></div><div class="content">​	在Windows操作系统中，程序运行时的资源和内存空间已经分配完成，各个进程之间的资源是被OS分开的，不能互相访问。但DLL可以被动态的加载到程序中使用，所以需要使用中转程序将我们自己编写的、需要注入的DLL写入目标程序中，让目标程序主动的去执行我们的代码。
+注入步骤：1.在目标进程中分配内存   VirtualAllocEx()​	如果我们想让目标进程执行我们的代码，肯定需要先将我们的代码写入目标程序，接着再考虑执行。Windows的API提供VirtualAllocEx()函数来分配内存。如果函数成功，则返回值为已分配页面区域的基址。
+1234567LPVOID VirtualAllocEx(  [in]           HANDLE hProcess,  [in, optional] LPVOID lpAddress,		//可以为NULL  [in]           SIZE_T dwSize,  [in]           DWORD  flAllocationType,	//可以为MEM_COMMIT  [in]           DWORD  flProt ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/04/10/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-04-10T14:26:25.673Z" title="Created 2023-04-10 22:26:25">2023-04-10</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
 
-  
+More info: Writing
+Run server1$ hexo server
 
+More info: Server
+Generate static files1$ hexo generate
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Dll%E6%B3%A8%E5%85%A5%E7%9A%84%E5%85%AB%E7%A7%8D%E6%96%B9%E5%BC%8F/">Dll注入的八种方式</a></li></ul>
-    </div>
-  </div>
+More info: Generating
+Deploy to remote sites1$ hexo deploy
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dll%E6%B3%A8%E5%85%A5/" rel="tag">Dll注入</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Dll%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">Dll注入</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/05/20/DLL%E6%B3%A8%E5%85%A5%E4%B9%8B%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5/">远程线程注入</a>
-          </li>
-        
-          <li>
-            <a href="/2023/04/08/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2023 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+More info: Deployment
+</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/05/web%E6%BC%8F%E6%B4%9E%E5%B0%8F%E7%BB%93/" title="No title">No title</a><time datetime="2023-09-05T10:00:44.585Z" title="Created 2023-09-05 18:00:44">2023-09-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/24/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/" title="No title">No title</a><time datetime="2023-07-24T09:38:28.729Z" title="Created 2023-07-24 17:38:28">2023-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/21/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/" title="No title">No title</a><time datetime="2023-07-21T08:06:00.154Z" title="Created 2023-07-21 16:06:00">2023-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/20/APC%E6%B3%A8%E5%85%A5/" title="No title">No title</a><time datetime="2023-07-20T11:08:18.081Z" title="Created 2023-07-20 19:08:18">2023-07-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/18/%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5--%E7%AA%81%E7%A0%B4session0%E6%B3%A8%E5%85%A5/" title="No title">No title</a><time datetime="2023-07-18T06:58:55.699Z" title="Created 2023-07-18 14:58:55">2023-07-18</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Dll%E6%B3%A8%E5%85%A5%E7%9A%84%E5%85%AB%E7%A7%8D%E6%96%B9%E5%BC%8F/"><span class="card-category-list-name">Dll注入的八种方式</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/Dll%E6%B3%A8%E5%85%A5/" style="font-size: 1.1em; color: #999">Dll注入</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">September 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">July 2023</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">May 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">April 2023</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">9</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-09-22T08:32:29.611Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
