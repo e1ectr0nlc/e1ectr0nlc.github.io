@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>程序加壳与脱壳 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="程序壳主要分为压缩壳、加密壳，多层壳等等，目的都是为了隐藏程序真正的入口点OEP。 概念壳最开始的目的是为了让逆向分析人员无法轻易获取程序的入口函数，在静态分析时也能隐藏内部代码， 属于代码保护技术。 加壳软件与查壳软件 加壳：ASPACK，UPX， PEcompact，PE-PACK； PETITE NEOLITE等 一般用来加壳的也可以用来脱壳 查壳： Fi ，GetTyp ，peid ，pe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程序加壳与脱壳">
+<meta property="og:url" content="http://example.com/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="程序壳主要分为压缩壳、加密壳，多层壳等等，目的都是为了隐藏程序真正的入口点OEP。 概念壳最开始的目的是为了让逆向分析人员无法轻易获取程序的入口函数，在静态分析时也能隐藏内部代码， 属于代码保护技术。 加壳软件与查壳软件 加壳：ASPACK，UPX， PEcompact，PE-PACK； PETITE NEOLITE等 一般用来加壳的也可以用来脱壳 查壳： Fi ，GetTyp ，peid ，pe">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-15T10:56:40.000Z">
+<meta property="article:modified_time" content="2024-04-15T10:56:35.500Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-程序加壳与脱壳" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/" class="article-date">
+  <time class="dt-published" datetime="2024-04-15T10:56:40.000Z" itemprop="datePublished">2024-04-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      程序加壳与脱壳
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>程序壳主要分为压缩壳、加密壳，多层壳等等，目的都是为了隐藏程序真正的入口点OEP。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>壳最开始的目的是为了让逆向分析人员无法轻易获取程序的入口函数，在静态分析时也能隐藏内部代码，</p>
+<p>属于代码保护技术。</p>
+<h2 id="加壳软件与查壳软件"><a href="#加壳软件与查壳软件" class="headerlink" title="加壳软件与查壳软件"></a>加壳软件与查壳软件</h2><p> 加壳：ASPACK，UPX， PEcompact，PE-PACK； PETITE NEOLITE等</p>
+<p>一般用来加壳的也可以用来脱壳</p>
+<p>查壳： Fi ，GetTyp ，peid ，pe-scan等</p>
+<h2 id="如何识别OEP"><a href="#如何识别OEP" class="headerlink" title="如何识别OEP"></a>如何识别OEP</h2><p>这里只分享笔者遇到过的加壳软件中的OEP特征。</p>
+<ul>
+<li>关键词<code>PUSHAD</code>，将所有寄存器压入栈中，<code>POPAD</code>与<code>PUSHAD</code>相对应，将所有寄存器弹出，一般运行到<code>POPAD</code>说明OEP已经不远了。</li>
+<li>观察地址，一般壳程序的地址比源程序的地址要大，也就是源程序在壳程序的上方，当经过了一个大跳转到达原本调试的地址上方，同时观察到有<code>PUSH EBP</code>等开辟栈帧的语句出现，大概率已经到达了OEP</li>
+</ul>
+<h2 id="脱壳方法"><a href="#脱壳方法" class="headerlink" title="脱壳方法"></a>脱壳方法</h2><p>当遇到无法使用工具帮助我们解决壳时，可以使用手脱方法进行脱壳。加壳相当于在程序外套了另外一层程序，当程序运行起来时壳先获取到程序控制权，将壳程序运行结束（自解密阶段），再接着运行原程序，这时程序就执行到了OEP下，我们可以在这个时机下dump源程序。</p>
+<h3 id="单步跟踪"><a href="#单步跟踪" class="headerlink" title="单步跟踪"></a>单步跟踪</h3><p>这是最笨的方法，在调试器中单步运行，不断单步步入或步过，直到到达OEP当中。</p>
+<h3 id="ESP定律"><a href="#ESP定律" class="headerlink" title="ESP定律"></a>ESP定律</h3><p>原理是利用了程序堆栈平衡。在程序自解密时需要先保存寄存器中的值，会进行压栈操作，而当自解密完成需要还原现场时，会将原来压栈的寄存器都弹出，原程序代码恢复。此时硬件断点触发。然后在程序当前位置，只需要少许单步跟踪，就很容易到达正确的OEP位置。</p>
+<h3 id="关键词搜索"><a href="#关键词搜索" class="headerlink" title="关键词搜索"></a>关键词搜索</h3><p>根据所要脱壳程序的脱壳特征，定位到距离OEP最近的汇编，下断点，再运行程序到OEP之后dump。例如UPX可以定位汇编到popad附近，OEP距离popad的距离很近</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/" data-id="clv0ubhg30002i0ws54obflu4" data-title="程序加壳与脱壳" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/04/15/%E6%A0%88%E5%B8%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          栈帧
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/04/15/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PE文件结构</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/04/15/%E6%A0%88%E5%B8%A7/">栈帧</a>
+          </li>
+        
+          <li>
+            <a href="/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/">程序加壳与脱壳</a>
+          </li>
+        
+          <li>
+            <a href="/2024/04/15/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
+          </li>
+        
+          <li>
+            <a href="/2024/04/15/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>栈帧 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="重要概念栈栈在数据结构中是一种运算受限的线性表，即我们只能对表尾进行操作，称之为栈顶，相对的，另一端称为栈底。它按照先进后出的原则存储数据，先进入的数据保存在栈底，后来的数据保存在栈顶。栈中的数据都是以栈帧（Stack Frame）的格式存在，栈帧是一个内存区块，存储了函数调用时所需要使用的信息。 EBP栈底指针 ESP栈顶指针 call汇编语言，调用函数时需要使用call来调用 retn函数调用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈帧">
+<meta property="og:url" content="http://example.com/2024/04/15/%E6%A0%88%E5%B8%A7/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="重要概念栈栈在数据结构中是一种运算受限的线性表，即我们只能对表尾进行操作，称之为栈顶，相对的，另一端称为栈底。它按照先进后出的原则存储数据，先进入的数据保存在栈底，后来的数据保存在栈顶。栈中的数据都是以栈帧（Stack Frame）的格式存在，栈帧是一个内存区块，存储了函数调用时所需要使用的信息。 EBP栈底指针 ESP栈顶指针 call汇编语言，调用函数时需要使用call来调用 retn函数调用">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-15T10:56:40.000Z">
+<meta property="article:modified_time" content="2024-04-15T10:56:10.150Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-栈帧" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/04/15/%E6%A0%88%E5%B8%A7/" class="article-date">
+  <time class="dt-published" datetime="2024-04-15T10:56:40.000Z" itemprop="datePublished">2024-04-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      栈帧
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="重要概念"><a href="#重要概念" class="headerlink" title="重要概念"></a>重要概念</h2><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>栈在数据结构中是一种运算受限的线性表，即我们只能对表尾进行操作，称之为栈顶，相对的，另一端称为栈底。它按照先进后出的原则存储数据，先进入的数据保存在栈底，后来的数据保存在栈顶。栈中的数据都是以栈帧（Stack Frame）的格式存在，栈帧是一个内存区块，存储了函数调用时所需要使用的信息。</p>
+<h3 id="EBP"><a href="#EBP" class="headerlink" title="EBP"></a>EBP</h3><p>栈底指针</p>
+<h3 id="ESP"><a href="#ESP" class="headerlink" title="ESP"></a>ESP</h3><p>栈顶指针</p>
+<h3 id="call"><a href="#call" class="headerlink" title="call"></a>call</h3><p>汇编语言，调用函数时需要使用call来调用</p>
+<h3 id="retn"><a href="#retn" class="headerlink" title="retn"></a>retn</h3><p>函数调用结束后返回。当retn指令执行时是将esp指向地址的值弹出到EIP寄存器中，表示返回到调用函数的下一条指令。</p>
+<h2 id="开辟栈帧"><a href="#开辟栈帧" class="headerlink" title="开辟栈帧"></a>开辟栈帧</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">;栈帧结构</span><br><span class="line">PUSH EBP            ;函数开始（使用EBP前先把已有值保存到栈中）</span><br><span class="line">MOV EBP, ESP        ;保存当前ESP到EBP中（保存返回地址）</span><br><span class="line"></span><br><span class="line">...                 ;函数体</span><br><span class="line">                    ;无论ESP值如何变化，EBP都保持不变，可以安全访问函数的局部变量、参数</span><br><span class="line"></span><br><span class="line">MOV ESP, EBP        ;将函数的起始（返回）地址给到ESP</span><br><span class="line">POP EBP             ;函数返回前弹出保存在栈中的值</span><br><span class="line">RETN                ;函数终止，返回到调用前的下一条指令</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数调用约定"><a href="#函数调用约定" class="headerlink" title="函数调用约定"></a>函数调用约定</h2><p>在栈帧的开辟中涉及到函数的调用。例如有一个函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">test</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>编写代码时我们肯定理解这个函数如何传参，传几个参数。但是CPU怎么才能知道这个函数有几个参数，参数的值是什么，为了解决这些问题，计算机提供了一种被称为栈的数据结构来支持参数传递。</p>
+<p>但是还有问题没有解决，当函数传递参数时，按照什么样的顺序传参，是从左到右还是从右到左，调用结束后如何清除堆栈，由调用者清除还是被调用者清除以及寄存器如何使用。这时就提出了<strong>函数调用约定</strong>来解决这个问题</p>
+<h3 id="stdcall"><a href="#stdcall" class="headerlink" title="stdcall"></a>stdcall</h3><p>声明的语法为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __stdcall <span class="title function_">function</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>stdcall的调用约定意味着：</p>
+<ul>
+<li>参数从右向左压入堆栈</li>
+<li>函数自身清理堆栈</li>
+<li>函数名自动加前导的下划线，后面紧跟一个@符号，其后紧跟着参数的尺寸</li>
+</ul>
+<h3 id="cdecl"><a href="#cdecl" class="headerlink" title="cdecl"></a>cdecl</h3><p>是C和C++默认的调用约定</p>
+<p>声明的语法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">function</span> <span class="params">(<span class="type">int</span> a ,<span class="type">int</span> b)</span>; <span class="comment">//不加修饰就是C调用约定 </span></span><br><span class="line"><span class="type">int</span> __cdecl <span class="title function_">function</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;<span class="comment">//明确指出C调用约定</span></span><br></pre></td></tr></table></figure>
+
+<p>cdecl调用约定意味着：</p>
+<ul>
+<li>参数从右向左压入堆栈</li>
+<li>调用者负责清理堆栈</li>
+<li>C调用约定允许函数的参数的个数是不固定的，这也是C语言的一大特色。</li>
+<li>仅在函数名前加上一个下划线前缀，格式为_functionname。</li>
+</ul>
+<h3 id="fastcall"><a href="#fastcall" class="headerlink" title="fastcall"></a>fastcall</h3><p>声明语法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> fastcall <span class="title function_">function</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>fastcall调用约定意味着：</p>
+<ul>
+<li>函数的第一个和第二个DWORD参数（或者尺寸更小的）通过ecx和edx传递，其他参数通过从右向左的顺序压栈</li>
+<li>函数自身清理堆栈</li>
+<li>函数名修改规则同stdcall:函数名自动加前导的下划线，后面紧跟一个@符号，其后紧跟着参数的尺寸。</li>
+</ul>
+<h3 id="thiscall"><a href="#thiscall" class="headerlink" title="thiscall"></a>thiscall</h3><p>C++类成员函数缺省的调用约定</p>
+<p>thiscall是唯一一个不能明确指明的函数修饰，因为thiscall不是关键字。由于成员函数调用还有一个this指针，因此必须特殊处理，thiscall意味着:</p>
+<ul>
+<li>参数从右向左入栈</li>
+<li>如果参数个数不确定，this指针在所有参数压栈后被压入堆栈。如果参数个数确定，this指针通过ecx传递给被调用者。</li>
+<li>如果参数个数不确定，调用者清理堆栈，否则函数自己清理堆栈</li>
+</ul>
+<p>对于参数个数固定情况下，类似于stdcall，不定时则类似cdecl</p>
+<h3 id="naked-call"><a href="#naked-call" class="headerlink" title="naked call"></a>naked call</h3><p>一个很少见的调用约定，一般用于实模式驱动程序设计</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/04/15/%E6%A0%88%E5%B8%A7/" data-id="clv0ubhg00001i0ws88hr8e3y" data-title="栈帧" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">程序加壳与脱壳</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/04/15/%E6%A0%88%E5%B8%A7/">栈帧</a>
+          </li>
+        
+          <li>
+            <a href="/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/">程序加壳与脱壳</a>
+          </li>
+        
+          <li>
+            <a href="/2024/04/15/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
+          </li>
+        
+          <li>
+            <a href="/2024/04/15/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

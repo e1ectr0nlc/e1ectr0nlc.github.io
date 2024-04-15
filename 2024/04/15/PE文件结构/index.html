@@ -4,15 +4,25 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>PE文件结构 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="​	可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：DOS头，NT头，节表以及节数据。 PE指纹这是用来判断是否是一个有效的PE文件的标识 我们使用十六进制工具载入一个EXE文件查看  首先看到文件前两个字节4">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PE文件结构">
+<meta property="og:url" content="http://example.com/2024/04/15/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="​	可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：DOS头，NT头，节表以及节数据。 PE指纹这是用来判断是否是一个有效的PE文件的标识 我们使用十六进制工具载入一个EXE文件查看  首先看到文件前两个字节4">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://p.sda1.dev/16/dbadc1f619f08520cadd5addbd3d9086/image.png">
+<meta property="og:image" content="https://p.sda1.dev/16/1efecbd8dbe89b2abe8827b55ede1ae4/image.png">
+<meta property="og:image" content="https://p.sda1.dev/16/e62516580cfd25a5ad6cb805df6d881b/image.png">
+<meta property="og:image" content="https://p.sda1.dev/16/113e2e6939977bd526ebdc4c113fa11b/image.png">
+<meta property="og:image" content="https://p.sda1.dev/16/5e7f8708924cc5a16a14c2569ec3f4c2/image.png">
+<meta property="article:published_time" content="2024-04-15T10:54:40.000Z">
+<meta property="article:modified_time" content="2024-04-15T10:55:37.744Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p.sda1.dev/16/dbadc1f619f08520cadd5addbd3d9086/image.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -67,150 +77,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-栈帧" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/04/15/%E6%A0%88%E5%B8%A7/" class="article-date">
-  <time class="dt-published" datetime="2024-04-15T10:56:40.000Z" itemprop="datePublished">2024-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/04/15/%E6%A0%88%E5%B8%A7/">栈帧</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="重要概念"><a href="#重要概念" class="headerlink" title="重要概念"></a>重要概念</h2><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>栈在数据结构中是一种运算受限的线性表，即我们只能对表尾进行操作，称之为栈顶，相对的，另一端称为栈底。它按照先进后出的原则存储数据，先进入的数据保存在栈底，后来的数据保存在栈顶。栈中的数据都是以栈帧（Stack Frame）的格式存在，栈帧是一个内存区块，存储了函数调用时所需要使用的信息。</p>
-<h3 id="EBP"><a href="#EBP" class="headerlink" title="EBP"></a>EBP</h3><p>栈底指针</p>
-<h3 id="ESP"><a href="#ESP" class="headerlink" title="ESP"></a>ESP</h3><p>栈顶指针</p>
-<h3 id="call"><a href="#call" class="headerlink" title="call"></a>call</h3><p>汇编语言，调用函数时需要使用call来调用</p>
-<h3 id="retn"><a href="#retn" class="headerlink" title="retn"></a>retn</h3><p>函数调用结束后返回。当retn指令执行时是将esp指向地址的值弹出到EIP寄存器中，表示返回到调用函数的下一条指令。</p>
-<h2 id="开辟栈帧"><a href="#开辟栈帧" class="headerlink" title="开辟栈帧"></a>开辟栈帧</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">;栈帧结构</span><br><span class="line">PUSH EBP            ;函数开始（使用EBP前先把已有值保存到栈中）</span><br><span class="line">MOV EBP, ESP        ;保存当前ESP到EBP中（保存返回地址）</span><br><span class="line"></span><br><span class="line">...                 ;函数体</span><br><span class="line">                    ;无论ESP值如何变化，EBP都保持不变，可以安全访问函数的局部变量、参数</span><br><span class="line"></span><br><span class="line">MOV ESP, EBP        ;将函数的起始（返回）地址给到ESP</span><br><span class="line">POP EBP             ;函数返回前弹出保存在栈中的值</span><br><span class="line">RETN                ;函数终止，返回到调用前的下一条指令</span><br></pre></td></tr></table></figure>
-
-<h2 id="函数调用约定"><a href="#函数调用约定" class="headerlink" title="函数调用约定"></a>函数调用约定</h2><p>在栈帧的开辟中涉及到函数的调用。例如有一个函数</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">test</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;</span><br></pre></td></tr></table></figure>
-
-<p>编写代码时我们肯定理解这个函数如何传参，传几个参数。但是CPU怎么才能知道这个函数有几个参数，参数的值是什么，为了解决这些问题，计算机提供了一种被称为栈的数据结构来支持参数传递。</p>
-<p>但是还有问题没有解决，当函数传递参数时，按照什么样的顺序传参，是从左到右还是从右到左，调用结束后如何清除堆栈，由调用者清除还是被调用者清除以及寄存器如何使用。这时就提出了<strong>函数调用约定</strong>来解决这个问题</p>
-<h3 id="stdcall"><a href="#stdcall" class="headerlink" title="stdcall"></a>stdcall</h3><p>声明的语法为：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __stdcall <span class="title function_">function</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;</span><br></pre></td></tr></table></figure>
-
-<p>stdcall的调用约定意味着：</p>
-<ul>
-<li>参数从右向左压入堆栈</li>
-<li>函数自身清理堆栈</li>
-<li>函数名自动加前导的下划线，后面紧跟一个@符号，其后紧跟着参数的尺寸</li>
-</ul>
-<h3 id="cdecl"><a href="#cdecl" class="headerlink" title="cdecl"></a>cdecl</h3><p>是C和C++默认的调用约定</p>
-<p>声明的语法：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">function</span> <span class="params">(<span class="type">int</span> a ,<span class="type">int</span> b)</span>; <span class="comment">//不加修饰就是C调用约定 </span></span><br><span class="line"><span class="type">int</span> __cdecl <span class="title function_">function</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;<span class="comment">//明确指出C调用约定</span></span><br></pre></td></tr></table></figure>
-
-<p>cdecl调用约定意味着：</p>
-<ul>
-<li>参数从右向左压入堆栈</li>
-<li>调用者负责清理堆栈</li>
-<li>C调用约定允许函数的参数的个数是不固定的，这也是C语言的一大特色。</li>
-<li>仅在函数名前加上一个下划线前缀，格式为_functionname。</li>
-</ul>
-<h3 id="fastcall"><a href="#fastcall" class="headerlink" title="fastcall"></a>fastcall</h3><p>声明语法：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> fastcall <span class="title function_">function</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;</span><br></pre></td></tr></table></figure>
-
-<p>fastcall调用约定意味着：</p>
-<ul>
-<li>函数的第一个和第二个DWORD参数（或者尺寸更小的）通过ecx和edx传递，其他参数通过从右向左的顺序压栈</li>
-<li>函数自身清理堆栈</li>
-<li>函数名修改规则同stdcall:函数名自动加前导的下划线，后面紧跟一个@符号，其后紧跟着参数的尺寸。</li>
-</ul>
-<h3 id="thiscall"><a href="#thiscall" class="headerlink" title="thiscall"></a>thiscall</h3><p>C++类成员函数缺省的调用约定</p>
-<p>thiscall是唯一一个不能明确指明的函数修饰，因为thiscall不是关键字。由于成员函数调用还有一个this指针，因此必须特殊处理，thiscall意味着:</p>
-<ul>
-<li>参数从右向左入栈</li>
-<li>如果参数个数不确定，this指针在所有参数压栈后被压入堆栈。如果参数个数确定，this指针通过ecx传递给被调用者。</li>
-<li>如果参数个数不确定，调用者清理堆栈，否则函数自己清理堆栈</li>
-</ul>
-<p>对于参数个数固定情况下，类似于stdcall，不定时则类似cdecl</p>
-<h3 id="naked-call"><a href="#naked-call" class="headerlink" title="naked call"></a>naked call</h3><p>一个很少见的调用约定，一般用于实模式驱动程序设计</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/15/%E6%A0%88%E5%B8%A7/" data-id="clv0ubhg00001i0ws88hr8e3y" data-title="栈帧" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-程序加壳与脱壳" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/" class="article-date">
-  <time class="dt-published" datetime="2024-04-15T10:56:40.000Z" itemprop="datePublished">2024-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/">程序加壳与脱壳</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>程序壳主要分为压缩壳、加密壳，多层壳等等，目的都是为了隐藏程序真正的入口点OEP。</p>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>壳最开始的目的是为了让逆向分析人员无法轻易获取程序的入口函数，在静态分析时也能隐藏内部代码，</p>
-<p>属于代码保护技术。</p>
-<h2 id="加壳软件与查壳软件"><a href="#加壳软件与查壳软件" class="headerlink" title="加壳软件与查壳软件"></a>加壳软件与查壳软件</h2><p> 加壳：ASPACK，UPX， PEcompact，PE-PACK； PETITE NEOLITE等</p>
-<p>一般用来加壳的也可以用来脱壳</p>
-<p>查壳： Fi ，GetTyp ，peid ，pe-scan等</p>
-<h2 id="如何识别OEP"><a href="#如何识别OEP" class="headerlink" title="如何识别OEP"></a>如何识别OEP</h2><p>这里只分享笔者遇到过的加壳软件中的OEP特征。</p>
-<ul>
-<li>关键词<code>PUSHAD</code>，将所有寄存器压入栈中，<code>POPAD</code>与<code>PUSHAD</code>相对应，将所有寄存器弹出，一般运行到<code>POPAD</code>说明OEP已经不远了。</li>
-<li>观察地址，一般壳程序的地址比源程序的地址要大，也就是源程序在壳程序的上方，当经过了一个大跳转到达原本调试的地址上方，同时观察到有<code>PUSH EBP</code>等开辟栈帧的语句出现，大概率已经到达了OEP</li>
-</ul>
-<h2 id="脱壳方法"><a href="#脱壳方法" class="headerlink" title="脱壳方法"></a>脱壳方法</h2><p>当遇到无法使用工具帮助我们解决壳时，可以使用手脱方法进行脱壳。加壳相当于在程序外套了另外一层程序，当程序运行起来时壳先获取到程序控制权，将壳程序运行结束（自解密阶段），再接着运行原程序，这时程序就执行到了OEP下，我们可以在这个时机下dump源程序。</p>
-<h3 id="单步跟踪"><a href="#单步跟踪" class="headerlink" title="单步跟踪"></a>单步跟踪</h3><p>这是最笨的方法，在调试器中单步运行，不断单步步入或步过，直到到达OEP当中。</p>
-<h3 id="ESP定律"><a href="#ESP定律" class="headerlink" title="ESP定律"></a>ESP定律</h3><p>原理是利用了程序堆栈平衡。在程序自解密时需要先保存寄存器中的值，会进行压栈操作，而当自解密完成需要还原现场时，会将原来压栈的寄存器都弹出，原程序代码恢复。此时硬件断点触发。然后在程序当前位置，只需要少许单步跟踪，就很容易到达正确的OEP位置。</p>
-<h3 id="关键词搜索"><a href="#关键词搜索" class="headerlink" title="关键词搜索"></a>关键词搜索</h3><p>根据所要脱壳程序的脱壳特征，定位到距离OEP最近的汇编，下断点，再运行程序到OEP之后dump。例如UPX可以定位汇编到popad附近，OEP距离popad的距离很近</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/" data-id="clv0ubhg30002i0ws54obflu4" data-title="程序加壳与脱壳" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-PE文件结构" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-PE文件结构" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/04/15/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" class="article-date">
   <time class="dt-published" datetime="2024-04-15T10:54:40.000Z" itemprop="datePublished">2024-04-15</time>
@@ -223,8 +90,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/04/15/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">PE文件结构</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      PE文件结构
     </h1>
   
 
@@ -310,62 +177,28 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/04/15/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2024-04-15T03:47:08.246Z" itemprop="datePublished">2024-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
+          程序加壳与脱壳
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/04/15/hello-world/">Hello World</a>
-    </h1>
   
+    <a href="/2024/04/15/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/04/15/hello-world/" data-id="clv0f1xh80000c8ws894nfz5g" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
 
 
 </section>
