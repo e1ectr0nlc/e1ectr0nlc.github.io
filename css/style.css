@@ -975,99 +975,6 @@ article .readmore {
 .copyright.license .license-meta-text a:hover {
   border-bottom-color: #ff5722;
 }
-.recommended-article {
-  overflow: hidden;
-}
-.recommended-article .recommended-article-header {
-  margin-top: 8px;
-  margin-left: 8px;
-  margin-right: 0;
-}
-.recommended-article .recommended-article-group {
-  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
-  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
-  display: -ms-flexbox /* TWEENER - IE 10 */;
-  display: -webkit-flex /* NEW - Chrome */;
-  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
-  display: flex;
-  flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -khtml-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
-  -o-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  overflow: hidden;
-}
-@media screen and (max-width: 768px) {
-  .recommended-article .recommended-article-group {
-    height: 190px;
-    overflow: scroll;
-    -ms-overflow-style: none;
-  }
-  .recommended-article .recommended-article-group::-webkit-scrollbar {
-    width: 0 !important;
-  }
-}
-.recommended-article .recommended-article-group .recommended-article-item {
-  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
-  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
-  display: -ms-flexbox /* TWEENER - IE 10 */;
-  display: -webkit-flex /* NEW - Chrome */;
-  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
-  display: flex;
-  flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -khtml-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
-  -o-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  -webkit-justify-content: center;
-  -khtml-justify-content: center;
-  -moz-justify-content: center;
-  -o-justify-content: center;
-  -ms-justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  width: calc(100%/3 - 16px);
-  max-height: 200px;
-  margin-top: 8px;
-  margin-left: 8px;
-  margin-right: 0;
-}
-@media screen and (max-width: 768px) {
-  .recommended-article .recommended-article-group .recommended-article-item {
-    width: calc(100%/2 - 16px);
-  }
-}
-@media screen and (max-width: 500px) {
-  .recommended-article .recommended-article-group .recommended-article-item {
-    width: calc(100% - 16px);
-  }
-}
-.recommended-article .recommended-article-group .recommended-article-item img {
-  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
-  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
-  display: -ms-flexbox /* TWEENER - IE 10 */;
-  display: -webkit-flex /* NEW - Chrome */;
-  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
-  display: flex;
-  width: 100%;
-  height: 150px;
-}
-.recommended-article .recommended-article-group .recommended-article-item span {
-  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
-  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
-  display: block;
-  text-align: justify;
-  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
-  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  overflow: hidden;
-}
 footer.footer {
   position: relative;
   padding: 40px 10px 120px 10px;
@@ -1499,7 +1406,7 @@ svg.loading {
   -moz-transition: all 0.6s ease;
   -o-transition: all 0.6s ease;
   -ms-transition: all 0.6s ease;
-  z-index: 50;
+  z-index: 9;
   position: fixed;
   width: 48px;
   height: 48px;
@@ -2523,26 +2430,6 @@ img.lazyload:not(.placeholder).loaded {
   -webkit-border-radius: 8px;
   overflow: hidden;
 }
-#u-search .modal .search-icon,
-#u-search .modal #resule-hits-empty {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 50%;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -khtml-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
-#u-search .modal .search-icon i,
-#u-search .modal #resule-hits-empty i {
-  font-size: 8em;
-  color: #e8e8e8;
-  margin-bottom: 10px;
-}
 @media screen and (max-width: 680px) {
   #u-search .modal {
     box-shadow: none;
@@ -2707,8 +2594,6 @@ img.lazyload:not(.placeholder).loaded {
 #u-search .modal .modal-body .modal-results .result b[mark] {
   color: #25be9c;
   text-decoration: underline;
-  font-size: 120%;
-  background-color: #ffe600;
 }
 #u-search .modal .modal-body .modal-results .result:hover {
   background: var(--color-site-bg);
@@ -3399,39 +3284,6 @@ img.lazyload:not(.placeholder).loaded {
   position: sticky;
   top: 80px;
   z-index: 10;
-}
-.bber-talk {
-  padding: 0.2rem 1rem;
-}
-.bber-talk :hover {
-  border-color: #49b1f5;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-}
-.bber-talk a {
-  color: var(--font-color);
-}
-.bber-talk .talk-list {
-  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
-  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
-  display: block !important;
-  max-height: 25px;
-  overflow: hidden;
-}
-.bber-talk .talk-list :hover {
-  color: #49b1f5 !important;
-  transition: all 0.2s ease-in-out;
-  -webkit-transition: all 0.2s ease-in-out;
-  -khtml-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  -ms-transition: all 0.2s ease-in-out;
-}
-.bber-talk .talk-list .item {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 98%;
-  overflow: hidden;
 }
 .snackbar-wrap {
   position: fixed;
@@ -7013,4 +6865,136 @@ pre {
 }
 .iziToast-message {
   word-break: break-all !important;
+}
+p,
+input,
+pre>span,
+textarea {
+  cursor: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/cursor/text.png"), text;
+}
+.fancybox-container .fancybox-stage,
+.fancybox__carousel .is-draggable {
+  cursor: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/cursor/zoom-out.png"), zoom-out;
+}
+.fancybox a,
+.fancybox-can-zoomIn .fancybox-content,
+.fancybox__carousel .fancybox__slide.can-zoom_in .fancybox__content {
+  cursor: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/cursor/zoom-in.png"), zoom-in;
+}
+span.btn>a:not([href]):hover,
+.fancybox-button[disabled],
+.fancybox-button[disabled]:hover,
+.gt-container .gt-btn.is--disable,
+span.not-select {
+  cursor: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/cursor/circle.png"), not-allowed;
+}
+html,
+a:not([href]),
+a:not([href]) p,
+button[disabled],
+html input[disabled],
+.article .widget,
+#l_body .post section.meta .new-meta-box .new-meta-item .notlink,
+ul.list-v.rightmenu a,
+span.btn a:not([href]),
+div.tabs ul.nav-tabs li.tab.active a,
+kbd,
+.a > p,
+.not-select,
+.not-select p,
+.aplayer .aplayer-info .aplayer-music,
+.gt-container a.is--active,
+.iziToast,
+.iziToast p,
+.iframe,
+.embed-show,
+p > img,
+p > svg,
+.fix-cursor-default {
+  cursor: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/cursor/left_ptr.png"), default;
+}
+a,
+psw,
+button,
+html input[type=button],
+input[type=reset],
+input[type=submit],
+table::-webkit-scrollbar-thumb,
+scrollbar::-webkit-scrollbar-thumb,
+#scroll-down,
+ul.list-v.rightmenu li.music a.nav.volume .aplayer-volume-bar,
+#u-search .modal .modal-header .btn-close,
+#u-search .modal .modal-footer .nav,
+article .checkbox input,
+details summary,
+.article a.link-card,
+div.tabs ul.nav-tabs li.tab a,
+.btn-copy,
+.fancybox-can-pan .fancybox-content,
+.fancybox-can-swipe .fancybox-content,
+.waves-effect,
+a.result.search-result-fix,
+.tag > p,
+.prev > p,
+.next > p,
+.author > p,
+.list-h > a > p,
+.category > a > p,
+.friend-right p,
+.v[data-class=v] a,
+.v[data-class=v] .vbtn,
+.v[data-class=v] .vicon,
+.v[data-class=v] .vcards .vcard .vhead .vnick,
+.v[data-class=v] .vcards .vcard .vh .vmeta .vat,
+.v[data-class=v] .vwrap .vemojis i,
+.v[data-class=v] .vcards .vcard .vcontent.expand,
+.aplayer .aplayer-pic,
+.aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon,
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap,
+.aplayer .aplayer-list ol li,
+.aplayer .aplayer-list ol li .aplayer-list-author,
+.aplayer .aplayer-list ol li .aplayer-list-index,
+.waves-button,
+.waves-button-input,
+.waves-button:hover,
+.waves-button:visited,
+.fancybox-button,
+.gt-container .gt-btn,
+.gt-container .gt-user-inner,
+.gt-container .gt-avatar-github,
+.gt-container .gt-popup .gt-action,
+.gt-container .gt-comment-like:hover,
+.gt-container .gt-comment-edit:hover,
+.gt-container .gt-comment-reply:hover,
+.tk-icon,
+.tk-avatar img,
+.tk-meta a,
+.tk-action-icon,
+.fancybox,
+.fix-cursor-pointer {
+  cursor: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/cursor/pointer.png"), pointer;
+}
+.cur-default {
+  cursor: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/cursor/left_ptr.png"), default !important;
+}
+.cur-pointer,
+.carousel__button,
+.fancybox__slide {
+  cursor: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/cursor/pointer.png"), pointer !important;
+}
+.cur-not-allowed {
+  cursor: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/cursor/circle.png"), not-allowed !important;
+}
+.cur-zoom-in,
+.fancybox__carousel .fancybox__slide.can-zoom_in .fancybox__content,
+.has-image[data-image-fit=contain].can-zoom_in .fancybox__image {
+  cursor: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/cursor/zoom-in.png"), zoom-in !important;
+}
+.cur-zoom-out,
+.fancybox__carousel .is-draggable,
+.has-image[data-image-fit=contain].is-draggable .fancybox__image {
+  cursor: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/cursor/zoom-out.png"), zoom-out !important;
+}
+.cur-text {
+  cursor: url("https://unpkg.com/volantis-static@0.0.1654736714924/media/cursor/text.png"), text !important;
 }
