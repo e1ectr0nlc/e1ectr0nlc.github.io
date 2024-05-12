@@ -1626,7 +1626,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1715517925366),
+    lastupdate: new Date(1715520249779),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2361,6 +2361,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
       
     
     
@@ -2387,16 +2391,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     <h2 class="article-title"  itemprop="name headline">
       <a href="/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"  itemprop="url">
-        PE文件结构
+        Pe文件结构
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
-      
-        ​	可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：DOS头，NT头，节表以及节数据。
-PE文件结构说明DOS头DOS头 是用来兼容 MS-DOS 操作系统的，目的是当这个文件在 MS-DOS 上运行时提...
-      
+      <p>可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：<strong>DOS头</strong>，<strong>NT头</strong>，<strong>节表</strong>以及<strong>节数据</strong>。</p>
     
   </div>
   
@@ -2425,6 +2426,144 @@ PE文件结构说明DOS头DOS头 是用来兼容 MS-DOS 操作系统的，目的
       
         <div>
           <a class='readmore' href='/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2021/09/20/断点/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2021/09/20/%E6%96%AD%E7%82%B9/"  itemprop="url">
+        断点
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>​	断点是用于帮助程序员分析bug和调试程序的一种技术，让程序在合适的地方暂停运行，查看内存信息。最开始是只顾着用了，没有了解过背后的原理。今天就来简单了解一下背后的机制原理。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2021-09-20T00:00:00+08:00">2021-09-20</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/">二进制基础</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/" itemprop="url"><span itemprop="name">二进制基础</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/09/20/%E6%96%AD%E7%82%B9/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2021/09/20/栈帧/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2021/09/20/%E6%A0%88%E5%B8%A7/"  itemprop="url">
+        栈帧
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>栈作为重要的数据结构，主要用于管理程序的执行过程中的函数调用和局部变量。它通过后进先出的原则存储和管理数据，包括函数的参数、返回地址、局部变量等。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2021-09-20T00:00:00+08:00">2021-09-20</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/">二进制基础</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/" itemprop="url"><span itemprop="name">二进制基础</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/09/20/%E6%A0%88%E5%B8%A7/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2540,7 +2679,7 @@ PE文件结构说明DOS头DOS头 是用来兼容 MS-DOS 操作系统的，目的
           <li><a class="flat-box"
             title="/categories/Dll%E6%B3%A8%E5%85%A5/" href="/categories/Dll%E6%B3%A8%E5%85%A5/"
             active-action="action-categoriesDllE6B3A8E585A5"
-            ><div class='name'>Dll注入</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>Dll注入</div><div class='badge'>(6)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Hook/" href="/categories/Hook/"
@@ -2555,22 +2694,22 @@ PE文件结构说明DOS头DOS头 是用来兼容 MS-DOS 操作系统的，目的
           <li><a class="flat-box"
             title="/categories/Hook%E6%A1%86%E6%9E%B6/" href="/categories/Hook%E6%A1%86%E6%9E%B6/"
             active-action="action-categoriesHookE6A186E69EB6"
-            ><div class='name'>Hook框架</div><div class='badge'>(2)</div></a></li>
+            ><div class='name'>Hook框架</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/bypass/" href="/categories/bypass/"
             active-action="action-categoriesbypass"
-            ><div class='name'>bypass</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>bypass</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/" href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/"
             active-action="action-categoriesE4BA8CE8BF9BE588B6E59FBAE7A180"
-            ><div class='name'>二进制基础</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>二进制基础</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4/" href="/categories/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4/"
             active-action="action-categoriesE4BBA3E7A081E4BF9DE68AA4"
-            ><div class='name'>代码保护</div><div class='badge'>(2)</div></a></li>
+            ><div class='name'>代码保护</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E6%BC%8F%E6%B4%9Eli-yong/" href="/categories/%E6%BC%8F%E6%B4%9Eli-yong/"
@@ -2585,7 +2724,7 @@ PE文件结构说明DOS头DOS头 是用来兼容 MS-DOS 操作系统的，目的
           <li><a class="flat-box"
             title="/categories/%E8%B0%83%E8%AF%95%E5%9F%BA%E7%A1%80/" href="/categories/%E8%B0%83%E8%AF%95%E5%9F%BA%E7%A1%80/"
             active-action="action-categoriesE8B083E8AF95E59FBAE7A180"
-            ><div class='name'>调试基础</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>调试基础</div><div class='badge'>(0)</div></a></li>
         
       </ul>
     </div>

@@ -1626,7 +1626,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1715517925366),
+    lastupdate: new Date(1715520249779),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2414,535 +2414,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/05/06/恶意程序分析流程/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-    <meta itemprop="description" content="学习记录">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/05/06/%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"  itemprop="url">
-        2024年5月6日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        恶意程序分析流程对程序本身特征进行检查查壳
-程序为32位程序，没有加壳
-查看PE文件节表信息
-可以看到节表中有一个叫”baidu”的段，正常程序中不会有这个段
-查看文件存在的字符串
-存在一个网址，猜测可能有网络操作
-查看恶意程序进行分析源程序shoves.exe的函数
-
-静态分析没有得到结果，尝试在OD中动态分析
-在0x41021A地址处存在一个解密函数，将0x4106bc处的内容动态解密
-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
-            <meta itemprop="name" content="e1ectr0nlc">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-05-06T22:02:06+08:00">2024-05-06</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/05/06/%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/29/反跟踪调试/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-    <meta itemprop="description" content="学习记录">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/04/29/%E5%8F%8D%E8%B7%9F%E8%B8%AA%E8%B0%83%E8%AF%95/"  itemprop="url">
-        2024年4月29日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        反跟踪调试来总结一下学过的反调试技术。
-进程状态IsDebuggerPresent()相信学习反调试都是从这个函数入手的，这个函数会查询进程环境块(PEB)中的IsDebugged标志。如果进程没有运行在调试器环境中，函数返回0；如果调试附加了进程，函数返回一个非零值。
-实际上调用IsDebuggerPresent()会检查PEB结构体中偏移为0x2的BeingDebugge标志位，用来表示...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
-            <meta itemprop="name" content="e1ectr0nlc">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-04-29T17:48:52+08:00">2024-04-29</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/04/29/%E5%8F%8D%E8%B7%9F%E8%B8%AA%E8%B0%83%E8%AF%95/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/28/突破Session0的注入/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-    <meta itemprop="description" content="学习记录">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/04/28/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/"  itemprop="url">
-        2024年4月28日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        概念​	首先来解释一下Session隔离机制。在Windows XP、Windows Server 2003，以及更老版本的Windows操作系统中，服务和应用程序使用相同的会话（SESSION）来运行，而这个会话是由第一个登录到控制台的用户来启动的，该会话就称为SESSION 0。将服务和用户应用程序一起在SESSION 0中运行会导致安全风险，因为服务会使用提升后的权限来运行，而用户应用...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
-            <meta itemprop="name" content="e1ectr0nlc">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-04-28T21:18:30+08:00">2024-04-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/04/28/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/28/映射注入/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-    <meta itemprop="description" content="学习记录">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/04/28/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/"  itemprop="url">
-        2024年4月28日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        概念映射注入是一种内存注入技术，创建的Mapping对象本质上属于申请一块物理内存，而物理内存又能比较方便的通过系统函数直接映射到进程的虚拟内存中，就避免使用一些经典函数例如VirtualAllocEx,WriteProcessMemory等被杀毒软件严密监控的API。
-实现思路在注入进程创建mapping对象，向被映射的虚拟地址空间写入shellcode，打开被注入的进程句柄，将mappi...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
-            <meta itemprop="name" content="e1ectr0nlc">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-04-28T20:06:24+08:00">2024-04-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/04/28/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/28/注册表注入/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-    <meta itemprop="description" content="学习记录">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/04/28/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/"  itemprop="url">
-        2024年4月28日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        
-
-说实话，注册表是杀软严密监视的地方，我觉得现在对注册表进行的操作十有八九都会被查出来（但技术还是要学的）。
-概念主要依赖于两个表项，AppInit_Dlls和LoadAppInit_DLLs。AppInit_Dlls写入dll完整路径，LoadAppInit_DLLs写为1，重启后，指定DLL会注入到所有运行进程。User32.dll在被加载到进程时，会读取AppInit_Dlls表项。...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
-            <meta itemprop="name" content="e1ectr0nlc">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-04-28T16:30:39+08:00">2024-04-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/04/28/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/28/APC注入/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-    <meta itemprop="description" content="学习记录">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/04/28/APC%E6%B3%A8%E5%85%A5/"  itemprop="url">
-        2024年4月28日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        APC注入概念首先来了解下什么是APC技术。APC全称为异步过程调用，它允许一个线程请求另一个线程在适当的时候异步执行一个特定的函数。通俗来讲，当一个线程调用一个阻塞的系统调用时，例如SleepEx(),WaitForSingleObjectEx()等，内核态返回的时候会检查是否需要执行 apc 。在这种情况下，可以使用APC来在系统调用完成时执行一些额外的代码，而不需要等待系统调用返回。
-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
-            <meta itemprop="name" content="e1ectr0nlc">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-04-28T13:14:35+08:00">2024-04-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/04/28/APC%E6%B3%A8%E5%85%A5/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/28/远程线程注入/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-    <meta itemprop="description" content="学习记录">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/04/28/%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5/"  itemprop="url">
-        2024年4月28日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        
-
-​	在Dll注入技术学习中，远程线程注入可以说是最容易理解的一种注入技术了。通过这种技术，我们也可以触类旁通其他注入技术。
-原理现在有三个程序：目标注入进程、注入加载进程以及Dll。
-我们都知道一个exe文件会去加载自己所需要的Dll去运行，通常是一些系统Dll，如果有需要，也会加载自己编写的Dll。这里就出现了我们的利用点，也就是windows肯定提供了API供我们使用去加载Dll。那...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
-            <meta itemprop="name" content="e1ectr0nlc">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-04-28T11:37:11+08:00">2024-04-28</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/04/28/%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/19/免杀学习总结与后续学习/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="e1ectr0nlc's Blog">
-    <meta itemprop="description" content="学习记录">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/04/19/%E5%85%8D%E6%9D%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%8E%E5%90%8E%E7%BB%AD%E5%AD%A6%E4%B9%A0/"  itemprop="url">
-        2024年4月19日
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        
-
-在我初学免杀时，也自己手动实现了一个程序，不过还是没有逃过杀毒软件的识别😀。今天就先来总结一下已经学习过的知识，省的忘记之后没有地方复习。
-大致了解首先做免杀是为了什么，肯定是我们想让我们的木马可以运行而且不被杀软识别。我们的木马是什么？就是我们使用MSF或者CS生成的shellcode，那么就引进来了一个重要概念：shellcode。
-这里就不过多介绍生成shellcode的工具了，...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
-            <meta itemprop="name" content="e1ectr0nlc">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-04-19T22:32:45+08:00">2024-04-19</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/04/19/%E5%85%8D%E6%9D%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%8E%E5%90%8E%E7%BB%AD%E5%AD%A6%E4%B9%A0/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
   <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/16/llvm混淆与去除/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="e1ectr0nlc's Blog">
@@ -3016,7 +2487,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/15/Frida学习(二)/">
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/12/Frida学习(一)/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="e1ectr0nlc's Blog">
   </span>
@@ -3034,17 +2505,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/04/15/Frida%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/"  itemprop="url">
-        Frida学习(二)
+      <a href="/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/"  itemprop="url">
+        Frida学习(一)
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
     
-      
-        测试源码
-1234567891011121314151617181920212223242526272829303132package com.example.lesson4one;import androidx.appcompat.app.AppCompatActivity;import android.os.Bundle;import android.util.Log;public cl...
-      
+      <p>学习Frida脚本的编写</p>
     
   </div>
   
@@ -3059,12 +2527,572 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <meta itemprop="url" content="/">
           </span>
         
-        <time itemprop="dateCreated datePublished" datetime="2024-04-15T22:10:40+08:00">2024-04-15</time>
+        <time itemprop="dateCreated datePublished" datetime="2024-04-12T00:00:00+08:00">2024-04-12</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Hook%E6%A1%86%E6%9E%B6/">Hook框架</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Hook%E6%A1%86%E6%9E%B6/" itemprop="url"><span itemprop="name">Hook框架</span></a>
+            </span>
+          
         
       </div>
       
         <div>
-          <a class='readmore' href='/2024/04/15/Frida%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/' itemprop="url">
+          <a class='readmore' href='/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/10/恶意程序分析流程/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/04/10/%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/"  itemprop="url">
+        恶意程序分析流程
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>这段时间想着来分析几个木马程序练练手，这篇博客就来记录一下整个恶意代码的分析过程，有个大致了解，同时也想看看木马如何获取到目标主机的权限，对攻击手法有一个大致的了解。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-04-10T00:00:00+08:00">2024-04-10</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/bypass/">bypass</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/bypass/" itemprop="url"><span itemprop="name">bypass</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/04/10/%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2023/11/12/shellcode的加载方式/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/"  itemprop="url">
+        shellcode的加载
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>今天来学习一下<code>shellcode</code>的各种加载方式、</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-11-12T00:00:00+08:00">2023-11-12</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/bypass/">bypass</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/bypass/" itemprop="url"><span itemprop="name">bypass</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2023/11/12/免杀学习总结与后续学习/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/11/12/%E5%85%8D%E6%9D%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%8E%E5%90%8E%E7%BB%AD%E5%AD%A6%E4%B9%A0/"  itemprop="url">
+        免杀初探
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>在我初学免杀时，也自己手动实现了一个程序，不过还是没有逃过杀毒软件的识别😀。今天就先来总结一下已经学习过的知识，避免忘记。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-11-12T00:00:00+08:00">2023-11-12</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/bypass/">bypass</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/bypass/" itemprop="url"><span itemprop="name">bypass</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/11/12/%E5%85%8D%E6%9D%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%8E%E5%90%8E%E7%BB%AD%E5%AD%A6%E4%B9%A0/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2023/10/12/Rop/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/10/12/Rop/"  itemprop="url">
+        基础ROP
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>线下比赛多为AWD，涉及到逆向的知识点很少。为了在线下不坐牢<del>指打开电脑无所事事疯狂偷吃茶歇区零食</del> ，来记录自己学习pwn的入门知识</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-10-12T00:00:00+08:00">2023-10-12</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">漏洞利用</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" itemprop="url"><span itemprop="name">漏洞利用</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/10/12/Rop/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2023/07/20/APC注入/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/07/20/APC%E6%B3%A8%E5%85%A5/"  itemprop="url">
+        APC注入
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>APC注入利用了当前线程从中断中恢复时会检查APC队列中是否有函数未执行进行函数调用来注入。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-07-20T00:00:00+08:00">2023-07-20</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Dll%E6%B3%A8%E5%85%A5/">Dll注入</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Dll%E6%B3%A8%E5%85%A5/" itemprop="url"><span itemprop="name">Dll注入</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/07/20/APC%E6%B3%A8%E5%85%A5/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2023/07/18/突破Session0的注入/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/07/18/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/"  itemprop="url">
+        绕过Session0进行注入
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>引入Session概念后，我们无法通过注入服务进程来实现可信任进程注入。当我们尝试注入session0当中的进程通常会失败，就是因为我们所处的session与系统服务进程不在同一个session当中。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-07-18T00:00:00+08:00">2023-07-18</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Dll%E6%B3%A8%E5%85%A5/">Dll注入</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Dll%E6%B3%A8%E5%85%A5/" itemprop="url"><span itemprop="name">Dll注入</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/07/18/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2023/07/16/映射注入/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/07/16/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/"  itemprop="url">
+        映射注入
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>映射注入实际上的思路与远程线程注入一致，只不过映射注入改变了Dll的写入方式而已。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-07-16T00:00:00+08:00">2023-07-16</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Dll%E6%B3%A8%E5%85%A5/">Dll注入</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Dll%E6%B3%A8%E5%85%A5/" itemprop="url"><span itemprop="name">Dll注入</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/07/16/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2023/07/15/Frida学习(二)/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/07/15/Frida%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/"  itemprop="url">
+        Frida学习(二)
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>这篇文章用来记录Frida在Hook各种方法时的脚本编写。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-07-15T00:00:00+08:00">2023-07-15</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Hook%E6%A1%86%E6%9E%B6/">Hook框架</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Hook%E6%A1%86%E6%9E%B6/" itemprop="url"><span itemprop="name">Hook框架</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/07/15/Frida%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/' itemprop="url">
             Read More
           </a>
         </div>
@@ -3193,7 +3221,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/Dll%E6%B3%A8%E5%85%A5/" href="/categories/Dll%E6%B3%A8%E5%85%A5/"
             active-action="action-categoriesDllE6B3A8E585A5"
-            ><div class='name'>Dll注入</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>Dll注入</div><div class='badge'>(6)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Hook/" href="/categories/Hook/"
@@ -3208,22 +3236,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/Hook%E6%A1%86%E6%9E%B6/" href="/categories/Hook%E6%A1%86%E6%9E%B6/"
             active-action="action-categoriesHookE6A186E69EB6"
-            ><div class='name'>Hook框架</div><div class='badge'>(2)</div></a></li>
+            ><div class='name'>Hook框架</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/bypass/" href="/categories/bypass/"
             active-action="action-categoriesbypass"
-            ><div class='name'>bypass</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>bypass</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/" href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/"
             active-action="action-categoriesE4BA8CE8BF9BE588B6E59FBAE7A180"
-            ><div class='name'>二进制基础</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>二进制基础</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4/" href="/categories/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4/"
             active-action="action-categoriesE4BBA3E7A081E4BF9DE68AA4"
-            ><div class='name'>代码保护</div><div class='badge'>(2)</div></a></li>
+            ><div class='name'>代码保护</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E6%BC%8F%E6%B4%9Eli-yong/" href="/categories/%E6%BC%8F%E6%B4%9Eli-yong/"
@@ -3238,7 +3266,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/%E8%B0%83%E8%AF%95%E5%9F%BA%E7%A1%80/" href="/categories/%E8%B0%83%E8%AF%95%E5%9F%BA%E7%A1%80/"
             active-action="action-categoriesE8B083E8AF95E59FBAE7A180"
-            ><div class='name'>调试基础</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>调试基础</div><div class='badge'>(0)</div></a></li>
         
       </ul>
     </div>

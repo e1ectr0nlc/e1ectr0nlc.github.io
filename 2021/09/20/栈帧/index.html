@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://e1ectr0nlc.github.io/2024/04/28/突破session0的注入/"/>
+  <link rel="canonical" href="https://e1ectr0nlc.github.io/2021/09/20/栈帧/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>e1ectr0nlc's Blog</title>
+  <title>栈帧 - e1ectr0nlc's Blog</title>
   <meta name="keywords" content="null">
-  <meta desc name="description" content="学习记录 - e1ectr0nlc - e1ectr0nlc's Blog">
+  <meta desc name="description" content="栈作为重要的数据结构，主要用于管理程序的执行过程中的函数调用和局部变量。它通过后进先出的原则存储和管理数据，包括函数的参数、返回地址、局部变量等。 - e1ectr0nlc - e1ectr0nlc's Blog">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="e1ectr0nlc&#39;s Blog">
-<meta property="og:url" content="https://e1ectr0nlc.github.io/2024/04/28/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:title" content="栈帧">
+<meta property="og:url" content="https://e1ectr0nlc.github.io/2021/09/20/%E6%A0%88%E5%B8%A7/index.html">
 <meta property="og:site_name" content="e1ectr0nlc&#39;s Blog">
-<meta property="og:description" content="概念​	首先来解释一下Session隔离机制。在Windows XP、Windows Server 2003，以及更老版本的Windows操作系统中，服务和应用程序使用相同的会话（SESSION）来运行，而这个会话是由第一个登录到控制台的用户来启动的，该会话就称为SESSION 0。将服务和用户应用程序一起在SESSION 0中运行会导致安全风险，因为服务会使用提升后的权限来运行，而用户应用程序使">
+<meta property="og:description" content="栈作为重要的数据结构，主要用于管理程序的执行过程中的函数调用和局部变量。它通过后进先出的原则存储和管理数据，包括函数的参数、返回地址、局部变量等。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2024-04-28T13:18:30.965Z">
-<meta property="article:modified_time" content="2024-05-12T12:09:00.671Z">
+<meta property="article:published_time" content="2021-09-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-12T13:21:41.272Z">
 <meta property="article:author" content="e1ectr0nlc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1628,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1715517925366),
+    lastupdate: new Date(1715520249779),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2354,7 +2354,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/28/突破Session0的注入/">
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2021/09/20/栈帧/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="e1ectr0nlc's Blog">
   </span>
@@ -2374,23 +2374,121 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-      <span hidden itemprop="name headline">
+      <h1 class="title" itemprop="name headline">
+        栈帧
+      </h1>
+      <div class='new-meta-box'>
         
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg" class="lazyload" data-srcset="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">e1ectr0nlc</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/">二进制基础</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/" itemprop="url"><span itemprop="name">二进制基础</span></a>
       </span>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-09-20T00:00:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年9月20日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
 
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​	首先来解释一下Session隔离机制。在Windows XP、Windows Server 2003，以及更老版本的Windows操作系统中，服务和应用程序使用相同的会话（SESSION）来运行，而这个会话是由第一个登录到控制台的用户来启动的，该会话就称为SESSION 0。将服务和用户应用程序一起在SESSION 0中运行会导致安全风险，因为服务会使用提升后的权限来运行，而用户应用程序使用用户特权（大部分都是非管理员用户）运行，这会使得恶意软件把某个服务作为攻击目标，通过“劫持”该服务以达到提升自己权限级别的目的。</p>
-<p>​	从Windows VISTA开始，只有服务可以托管到SESSION 0中，用户应用程序和服务之间会进行隔离，并需要运行在用户登录系统时创建的后续会话中。如第一个登录用户创建Session 1，第二个登录用户创建Session 2，以此类推。</p>
-<p>​	我们使用<code>CreatRemoteThread</code>在普通用户进程注入shellcode或者Dll没问题，但是想要更进一步注入到系统进程中，那么就一定会失败，就是由于Session 0隔离的缘故。我们接下来就要解决这个问题。</p>
-<h2 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h2><p>​	引入Session隔离机制后，使用CreateRemoteThread创建远程线程时线程先挂起，然后判断是否运行在所属会话层后再决定是否恢复运行。</p>
-<p>​	<code>ZwCreateThreadEx</code>函数比<code>CreateRemoteThread</code>函数更接近内核，<code>CreateRemoteThread</code>最终也是调用<code>ZwCreateThreadEx</code>函数来创建线程的，通过前人对<code>CreateRemoteThread</code>逆向研究发现，在内部调<code>ZwCreateThreadEx</code>会把第七个参数创建标识设置为1，这样会使在系统服务创建的线程挂起，这也是注入失败的原因。</p>
-<p>​	只要你学过远程线程注入就明白这个技术的实现过程，只是将<code>CreateRemoteThread</code>换成了<code>ZwCreateThreadEx</code>。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//ZwCreateThreadEx的32位和64位定义</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _WIN64</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">DWORD</span><span class="params">(WINAPI* typedef_ZwCreateThreadEx)</span><span class="params">(</span></span><br><span class="line"><span class="params">	PHANDLE ThreadHandle,</span></span><br><span class="line"><span class="params">	ACCESS_MASK DesiredAccess,</span></span><br><span class="line"><span class="params">	LPVOID ObjectAttributes,</span></span><br><span class="line"><span class="params">	HANDLE ProcessHandle,</span></span><br><span class="line"><span class="params">	LPTHREAD_START_ROUTINE lpStartAddress,</span></span><br><span class="line"><span class="params">	LPVOID lpParameter,</span></span><br><span class="line"><span class="params">	ULONG CreateThreadFlags,</span></span><br><span class="line"><span class="params">	SIZE_T ZeroBits,</span></span><br><span class="line"><span class="params">	SIZE_T StackSize,</span></span><br><span class="line"><span class="params">	SIZE_T MaximumStackSize,</span></span><br><span class="line"><span class="params">	LPVOID pUnkown)</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">DWORD</span><span class="params">(WINAPI* typedef_ZwCreateThreadEx)</span><span class="params">(</span></span><br><span class="line"><span class="params">	PHANDLE ThreadHandle,</span></span><br><span class="line"><span class="params">	ACCESS_MASK DesiredAccess,</span></span><br><span class="line"><span class="params">	LPVOID ObjectAttributes,</span></span><br><span class="line"><span class="params">	HANDLE ProcessHandle,</span></span><br><span class="line"><span class="params">	LPTHREAD_START_ROUTINE lpStartAddress,</span></span><br><span class="line"><span class="params">	LPVOID lpParameter,</span></span><br><span class="line"><span class="params">	BOOL CreateSuspended,</span></span><br><span class="line"><span class="params">	DWORD dwStackSize,</span></span><br><span class="line"><span class="params">	DWORD dw1,</span></span><br><span class="line"><span class="params">	DWORD dw2,</span></span><br><span class="line"><span class="params">	LPVOID pUnkown)</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">DWORD</span><span class="params">(WINAPI* typedef_LoadLibraryA)</span><span class="params">(<span class="type">char</span>* path)</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="comment">//x64DLL路径</span></span><br><span class="line">	<span class="type">char</span> DllPath[] = <span class="string">&quot;F:\\code_py&amp;C\\vs2017\\injecte\\Dll1\\x64\\Release\\Dll1.dll&quot;</span>;   </span><br><span class="line">    <span class="comment">//x32</span></span><br><span class="line">	<span class="comment">//char DllPath[] = &quot;F:\\code_py&amp;C\\vs2017\\injecte\\Dll1\\Debug\\Dll1.dll&quot;;</span></span><br><span class="line">	DWORD dwPid = <span class="number">28496</span> ;</span><br><span class="line">    </span><br><span class="line">	HANDLE hRemoteThread;</span><br><span class="line"></span><br><span class="line">	HMODULE hNtModule = GetModuleHandleA(<span class="string">&quot;ntdll.dll&quot;</span>);</span><br><span class="line"></span><br><span class="line">	HMODULE hKeModule = GetModuleHandleA(<span class="string">&quot;Kernel32.dll&quot;</span>);</span><br><span class="line"></span><br><span class="line">	typedef_ZwCreateThreadEx ZwCreateThreadEx = (typedef_ZwCreateThreadEx)GetProcAddress(hNtModule, <span class="string">&quot;ZwCreateThreadEx&quot;</span>);</span><br><span class="line"></span><br><span class="line">	typedef_LoadLibraryA myLoadLibraryA = (typedef_LoadLibraryA)GetProcAddress(hKeModule, <span class="string">&quot;LoadLibraryA&quot;</span>);</span><br><span class="line"></span><br><span class="line">	HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE,dwPid);</span><br><span class="line"></span><br><span class="line">	LPVOID lpBaseAddress = VirtualAllocEx(hProcess, <span class="literal">NULL</span>, <span class="keyword">sizeof</span>(DllPath) + <span class="number">1</span>, MEM_COMMIT, PAGE_READWRITE);</span><br><span class="line"></span><br><span class="line">	WriteProcessMemory(hProcess, lpBaseAddress, DllPath, <span class="keyword">sizeof</span>(DllPath), <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">	ZwCreateThreadEx(&amp;hRemoteThread, PROCESS_ALL_ACCESS, <span class="literal">NULL</span>, hProcess, (LPTHREAD_START_ROUTINE)myLoadLibraryA, lpBaseAddress, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">	CloseHandle(hRemoteThread);</span><br><span class="line">	CloseHandle(hProcess);</span><br><span class="line">	FreeLibrary(hKeModule);</span><br><span class="line">	FreeLibrary(hNtModule);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <p>栈作为重要的数据结构，主要用于管理程序的执行过程中的函数调用和局部变量。它通过后进先出的原则存储和管理数据，包括函数的参数、返回地址、局部变量等。</p>
+<span id="more"></span>
 
+
+
+
+
+<h2 id="重要概念"><a href="#重要概念" class="headerlink" title="重要概念"></a>重要概念</h2><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>栈在数据结构中是一种运算受限的线性表，即我们只能对表尾进行操作，称之为栈顶，相对的，另一端称为栈底。它按照先进后出的原则存储数据，先进入的数据保存在栈底，后来的数据保存在栈顶。栈中的数据都是以栈帧（Stack Frame）的格式存在，栈帧是一个内存区块，存储了函数调用时所需要使用的信息。</p>
+<h3 id="EBP"><a href="#EBP" class="headerlink" title="EBP"></a>EBP</h3><p>栈底指针</p>
+<h3 id="ESP"><a href="#ESP" class="headerlink" title="ESP"></a>ESP</h3><p>栈顶指针</p>
+<h3 id="call"><a href="#call" class="headerlink" title="call"></a>call</h3><p>汇编语言，调用函数时需要使用call来调用</p>
+<h3 id="retn"><a href="#retn" class="headerlink" title="retn"></a>retn</h3><p>函数调用结束后返回。当retn指令执行时是将esp指向地址的值弹出到EIP寄存器中，表示返回到调用函数的下一条指令。</p>
+<h2 id="开辟栈帧"><a href="#开辟栈帧" class="headerlink" title="开辟栈帧"></a>开辟栈帧</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">;栈帧结构</span><br><span class="line">PUSH EBP            ;函数开始（使用EBP前先把已有值保存到栈中）</span><br><span class="line">MOV EBP, ESP        ;保存当前ESP到EBP中（保存返回地址）</span><br><span class="line"></span><br><span class="line">...                 ;函数体</span><br><span class="line">                    ;无论ESP值如何变化，EBP都保持不变，可以安全访问函数的局部变量、参数</span><br><span class="line"></span><br><span class="line">MOV ESP, EBP        ;将函数的起始（返回）地址给到ESP</span><br><span class="line">POP EBP             ;函数返回前弹出保存在栈中的值</span><br><span class="line">RETN                ;函数终止，返回到调用前的下一条指令</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数调用约定"><a href="#函数调用约定" class="headerlink" title="函数调用约定"></a>函数调用约定</h2><p>在栈帧的开辟中涉及到函数的调用。例如有一个函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">test</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>编写代码时我们肯定理解这个函数如何传参，传几个参数。但是CPU怎么才能知道这个函数有几个参数，参数的值是什么，为了解决这些问题，计算机提供了一种被称为栈的数据结构来支持参数传递。</p>
+<p>但是还有问题没有解决，当函数传递参数时，按照什么样的顺序传参，是从左到右还是从右到左，调用结束后如何清除堆栈，由调用者清除还是被调用者清除以及寄存器如何使用。这时就提出了<strong>函数调用约定</strong>来解决这个问题</p>
+<h3 id="stdcall"><a href="#stdcall" class="headerlink" title="stdcall"></a>stdcall</h3><p>声明的语法为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> __stdcall <span class="title function_">function</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>stdcall的调用约定意味着：</p>
+<ul>
+<li>参数从右向左压入堆栈</li>
+<li>函数自身清理堆栈</li>
+<li>函数名自动加前导的下划线，后面紧跟一个@符号，其后紧跟着参数的尺寸</li>
+</ul>
+<h3 id="cdecl"><a href="#cdecl" class="headerlink" title="cdecl"></a>cdecl</h3><p>是C和C++默认的调用约定</p>
+<p>声明的语法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">function</span> <span class="params">(<span class="type">int</span> a ,<span class="type">int</span> b)</span>; <span class="comment">//不加修饰就是C调用约定 </span></span><br><span class="line"><span class="type">int</span> __cdecl <span class="title function_">function</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;<span class="comment">//明确指出C调用约定</span></span><br></pre></td></tr></table></figure>
+
+<p>cdecl调用约定意味着：</p>
+<ul>
+<li>参数从右向左压入堆栈</li>
+<li>调用者负责清理堆栈</li>
+<li>C调用约定允许函数的参数的个数是不固定的，这也是C语言的一大特色。</li>
+<li>仅在函数名前加上一个下划线前缀，格式为_functionname。</li>
+</ul>
+<h3 id="fastcall"><a href="#fastcall" class="headerlink" title="fastcall"></a>fastcall</h3><p>声明语法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> fastcall <span class="title function_">function</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>fastcall调用约定意味着：</p>
+<ul>
+<li>函数的第一个和第二个DWORD参数（或者尺寸更小的）通过ecx和edx传递，其他参数通过从右向左的顺序压栈</li>
+<li>函数自身清理堆栈</li>
+<li>函数名修改规则同stdcall:函数名自动加前导的下划线，后面紧跟一个@符号，其后紧跟着参数的尺寸。</li>
+</ul>
+<h3 id="thiscall"><a href="#thiscall" class="headerlink" title="thiscall"></a>thiscall</h3><p>C++类成员函数缺省的调用约定</p>
+<p>thiscall是唯一一个不能明确指明的函数修饰，因为thiscall不是关键字。由于成员函数调用还有一个this指针，因此必须特殊处理，thiscall意味着:</p>
+<ul>
+<li>参数从右向左入栈</li>
+<li>如果参数个数不确定，this指针在所有参数压栈后被压入堆栈。如果参数个数确定，this指针通过ecx传递给被调用者。</li>
+<li>如果参数个数不确定，调用者清理堆栈，否则函数自己清理堆栈</li>
+</ul>
+<p>对于参数个数固定情况下，类似于stdcall，不定时则类似cdecl</p>
+<h3 id="naked-call"><a href="#naked-call" class="headerlink" title="naked call"></a>naked call</h3><p>一个很少见的调用约定，一般用于实模式驱动程序设计</p>
 
   </div>
   
@@ -2415,7 +2513,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T20:09:00+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T21:21:41+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2024年5月12日</p>
@@ -2437,7 +2535,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2024/04/28/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/&title= - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2021/09/20/%E6%A0%88%E5%B8%A7/&title=栈帧 - e1ectr0nlc's Blog&summary=栈作为重要的数据结构，主要用于管理程序的执行过程中的函数调用和局部变量。它通过后进先出的原则存储和管理数据，包括函数的参数、返回地址、局部变量等。"
           
           >
           
@@ -2449,7 +2547,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2024/04/28/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/&title= - e1ectr0nlc's Blog&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2021/09/20/%E6%A0%88%E5%B8%A7/&title=栈帧 - e1ectr0nlc's Blog&summary=栈作为重要的数据结构，主要用于管理程序的执行过程中的函数调用和局部变量。它通过后进先出的原则存储和管理数据，包括函数的参数、返回地址、局部变量等。"
           
           >
           
@@ -2461,7 +2559,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2024/04/28/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/&title= - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2021/09/20/%E6%A0%88%E5%B8%A7/&title=栈帧 - e1ectr0nlc's Blog&summary=栈作为重要的数据结构，主要用于管理程序的执行过程中的函数调用和局部变量。它通过后进先出的原则存储和管理数据，包括函数的参数、返回地址、局部变量等。"
           
           >
           
@@ -2494,17 +2592,16 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2024/04/29/%E5%8F%8D%E8%B7%9F%E8%B8%AA%E8%B0%83%E8%AF%95/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>2024年4月28日</p>
-          <p class='content'>反跟踪调试来总结一下学过的反调试技术。
-进程状态IsDebuggerPresent()相信学习反调试都是从这个函数入手的，这个函数会查询进程环境块(PEB)中的IsDebugged标志。如果进程...</p>
+        <a class='prev' href='/2021/09/20/%E6%96%AD%E7%82%B9/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>断点</p>
+          <p class='content'>​	断点是用于帮助程序员分析bug和调试程序的一种技术，让程序在合适的地方暂停运行，查看内存信息。最开始是只顾着用了，没有了解过背后的原理。今天就来简单了解一下背后的机制原理。
+
+
+
+
+软断点首...</p>
         </a>
       
-      
-        <a class='next' href='/2024/04/28/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/'>
-          <p class='title'>2024年4月28日<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>概念映射注入是一种内存注入技术，创建的Mapping对象本质上属于申请一块物理内存，而物理内存又能比较方便的通过系统函数直接映射到进程的虚拟内存中，就避免使用一些经典函数例如VirtualAll...</p>
-        </a>
       
     </div>
   
@@ -2519,7 +2616,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2024/04/28/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2021/09/20/%E6%A0%88%E5%B8%A7/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2561,7 +2658,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-text">实现方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E6%A6%82%E5%BF%B5"><span class="toc-text">重要概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%88"><span class="toc-text">栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EBP"><span class="toc-text">EBP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ESP"><span class="toc-text">ESP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#call"><span class="toc-text">call</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#retn"><span class="toc-text">retn</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E8%BE%9F%E6%A0%88%E5%B8%A7"><span class="toc-text">开辟栈帧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A"><span class="toc-text">函数调用约定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#stdcall"><span class="toc-text">stdcall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cdecl"><span class="toc-text">cdecl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fastcall"><span class="toc-text">fastcall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#thiscall"><span class="toc-text">thiscall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#naked-call"><span class="toc-text">naked call</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -2617,7 +2714,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3148,7 +3245,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2024/04/28/突破Session0的注入/"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"学习记录","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2024/04/28/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2024/04/28/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/","wordCount":0,"datePublished":"2024-04-28T13:18:30.965Z","dateModified":"2024-05-12T12:09:00.671Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/二进制基础/","name":"二进制基础"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2021/09/20/栈帧/","name":"栈帧"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"栈帧","description":"栈作为重要的数据结构，主要用于管理程序的执行过程中的函数调用和局部变量。它通过后进先出的原则存储和管理数据，包括函数的参数、返回地址、局部变量等。","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2021/09/20/%E6%A0%88%E5%B8%A7/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2021/09/20/%E6%A0%88%E5%B8%A7/","wordCount":73,"datePublished":"2021-09-19T16:00:00.000Z","dateModified":"2024-05-12T13:21:41.272Z","articleSection":"二进制基础","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

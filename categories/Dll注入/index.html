@@ -1626,7 +1626,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1715517925366),
+    lastupdate: new Date(1715520249779),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2361,9 +2361,226 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2023/07/20/APC注入/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/07/20/APC%E6%B3%A8%E5%85%A5/"  itemprop="url">
+        APC注入
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>APC注入利用了当前线程从中断中恢复时会检查APC队列中是否有函数未执行进行函数调用来注入。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-07-20T00:00:00+08:00">2023-07-20</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Dll%E6%B3%A8%E5%85%A5/">Dll注入</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Dll%E6%B3%A8%E5%85%A5/" itemprop="url"><span itemprop="name">Dll注入</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/07/20/APC%E6%B3%A8%E5%85%A5/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2023/07/18/突破Session0的注入/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/07/18/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/"  itemprop="url">
+        绕过Session0进行注入
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>引入Session概念后，我们无法通过注入服务进程来实现可信任进程注入。当我们尝试注入session0当中的进程通常会失败，就是因为我们所处的session与系统服务进程不在同一个session当中。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-07-18T00:00:00+08:00">2023-07-18</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Dll%E6%B3%A8%E5%85%A5/">Dll注入</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Dll%E6%B3%A8%E5%85%A5/" itemprop="url"><span itemprop="name">Dll注入</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/07/18/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2023/07/16/映射注入/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/07/16/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/"  itemprop="url">
+        映射注入
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>映射注入实际上的思路与远程线程注入一致，只不过映射注入改变了Dll的写入方式而已。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-07-16T00:00:00+08:00">2023-07-16</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Dll%E6%B3%A8%E5%85%A5/">Dll注入</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Dll%E6%B3%A8%E5%85%A5/" itemprop="url"><span itemprop="name">Dll注入</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/07/16/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -2393,10 +2610,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <div class='md article-desc' itemprop="articleBody">
     
-      
-        概念当被注入程序使用CoCreateInstance()这个API时，Com服务器会加载ComRes.dll到被注入程序中。只要我们替换掉这个ComRes.dll文件，就可以实现注入。ComRes.dll位于Windows 系统中C:\WINDOWS\system32目录下。
-限制我们很容易就能看出这种注入方法的限制，只能对调用CoCreateInstance()的程序进行注入，泛用性不高。...
-      
+      <p>学习下来感觉是一个用处不大、适用性很窄的一种注入手法。</p>
     
   </div>
   
@@ -2425,6 +2639,144 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <div>
           <a class='readmore' href='/2023/07/13/COMRes%E6%B3%A8%E5%85%A5/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2023/07/13/注册表注入/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/07/13/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/"  itemprop="url">
+        注册表注入
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>说实话，注册表是杀软严密监视的地方，我觉得现在对注册表进行的操作十有八九都会被查出来（但技术还是要学的）。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-07-13T00:00:00+08:00">2023-07-13</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Dll%E6%B3%A8%E5%85%A5/">Dll注入</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Dll%E6%B3%A8%E5%85%A5/" itemprop="url"><span itemprop="name">Dll注入</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/07/13/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2023/07/10/远程线程注入/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2023/07/10/%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5/"  itemprop="url">
+        远程线程注入
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      <p>​	在Dll注入技术学习中，远程线程注入可以说是最容易理解的一种注入技术了。通过这种技术，我们也可以触类旁通其他注入技术。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2023-07-10T00:00:00+08:00">2023-07-10</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Dll%E6%B3%A8%E5%85%A5/">Dll注入</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Dll%E6%B3%A8%E5%85%A5/" itemprop="url"><span itemprop="name">Dll注入</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2023/07/10/%E8%BF%9C%E7%A8%8B%E7%BA%BF%E7%A8%8B%E6%B3%A8%E5%85%A5/' itemprop="url">
             Read More
           </a>
         </div>
@@ -2540,7 +2892,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/Dll%E6%B3%A8%E5%85%A5/" href="/categories/Dll%E6%B3%A8%E5%85%A5/"
             active-action="action-categoriesDllE6B3A8E585A5"
-            ><div class='name'>Dll注入</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>Dll注入</div><div class='badge'>(6)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Hook/" href="/categories/Hook/"
@@ -2555,22 +2907,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/Hook%E6%A1%86%E6%9E%B6/" href="/categories/Hook%E6%A1%86%E6%9E%B6/"
             active-action="action-categoriesHookE6A186E69EB6"
-            ><div class='name'>Hook框架</div><div class='badge'>(2)</div></a></li>
+            ><div class='name'>Hook框架</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/bypass/" href="/categories/bypass/"
             active-action="action-categoriesbypass"
-            ><div class='name'>bypass</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>bypass</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/" href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/"
             active-action="action-categoriesE4BA8CE8BF9BE588B6E59FBAE7A180"
-            ><div class='name'>二进制基础</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>二进制基础</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4/" href="/categories/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4/"
             active-action="action-categoriesE4BBA3E7A081E4BF9DE68AA4"
-            ><div class='name'>代码保护</div><div class='badge'>(2)</div></a></li>
+            ><div class='name'>代码保护</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E6%BC%8F%E6%B4%9Eli-yong/" href="/categories/%E6%BC%8F%E6%B4%9Eli-yong/"
@@ -2585,7 +2937,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/%E8%B0%83%E8%AF%95%E5%9F%BA%E7%A1%80/" href="/categories/%E8%B0%83%E8%AF%95%E5%9F%BA%E7%A1%80/"
             active-action="action-categoriesE8B083E8AF95E59FBAE7A180"
-            ><div class='name'>调试基础</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>调试基础</div><div class='badge'>(0)</div></a></li>
         
       </ul>
     </div>

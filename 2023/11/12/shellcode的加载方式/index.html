@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>shellcode Loader - e1ectr0nlc's Blog</title>
+  <title>shellcode的加载 - e1ectr0nlc's Blog</title>
   <meta name="keywords" content="null">
-  <meta desc name="description" content="学习记录 - e1ectr0nlc - e1ectr0nlc's Blog">
+  <meta desc name="description" content="今天来学习一下shellcode的各种加载方式、 - e1ectr0nlc - e1ectr0nlc's Blog">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="shellcode Loader">
+<meta property="og:title" content="shellcode的加载">
 <meta property="og:url" content="https://e1ectr0nlc.github.io/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/index.html">
 <meta property="og:site_name" content="e1ectr0nlc&#39;s Blog">
-<meta property="og:description" content="动态内存分配概念在进程的内存空间中，你有没有想过执行一段shellcode需要什么？为了执行你的shellcode，需要完成三个检查：  1.内存是否被标记为可执行的虚拟地址空间，否则DEP将抛出内存访问冲突异常； 2.是否将shellcode放入了该内存空间； 3.是否将代码的执行流定位到该内存空间。  完成这三步可以使用API来理解，首先VirtualAlloc分配出一片可读、可写可执行的内存">
+<meta property="og:description" content="今天来学习一下shellcode的各种加载方式、">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-11-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-12T12:22:34.113Z">
+<meta property="article:modified_time" content="2024-05-12T12:50:06.461Z">
 <meta property="article:author" content="e1ectr0nlc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1628,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1715517925366),
+    lastupdate: new Date(1715520249779),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2375,7 +2375,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        shellcode Loader
+        shellcode的加载
       </h1>
       <div class='new-meta-box'>
         
@@ -2432,7 +2432,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>在进程的内存空间中，你有没有想过执行一段shellcode需要什么？为了执行你的shellcode，需要完成三个检查：</p>
+    <p>今天来学习一下<code>shellcode</code>的各种加载方式、</p>
+<span id="more"></span>
+
+
+
+<h2 id="动态内存分配"><a href="#动态内存分配" class="headerlink" title="动态内存分配"></a>动态内存分配</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>在进程的内存空间中，你有没有想过执行一段shellcode需要什么？为了执行你的shellcode，需要完成三个检查：</p>
 <ul>
 <li>1.内存是否被标记为可执行的虚拟地址空间，否则<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/win32/memory/data-execution-prevention">DEP</a>将抛出内存访问冲突异常；</li>
 <li>2.是否将shellcode放入了该内存空间；</li>
@@ -2494,7 +2499,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T20:22:34+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T20:50:06+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2024年5月12日</p>
@@ -2516,7 +2521,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/&title=shellcode Loader - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/&title=shellcode的加载 - e1ectr0nlc's Blog&summary=今天来学习一下shellcode的各种加载方式、"
           
           >
           
@@ -2528,7 +2533,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/&title=shellcode Loader - e1ectr0nlc's Blog&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/&title=shellcode的加载 - e1ectr0nlc's Blog&summary=今天来学习一下shellcode的各种加载方式、"
           
           >
           
@@ -2540,7 +2545,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/&title=shellcode Loader - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/&title=shellcode的加载 - e1ectr0nlc's Blog&summary=今天来学习一下shellcode的各种加载方式、"
           
           >
           
@@ -2573,20 +2578,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Frida学习(一)</p>
-          <p class='content'>Frida脚本的概念FRIDA脚本就是利用FRIDA动态插桩框架，使用FRIDA导出的API和方法，对内存空间里的对象方法进行监视、修改或者替换的一段代码。FRIDA的API是使用JavaScr...</p>
+        <a class='prev' href='/2024/04/10/%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>恶意程序分析流程</p>
+          <p class='content'>这段时间想着来分析几个木马程序练练手，这篇博客就来记录一下整个恶意代码的分析过程，有个大致了解，同时也想看看木马如何获取到目标主机的权限，对攻击手法有一个大致的了解。
+
+
+
+
+对程序本身特征进行...</p>
         </a>
       
       
-        <a class='next' href='/2023/10/12/Rop/'>
-          <p class='title'>基础ROP<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>线下比赛多为AWD，涉及到逆向的知识点很少。为了在线下不坐牢指打开电脑无所事事疯狂偷吃茶歇区零食 ，来记录自己学习pwn的入门知识
+        <a class='next' href='/2023/11/12/%E5%85%8D%E6%9D%80%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%E4%B8%8E%E5%90%8E%E7%BB%AD%E5%AD%A6%E4%B9%A0/'>
+          <p class='title'>免杀初探<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>在我初学免杀时，也自己手动实现了一个程序，不过还是没有逃过杀毒软件的识别😀。今天就先来总结一下已经学习过的知识，避免忘记。
 
 
 
 
-保护Canary是一种栈溢出保护机制。在函数返回前会检...</p>
+大致了解首先做免杀是为了什么，肯定是我们想让我们的木马可以运...</p>
         </a>
       
     </div>
@@ -3231,7 +3241,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/bypass/","name":"bypass"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2023/11/12/shellcode的加载方式/","name":"shellcode Loader"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"shellcode Loader","description":"学习记录","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/","wordCount":0,"datePublished":"2023-11-11T16:00:00.000Z","dateModified":"2024-05-12T12:22:34.113Z","articleSection":"bypass","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/bypass/","name":"bypass"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2023/11/12/shellcode的加载方式/","name":"shellcode的加载"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"shellcode的加载","description":"今天来学习一下shellcode的各种加载方式、","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/","wordCount":24,"datePublished":"2023-11-11T16:00:00.000Z","dateModified":"2024-05-12T12:50:06.461Z","articleSection":"bypass","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

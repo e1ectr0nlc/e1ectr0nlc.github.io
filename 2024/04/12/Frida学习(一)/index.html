@@ -35,17 +35,17 @@
   <!-- 页面元数据 -->
   <title>Frida学习(一) - e1ectr0nlc's Blog</title>
   <meta name="keywords" content="null">
-  <meta desc name="description" content="学习记录 - e1ectr0nlc - e1ectr0nlc's Blog">
+  <meta desc name="description" content="学习Frida脚本的编写 - e1ectr0nlc - e1ectr0nlc's Blog">
   
 <meta property="og:type" content="article">
 <meta property="og:title" content="Frida学习(一)">
 <meta property="og:url" content="https://e1ectr0nlc.github.io/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="e1ectr0nlc&#39;s Blog">
-<meta property="og:description" content="Frida脚本的概念FRIDA脚本就是利用FRIDA动态插桩框架，使用FRIDA导出的API和方法，对内存空间里的对象方法进行监视、修改或者替换的一段代码。FRIDA的API是使用JavaScript实现的，所以我们可以充分利用JS的匿名函数的优势、以及大量的hook和回调函数的API。如果不了解匿名函数，可以先简单了解一下，相信对你编写Frida脚本会有帮助。 举一个最简单的例子 123456f">
+<meta property="og:description" content="学习Frida脚本的编写">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-04-11T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-12T12:28:01.231Z">
+<meta property="article:modified_time" content="2024-05-12T13:20:36.489Z">
 <meta property="article:author" content="e1ectr0nlc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1628,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1715517925366),
+    lastupdate: new Date(1715520249779),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2432,7 +2432,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="Frida脚本的概念"><a href="#Frida脚本的概念" class="headerlink" title="Frida脚本的概念"></a>Frida脚本的概念</h2><p><code>FRIDA脚本</code>就是利用<code>FRIDA</code>动态插桩框架，使用<code>FRIDA</code>导出的<code>API</code>和方法，对内存空间里的对象方法进行监视、修改或者替换的一段代码。<code>FRIDA</code>的<code>API</code>是使用<code>JavaScript</code>实现的，所以我们可以充分利用<code>JS</code>的匿名函数的优势、以及大量的<code>hook</code>和回调函数的API。如果不了解匿名函数，可以先简单了解一下，相信对你编写Frida脚本会有帮助。</p>
+    <p>学习Frida脚本的编写</p>
+<span id="more"></span>
+
+
+
+<h2 id="Frida脚本的概念"><a href="#Frida脚本的概念" class="headerlink" title="Frida脚本的概念"></a>Frida脚本的概念</h2><p><code>FRIDA脚本</code>就是利用<code>FRIDA</code>动态插桩框架，使用<code>FRIDA</code>导出的<code>API</code>和方法，对内存空间里的对象方法进行监视、修改或者替换的一段代码。<code>FRIDA</code>的<code>API</code>是使用<code>JavaScript</code>实现的，所以我们可以充分利用<code>JS</code>的匿名函数的优势、以及大量的<code>hook</code>和回调函数的API。如果不了解匿名函数，可以先简单了解一下，相信对你编写Frida脚本会有帮助。</p>
 <p>举一个最简单的例子</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line"> <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"> 	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello world&quot;</span>);</span><br><span class="line"> 	&#125;)</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="title function_">setImmediate</span>(main)</span><br></pre></td></tr></table></figure>
 
@@ -2509,7 +2514,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T20:28:01+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T21:20:36+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2024年5月12日</p>
@@ -2531,7 +2536,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/&title=Frida学习(一) - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/&title=Frida学习(一) - e1ectr0nlc's Blog&summary=学习Frida脚本的编写"
           
           >
           
@@ -2543,7 +2548,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/&title=Frida学习(一) - e1ectr0nlc's Blog&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/&title=Frida学习(一) - e1ectr0nlc's Blog&summary=学习Frida脚本的编写"
           
           >
           
@@ -2555,7 +2560,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/&title=Frida学习(一) - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/&title=Frida学习(一) - e1ectr0nlc's Blog&summary=学习Frida脚本的编写"
           
           >
           
@@ -2588,20 +2593,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2024/04/15/%E6%A0%88%E5%B8%A7/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>2024年4月12日</p>
-          <p class='content'>
+        <a class='prev' href='/2024/04/16/llvm%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8E%BB%E9%99%A4/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>llvm混淆与去除的使用</p>
+          <p class='content'>混淆关于混淆的环境搭建不再赘述，网上已有不少详细的说明，本篇只来介绍如何使用搭建后的环境。
+控制流平坦化1clang -mllvm -fla test.cpp -o test1
 
+可用选项
 
-重要概念栈栈在数据结构中是一种运算受限的线性表，即我们只能对表尾进行操作，称之为栈顶，相对的，另一端称为栈底。它按照先进后出的原则存储数据，先进入的数据保存在栈底，后来的数据保存在栈顶。栈...</p>
+-...</p>
         </a>
       
       
-        <a class='next' href='/2023/11/12/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/'>
-          <p class='title'>shellcode Loader<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>动态内存分配概念在进程的内存空间中，你有没有想过执行一段shellcode需要什么？为了执行你的shellcode，需要完成三个检查：
+        <a class='next' href='/2024/04/10/%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90%E6%B5%81%E7%A8%8B/'>
+          <p class='title'>恶意程序分析流程<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>这段时间想着来分析几个木马程序练练手，这篇博客就来记录一下整个恶意代码的分析过程，有个大致了解，同时也想看看木马如何获取到目标主机的权限，对攻击手法有一个大致的了解。
 
-1.内存是否被标记为可执行的虚拟地址空间，否则DEP将抛...</p>
+
+
+
+对程序本身特征进行...</p>
         </a>
       
     </div>
@@ -3246,7 +3256,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/Hook框架/","name":"Hook框架"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2024/04/12/Frida学习(一)/","name":"Frida学习(一)"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Frida学习(一)","description":"学习记录","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/","wordCount":0,"datePublished":"2024-04-11T16:00:00.000Z","dateModified":"2024-05-12T12:28:01.231Z","articleSection":"Hook框架","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/Hook框架/","name":"Hook框架"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2024/04/12/Frida学习(一)/","name":"Frida学习(一)"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Frida学习(一)","description":"学习Frida脚本的编写","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/","wordCount":12,"datePublished":"2024-04-11T16:00:00.000Z","dateModified":"2024-05-12T13:20:36.489Z","articleSection":"Hook框架","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

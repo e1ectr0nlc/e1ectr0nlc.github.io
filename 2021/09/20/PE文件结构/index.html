@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>PE文件结构 - e1ectr0nlc's Blog</title>
+  <title>Pe文件结构 - e1ectr0nlc's Blog</title>
   <meta name="keywords" content="null">
-  <meta desc name="description" content="学习记录 - e1ectr0nlc - e1ectr0nlc's Blog">
+  <meta desc name="description" content="可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：DOS头，NT头，节表以及节数据。 - e1ectr0nlc - e1ectr0nlc's Blog">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="PE文件结构">
+<meta property="og:title" content="Pe文件结构">
 <meta property="og:url" content="https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="e1ectr0nlc&#39;s Blog">
-<meta property="og:description" content="​	可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：DOS头，NT头，节表以及节数据。 PE文件结构说明DOS头DOS头 是用来兼容 MS-DOS 操作系统的，目的是当这个文件在 MS-DOS 上运行时提示一段">
+<meta property="og:description" content="可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：DOS头，NT头，节表以及节数据。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2021-09-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-12T12:31:30.832Z">
+<meta property="article:modified_time" content="2024-05-12T12:51:17.063Z">
 <meta property="article:author" content="e1ectr0nlc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1628,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1715517925366),
+    lastupdate: new Date(1715520249779),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2375,7 +2375,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        PE文件结构
+        Pe文件结构
       </h1>
       <div class='new-meta-box'>
         
@@ -2432,7 +2432,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>​	可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：<strong>DOS头</strong>，<strong>NT头</strong>，<strong>节表</strong>以及<strong>节数据</strong>。</p>
+    <p>可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：<strong>DOS头</strong>，<strong>NT头</strong>，<strong>节表</strong>以及<strong>节数据</strong>。</p>
+<span id="more"></span>
+
+
+
+
+
 <h2 id="PE文件结构说明"><a href="#PE文件结构说明" class="headerlink" title="PE文件结构说明"></a>PE文件结构说明</h2><h3 id="DOS头"><a href="#DOS头" class="headerlink" title="DOS头"></a>DOS头</h3><p>DOS头 是用来兼容 MS-DOS 操作系统的，目的是当这个文件在 MS-DOS 上运行时提示一段文字：This program cannot be run in DOS mode. 还有一个目的，就是指明 NT 头在文件中的位置。</p>
 <h3 id="NT头"><a href="#NT头" class="headerlink" title="NT头"></a>NT头</h3><p>NT头 包含 windows PE 文件的主要信息，其中包括一个 ‘PE’ 字样的签名，PE文件头（IMAGE_FILE_HEADER）和 PE可选头（IMAGE_OPTIONAL_HEADER32）。</p>
 <h3 id="节表"><a href="#节表" class="headerlink" title="节表"></a>节表</h3><p>节表是 PE 文件后续节的描述，windows 根据节表的描述加载每个节。</p>
@@ -2524,7 +2530,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T20:31:30+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T20:51:17+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2024年5月12日</p>
@@ -2546,7 +2552,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/&title=PE文件结构 - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/&title=Pe文件结构 - e1ectr0nlc's Blog&summary=可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：DOS头，NT头，节表以及节数据。"
           
           >
           
@@ -2558,7 +2564,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/&title=PE文件结构 - e1ectr0nlc's Blog&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/&title=Pe文件结构 - e1ectr0nlc's Blog&summary=可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：DOS头，NT头，节表以及节数据。"
           
           >
           
@@ -2570,7 +2576,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/&title=PE文件结构 - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/&title=Pe文件结构 - e1ectr0nlc's Blog&summary=可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：DOS头，NT头，节表以及节数据。"
           
           >
           
@@ -3266,7 +3272,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/二进制基础/","name":"二进制基础"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2021/09/20/PE文件结构/","name":"PE文件结构"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"PE文件结构","description":"学习记录","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/","wordCount":0,"datePublished":"2021-09-19T16:00:00.000Z","dateModified":"2024-05-12T12:31:30.832Z","articleSection":"二进制基础","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/二进制基础/","name":"二进制基础"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2021/09/20/PE文件结构/","name":"Pe文件结构"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Pe文件结构","description":"可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：DOS头，NT头，节表以及节数据。","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/","wordCount":136,"datePublished":"2021-09-19T16:00:00.000Z","dateModified":"2024-05-12T12:51:17.063Z","articleSection":"二进制基础","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
