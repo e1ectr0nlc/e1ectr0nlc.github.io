@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://e1ectr0nlc.github.io/2021/10/20/代码保护--花指令/"/>
+  <link rel="canonical" href="https://e1ectr0nlc.github.io/2021/10/12/代码保护--花指令/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -39,13 +39,13 @@
   
 <meta property="og:type" content="article">
 <meta property="og:title" content="花指令初探">
-<meta property="og:url" content="https://e1ectr0nlc.github.io/2021/10/20/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:url" content="https://e1ectr0nlc.github.io/2021/10/12/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/index.html">
 <meta property="og:site_name" content="e1ectr0nlc&#39;s Blog">
 <meta property="og:description" content="花指令的作用是用来隐藏反汇编后的代码，对于动态调试来说无法隐藏，但是对于静态分析来说就成为必须绕过去的一个问题。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2021-10-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-12T12:33:22.574Z">
+<meta property="article:published_time" content="2021-10-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-12T13:37:47.044Z">
 <meta property="article:author" content="e1ectr0nlc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1628,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1715520812476),
+    lastupdate: new Date(1715521237301),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2354,7 +2354,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2021/10/20/代码保护--花指令/">
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2021/10/12/代码保护--花指令/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="e1ectr0nlc's Blog">
   </span>
@@ -2406,10 +2406,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-10-20T00:00:00+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-10-12T00:00:00+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2021年10月20日</p>
+    <p>发布于：2021年10月12日</p>
   </a>
 </div>
 
@@ -2488,7 +2488,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T20:33:22+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T21:37:47+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2024年5月12日</p>
@@ -2510,7 +2510,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2021/10/20/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/&title=花指令初探 - e1ectr0nlc's Blog&summary=花指令的作用是用来隐藏反汇编后的代码，对于动态调试来说无法隐藏，但是对于静态分析来说就成为必须绕过去的一个问题。"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2021/10/12/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/&title=花指令初探 - e1ectr0nlc's Blog&summary=花指令的作用是用来隐藏反汇编后的代码，对于动态调试来说无法隐藏，但是对于静态分析来说就成为必须绕过去的一个问题。"
           
           >
           
@@ -2522,7 +2522,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2021/10/20/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/&title=花指令初探 - e1ectr0nlc's Blog&summary=花指令的作用是用来隐藏反汇编后的代码，对于动态调试来说无法隐藏，但是对于静态分析来说就成为必须绕过去的一个问题。"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2021/10/12/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/&title=花指令初探 - e1ectr0nlc's Blog&summary=花指令的作用是用来隐藏反汇编后的代码，对于动态调试来说无法隐藏，但是对于静态分析来说就成为必须绕过去的一个问题。"
           
           >
           
@@ -2534,7 +2534,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2021/10/20/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/&title=花指令初探 - e1ectr0nlc's Blog&summary=花指令的作用是用来隐藏反汇编后的代码，对于动态调试来说无法隐藏，但是对于静态分析来说就成为必须绕过去的一个问题。"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2021/10/12/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/&title=花指令初探 - e1ectr0nlc's Blog&summary=花指令的作用是用来隐藏反汇编后的代码，对于动态调试来说无法隐藏，但是对于静态分析来说就成为必须绕过去的一个问题。"
           
           >
           
@@ -2601,7 +2601,7 @@ Inline Hook实现原理实现Inline Hook可以理解为修改程序的执行流�
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2021/10/20/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2021/10/12/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -3230,7 +3230,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/代码保护/","name":"代码保护"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2021/10/20/代码保护--花指令/","name":"花指令初探"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"花指令初探","description":"花指令的作用是用来隐藏反汇编后的代码，对于动态调试来说无法隐藏，但是对于静态分析来说就成为必须绕过去的一个问题。","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2021/10/20/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2021/10/20/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/","wordCount":56,"datePublished":"2021-10-19T16:00:00.000Z","dateModified":"2024-05-12T12:33:22.574Z","articleSection":"代码保护","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/代码保护/","name":"代码保护"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2021/10/12/代码保护--花指令/","name":"花指令初探"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"花指令初探","description":"花指令的作用是用来隐藏反汇编后的代码，对于动态调试来说无法隐藏，但是对于静态分析来说就成为必须绕过去的一个问题。","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2021/10/12/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2021/10/12/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/","wordCount":56,"datePublished":"2021-10-11T16:00:00.000Z","dateModified":"2024-05-12T13:37:47.044Z","articleSection":"代码保护","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
