@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://e1ectr0nlc.github.io/2024/04/15/程序加壳与脱壳/"/>
+  <link rel="canonical" href="https://e1ectr0nlc.github.io/2021/09/20/断点/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>程序加壳与脱壳 - e1ectr0nlc's Blog</title>
+  <title>断点 - e1ectr0nlc's Blog</title>
   <meta name="keywords" content="null">
-  <meta desc name="description" content="学习记录 - e1ectr0nlc - e1ectr0nlc's Blog">
+  <meta desc name="description" content="​	断点是用于帮助程序员分析bug和调试程序的一种技术，让程序在合适的地方暂停运行，查看内存信息。最开始是只顾着用了，没有了解过背后的原理。今天就来简单了解一下背后的机制原理。 - e1ectr0nlc - e1ectr0nlc's Blog">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="程序加壳与脱壳">
-<meta property="og:url" content="https://e1ectr0nlc.github.io/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/index.html">
+<meta property="og:title" content="断点">
+<meta property="og:url" content="https://e1ectr0nlc.github.io/2021/09/20/%E6%96%AD%E7%82%B9/index.html">
 <meta property="og:site_name" content="e1ectr0nlc&#39;s Blog">
-<meta property="og:description" content="程序壳主要分为压缩壳、加密壳，多层壳等等，目的都是为了隐藏程序真正的入口点OEP。 概念壳最开始的目的是为了让逆向分析人员无法轻易获取程序的入口函数，在静态分析时也能隐藏内部代码， 属于代码保护技术。 加壳软件与查壳软件 加壳：ASPACK，UPX， PEcompact，PE-PACK； PETITE NEOLITE等 一般用来加壳的也可以用来脱壳 查壳： Fi ，GetTyp ，peid ，pe">
+<meta property="og:description" content="​	断点是用于帮助程序员分析bug和调试程序的一种技术，让程序在合适的地方暂停运行，查看内存信息。最开始是只顾着用了，没有了解过背后的原理。今天就来简单了解一下背后的机制原理。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2024-04-15T10:56:40.000Z">
-<meta property="article:modified_time" content="2024-04-16T08:36:55.389Z">
+<meta property="article:published_time" content="2021-09-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-12T12:28:18.697Z">
 <meta property="article:author" content="e1ectr0nlc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -714,158 +714,6 @@ button {
   -webkit-opacity: 1;
   -moz-opacity: 1;
   border-bottom: 2px solid var(--color-site-inner);
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-mode: 'dark';
-  }
-  :root:not([color-scheme]) {
-    --color-site-body: #121212;
-    --color-read-bkg: #1f1f1f;
-    --color-read-post: #262626;
-    --color-site-bg: #1f1f1f;
-    --color-site-inner: rgba(238,238,238,0.871);
-    --color-site-footer: rgba(170,170,170,0.871);
-    --color-card: #262626;
-    --color-text: rgba(238,238,238,0.871);
-    --color-block: #434343;
-    --color-codeblock: #1f1f1f;
-    --color-inlinecode: #d56d28;
-    --color-h1: rgba(255,255,255,0.871);
-    --color-h2: rgba(255,255,255,0.871);
-    --color-h3: rgba(255,255,255,0.6);
-    --color-h4: rgba(255,255,255,0.6);
-    --color-h5: rgba(255,255,255,0.6);
-    --color-h6: rgba(255,255,255,0.6);
-    --color-p: rgba(217,217,217,0.871);
-    --color-list: rgba(217,217,217,0.871);
-    --color-list-hl: #63e0c4;
-    --color-meta: rgba(191,191,191,0.871);
-    --color-link: rgba(191,191,191,0.871);
-    --color-copyright-bkg: #21252b;
-  }
-  :root:not([color-scheme]) img {
-    filter: brightness(70%) !important;
-  }
-  :root:not([color-scheme]) .blur {
-    background: rgba(31,31,31,0.9) !important;
-  }
-  :root:not([color-scheme]) .white-box.blur {
-    background: rgba(38,38,38,0.9) !important;
-  }
-  :root:not([color-scheme]) .nav-main .u-search-input {
-    background: var(--color-card) !important;
-  }
-  :root:not([color-scheme]) #l_main .article .prev-next>a {
-    background: var(--color-block) !important;
-  }
-  :root:not([color-scheme]) #l_main .article .prev-next>a:hover {
-    background: var(--color-site-bg) !important;
-  }
-  :root:not([color-scheme]) .article blockquote {
-    background: var(--color-block) !important;
-  }
-  :root:not([color-scheme]) .article-title a {
-    color: var(--color-h1) !important;
-  }
-  :root:not([color-scheme]) details>summary {
-    color: var(--color-p) !important;
-    background: var(--color-site-bg) !important;
-  }
-  :root:not([color-scheme]) details {
-    border: 1px solid var(--color-site-bg) !important;
-    background: var(--color-site-bg) !important;
-  }
-  :root:not([color-scheme]) #u-search .modal,
-  :root:not([color-scheme]) #u-search .modal-header,
-  :root:not([color-scheme]) #u-search .modal-body {
-    background: var(--color-card) !important;
-  }
-  :root:not([color-scheme]) #u-search .modal-body .modal-results .result:hover {
-    background: var(--color-block) !important;
-  }
-  :root:not([color-scheme]) .u-search-input:hover {
-    background: var(--color-block) !important;
-  }
-  :root:not([color-scheme]) .u-search-input:focus {
-    background: var(--color-site-body) !important;
-  }
-}
-[color-scheme='dark'] {
-  --color-site-body: #121212;
-  --color-read-bkg: #1f1f1f;
-  --color-read-post: #262626;
-  --color-site-bg: #1f1f1f;
-  --color-site-inner: rgba(238,238,238,0.871);
-  --color-site-footer: rgba(170,170,170,0.871);
-  --color-card: #262626;
-  --color-text: rgba(238,238,238,0.871);
-  --color-block: #434343;
-  --color-codeblock: #1f1f1f;
-  --color-inlinecode: #d56d28;
-  --color-h1: rgba(255,255,255,0.871);
-  --color-h2: rgba(255,255,255,0.871);
-  --color-h3: rgba(255,255,255,0.6);
-  --color-h4: rgba(255,255,255,0.6);
-  --color-h5: rgba(255,255,255,0.6);
-  --color-h6: rgba(255,255,255,0.6);
-  --color-p: rgba(217,217,217,0.871);
-  --color-list: rgba(217,217,217,0.871);
-  --color-list-hl: #63e0c4;
-  --color-meta: rgba(191,191,191,0.871);
-  --color-link: rgba(191,191,191,0.871);
-  --color-copyright-bkg: #21252b;
-}
-[color-scheme='dark'] img {
-  filter: brightness(70%) !important;
-}
-[color-scheme='dark'] .blur {
-  background: rgba(31,31,31,0.9) !important;
-}
-[color-scheme='dark'] .white-box.blur {
-  background: rgba(38,38,38,0.9) !important;
-}
-[color-scheme='dark'] .nav-main .u-search-input {
-  background: var(--color-card) !important;
-}
-[color-scheme='dark'] #l_main .article .prev-next>a {
-  background: var(--color-block) !important;
-}
-[color-scheme='dark'] #l_main .article .prev-next>a:hover {
-  background: var(--color-site-bg) !important;
-}
-[color-scheme='dark'] .article blockquote {
-  background: var(--color-block) !important;
-}
-[color-scheme='dark'] .article-title a {
-  color: var(--color-h1) !important;
-}
-[color-scheme='dark'] details>summary {
-  color: var(--color-p) !important;
-  background: var(--color-site-bg) !important;
-}
-[color-scheme='dark'] details {
-  border: 1px solid var(--color-site-bg) !important;
-  background: var(--color-site-bg) !important;
-}
-[color-scheme='dark'] #u-search .modal,
-[color-scheme='dark'] #u-search .modal-header,
-[color-scheme='dark'] #u-search .modal-body {
-  background: var(--color-card) !important;
-}
-[color-scheme='dark'] #u-search .modal-body .modal-results .result:hover {
-  background: var(--color-block) !important;
-}
-[color-scheme='dark'] .u-search-input:hover {
-  background: var(--color-block) !important;
-}
-[color-scheme='dark'] .u-search-input:focus {
-  background: var(--color-site-body) !important;
-}
-@media screen and (max-width: 500px) {
-  [color-scheme='dark'] .l_header .m_search {
-    background: var(--color-site-bg) !important;
-  }
 }
 @font-face {
   font-family: 'UbuntuMono';
@@ -1703,21 +1551,10 @@ ul.list-v >li>a:hover {
     padding: 0px;
   }
 }
-@media screen and (prefers-color-scheme: dark) and (max-width: 500px) {
-  .l_header .m_search {
-    background: var(--color-site-bg) !important;
-  }
-}
 
   </style>
   <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
   <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
-    <script>
-      let userColorScheme=localStorage.getItem("color-scheme")
-      if(userColorScheme){
-        document.documentElement.setAttribute("color-scheme", userColorScheme);
-      }
-    </script>
   
 <script>
 if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
@@ -1791,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1715516734992),
+    lastupdate: new Date(1715517925366),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -1809,11 +1646,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     plugins: {
       message: {"enable":true,"css":"https://unpkg.com/volantis-static@0.0.1654736714924/libs/izitoast/dist/css/iziToast.min.css","js":"https://unpkg.com/volantis-static@0.0.1654736714924/libs/izitoast/dist/js/iziToast.min.js","icon":{"default":"fa-solid fa-info-circle light-blue","quection":"fa-solid fa-question-circle light-blue"},"time":{"default":5000,"quection":20000},"position":"topRight","transitionIn":"bounceInLeft","transitionOut":"fadeOutRight","titleColor":"var(--color-text)","messageColor":"var(--color-text)","backgroundColor":"var(--color-card)","zindex":2147483647,"copyright":{"enable":false,"title":"知识共享许可协议","message":"请遵守 CC BY-NC-SA 4.0 协议。","icon":"far fa-copyright light-blue"},"aplayer":{"enable":true,"play":"fa-solid fa-play","pause":"fa-solid fa-pause"},"rightmenu":{"enable":true,"notice":true}},
       fancybox: {"css":"https://unpkg.com/volantis-static@0.0.1654736714924/libs/@fancyapps/ui/dist/fancybox.css","js":"https://unpkg.com/volantis-static@0.0.1654736714924/libs/@fancyapps/ui/dist/fancybox.umd.js"},
-      
-      aplayer: {
-        id: 3175833810,
-        enable:true
-      },
       
       
       
@@ -2522,7 +2354,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/15/程序加壳与脱壳/">
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2021/09/20/断点/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="e1ectr0nlc's Blog">
   </span>
@@ -2543,7 +2375,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        程序加壳与脱壳
+        断点
       </h1>
       <div class='new-meta-box'>
         
@@ -2560,14 +2392,24 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/%E8%B0%83%E8%AF%95%E5%9F%BA%E7%A1%80/">调试基础</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E8%B0%83%E8%AF%95%E5%9F%BA%E7%A1%80/" itemprop="url"><span itemprop="name">调试基础</span></a>
+      </span>
+    
+  </div>
+
 
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2024-04-15T18:56:40+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-09-20T00:00:00+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2024年4月15日</p>
+    <p>发布于：2021年9月20日</p>
   </a>
 </div>
 
@@ -2590,21 +2432,57 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>程序壳主要分为压缩壳、加密壳，多层壳等等，目的都是为了隐藏程序真正的入口点OEP。</p>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>壳最开始的目的是为了让逆向分析人员无法轻易获取程序的入口函数，在静态分析时也能隐藏内部代码，</p>
-<p>属于代码保护技术。</p>
-<h2 id="加壳软件与查壳软件"><a href="#加壳软件与查壳软件" class="headerlink" title="加壳软件与查壳软件"></a>加壳软件与查壳软件</h2><p> 加壳：ASPACK，UPX， PEcompact，PE-PACK； PETITE NEOLITE等</p>
-<p>一般用来加壳的也可以用来脱壳</p>
-<p>查壳： Fi ，GetTyp ，peid ，pe-scan等</p>
-<h2 id="如何识别OEP"><a href="#如何识别OEP" class="headerlink" title="如何识别OEP"></a>如何识别OEP</h2><p>这里只分享笔者遇到过的加壳软件中的OEP特征。</p>
+    <p>​	断点是用于帮助程序员分析bug和调试程序的一种技术，让程序在合适的地方暂停运行，查看内存信息。最开始是只顾着用了，没有了解过背后的原理。今天就来简单了解一下背后的机制原理。</p>
+<span id="more"></span>
+
+
+
+<h2 id="软断点"><a href="#软断点" class="headerlink" title="软断点"></a>软断点</h2><p>首先看一条指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0x44332211    8BC3    MOV EAX, EBX</span><br><span class="line">#指令地址       #机器码     #汇编指令</span><br></pre></td></tr></table></figure>
+
+<p>这时我们设置一个软断点，一般我们是通过中断指令INT3来实现，设置后指令如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0x44332211    CCC3    MOV EAX, EBX</span><br><span class="line">#指令地址       #机器码     #汇编指令</span><br></pre></td></tr></table></figure>
+
+<p>这里要明白一个概念：<strong>指令的机器码&#x3D;操作码+操作数</strong></p>
+<p>CPU在执行完INT3指令后会触发异常，此异常会使操作系统从中断向量表中调用3号中断处理程序，首先检查是否存在调试器，如果存在调试器把异常交给调试器，调试器处理结束再返回。如果调试器不处理或者就不存在调试器则异常会传递到程序自身的异常处理中（如果最后依然没处理就会进行异常的第二次分发）。</p>
+<p>但我们平常使用INT3断点调试时，汇编指令并没有发生变化，而是维持原样，之所以我们下断点的地址处字节没有发生任何变化是因为调试器为了维持汇编代码的可读性并没有将改变后的指令进行重新反汇编。我们先用程序验证一下，随便加载一个程序,在地址0x4015CE处下一个断点。</p>
+<p><img src="https://s2.loli.net/2024/04/18/ElGBovcWYq4XS96.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/18/ElGBovcWYq4XS96.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240418202106461"></p>
+<p>接下来把即将运行的下一条指令改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov  al , byte ptr ds:[0x4015CE]</span><br></pre></td></tr></table></figure>
+
+<p>将下完断点地址处的值读入到寄存器$al$中</p>
+<p><img src="https://s2.loli.net/2024/04/18/cjn7N9mrMAbzyV8.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/18/cjn7N9mrMAbzyV8.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240418202246065"></p>
+<p>当我们执行完地址<code>0x4015B1</code>的代码后，可以看到$al$的值为<code>0xCC</code>。所以当$cpu$执行到断点(0x4015CE)时就会执行<code>0xCC</code>（INT3指令），接着产生异常去执行函数<code>nt!KiTrap03( )</code>，接着会调用<code>nt!KiDisPatchException( )</code>函数并将异常分发给调试器，其刚执行完<code>0xCC</code>此时$eip$指向<code>0xCC</code>的下一个字节，调试器会让$eip$减一，然后$eip$重新指向<code>0xCC</code>（断点处）而调试器将先还原此断点处的原字节，然后使返回程序将停在此断点处等待用户的进一步操作。</p>
+<p>我们来验证一下这个过程。</p>
+<p>这次我们把断点处的汇编指令改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov  al , byte ptr ds:[0x4015CE]</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2024/04/18/XYVlWSUoNcHBe6i.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/18/XYVlWSUoNcHBe6i.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240418203732694"></p>
+<p>对应的原字节<code>A0</code>，我们运行到断点后查看寄存器EAX</p>
+<p><img src="https://s2.loli.net/2024/04/18/WrhOTj7ptYJZm2A.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/18/WrhOTj7ptYJZm2A.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240418203552146"></p>
+<p>$al$的值等于<code>A0</code>，说明断点处的字节已被修复。</p>
+<p>为了让这个断点一直生效，程序会利用单步异常来把断点处的值再改为<code>0xCC</code>。其在执行完断点处的指令后，会产生单步异常从而被调试器捕捉，然后调试器会将此断点处的值更改为<code>0xCC</code>。我们可以利用如下方法验证。</p>
+<p>将断点后的指令改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov  al , byte ptr ds:[0x4015CE]</span><br></pre></td></tr></table></figure>
+
+<p>我们在断点执行语句后看到$al$值为<code>A0</code></p>
+<p><img src="https://s2.loli.net/2024/04/18/ul96mWAo1TECdSi.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/18/ul96mWAo1TECdSi.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240418204234086"></p>
+<p>执行后就改为<code>0xCC</code></p>
+<p><img src="https://s2.loli.net/2024/04/18/wM8HYkeLoI6JWGO.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/18/wM8HYkeLoI6JWGO.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240418204342799"></p>
+<blockquote>
+<p>实际上，一般情况下，调试器维护了一大组调试断点，并把他们都换成了INT 3。在被运行结束后，会回填回去，并通过现在的地址判断是到了那个断点。软件断点没有数目限制。</p>
+</blockquote>
+<h2 id="硬断点"><a href="#硬断点" class="headerlink" title="硬断点"></a>硬断点</h2><p>硬件断点是通过位于 CPU 上的一组特殊寄存器来实现的，称为调试寄存器，与被调试程序无关。比如 x86 架构的 CPU 上有 8 个调试寄存器（DR0-DR7），分别用于设置和管理硬件断点。硬件断点比软件断点的功能更强，除了函数断点外，还可以数据断点，可以指定当数据被读或写时中断。硬件断点的本质就是在指定内存下断点，内存可以位于代码段（函数断点）也可以是数据段（数据断点）。可以设置事件有执行、写入、读写时中断。</p>
 <ul>
-<li>关键词<code>PUSHAD</code>，将所有寄存器压入栈中，<code>POPAD</code>与<code>PUSHAD</code>相对应，将所有寄存器弹出，一般运行到<code>POPAD</code>说明OEP已经不远了。</li>
-<li>观察地址，一般壳程序的地址比源程序的地址要大，也就是源程序在壳程序的上方，当经过了一个大跳转到达原本调试的地址上方，同时观察到有<code>PUSH EBP</code>等开辟栈帧的语句出现，大概率已经到达了OEP</li>
+<li>DR0-DR3 负责存储硬件断点的内存地址，所以最多只能同时使用 4 个硬件断点。</li>
+<li>DR4 和 DR5 保留使用。</li>
+<li>DR6 为调试状态寄存器，记录上一次断点触发所产生的调试事件类型信息。</li>
+<li>DR7 是硬件断点的激活开关，存储着各个断点的触发信息条件。 与软断点不同的是，硬件断点使用 1 号中断（INT1）实现，INT1 一般被用于硬件断点和单步事件。</li>
 </ul>
-<h2 id="脱壳方法"><a href="#脱壳方法" class="headerlink" title="脱壳方法"></a>脱壳方法</h2><p>当遇到无法使用工具帮助我们解决壳时，可以使用手脱方法进行脱壳。加壳相当于在程序外套了另外一层程序，当程序运行起来时壳先获取到程序控制权，将壳程序运行结束（自解密阶段），再接着运行原程序，这时程序就执行到了OEP下，我们可以在这个时机下dump源程序。</p>
-<h3 id="单步跟踪"><a href="#单步跟踪" class="headerlink" title="单步跟踪"></a>单步跟踪</h3><p>这是最笨的方法，在调试器中单步运行，不断单步步入或步过，直到到达OEP当中。</p>
-<h3 id="ESP定律"><a href="#ESP定律" class="headerlink" title="ESP定律"></a>ESP定律</h3><p>原理是利用了程序堆栈平衡。在程序自解密时需要先保存寄存器中的值，会进行压栈操作，而当自解密完成需要还原现场时，会将原来压栈的寄存器都弹出，原程序代码恢复。此时硬件断点触发。然后在程序当前位置，只需要少许单步跟踪，就很容易到达正确的OEP位置。</p>
-<h3 id="关键词搜索"><a href="#关键词搜索" class="headerlink" title="关键词搜索"></a>关键词搜索</h3><p>根据所要脱壳程序的脱壳特征，定位到距离OEP最近的汇编，下断点，再运行程序到OEP之后dump。例如UPX可以定位汇编到popad附近，OEP距离popad的距离很近</p>
+<p>CPU 每次试图执行一条指令时，都会首先检查当前指令所在地址是否被设置了有效的硬件断点，除此之外还会检查当前指令包含的操作数是否位于被设置了硬件断点的内存地址。</p>
+<h2 id="内存断点"><a href="#内存断点" class="headerlink" title="内存断点"></a>内存断点</h2><p>内存断点本质上不是一个真正的断点。当调试器设置一个内存断点时，实际上是改变一个内存区域或一个内存页的权限。操作系统对内存页会设置访问权限，可执行、可读、可写、保护页，这些访问权限可以组合。</p>
+<p><strong>保护页的特性可以帮助我们实现断点机制。</strong></p>
+<p>任何对于有页保护的区域的内存访问都会导致 CPU 暂停执行当前进程并处发一个保护页调试异常，然后我们就可以对访问缓冲取得指令代码进行仔细的检查，并判断出应用程序如何处理缓冲区中的内容。</p>
 
   </div>
   
@@ -2629,10 +2507,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-04-16T16:36:55+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T20:28:18+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年4月16日</p>
+    <p>更新于：2024年5月12日</p>
   </a>
 </div>
 
@@ -2651,7 +2529,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/&title=程序加壳与脱壳 - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2021/09/20/%E6%96%AD%E7%82%B9/&title=断点 - e1ectr0nlc's Blog&summary=​	断点是用于帮助程序员分析bug和调试程序的一种技术，让程序在合适的地方暂停运行，查看内存信息。最开始是只顾着用了，没有了解过背后的原理。今天就来简单了解一下背后的机制原理。"
           
           >
           
@@ -2663,7 +2541,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/&title=程序加壳与脱壳 - e1ectr0nlc's Blog&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2021/09/20/%E6%96%AD%E7%82%B9/&title=断点 - e1ectr0nlc's Blog&summary=​	断点是用于帮助程序员分析bug和调试程序的一种技术，让程序在合适的地方暂停运行，查看内存信息。最开始是只顾着用了，没有了解过背后的原理。今天就来简单了解一下背后的机制原理。"
           
           >
           
@@ -2675,7 +2553,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/&title=程序加壳与脱壳 - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2021/09/20/%E6%96%AD%E7%82%B9/&title=断点 - e1ectr0nlc's Blog&summary=​	断点是用于帮助程序员分析bug和调试程序的一种技术，让程序在合适的地方暂停运行，查看内存信息。最开始是只顾着用了，没有了解过背后的原理。今天就来简单了解一下背后的机制原理。"
           
           >
           
@@ -2708,17 +2586,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2024/04/15/Frida%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Frida学习(二)</p>
-          <p class='content'>测试源码
-1234567891011121314151617181920212223242526272829303132package com.example.lesson4one;import...</p>
-        </a>
-      
-      
-        <a class='next' href='/2024/04/15/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/'>
-          <p class='title'>PE文件结构<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+        <a class='prev' href='/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>PE文件结构</p>
           <p class='content'>​	可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EX...</p>
         </a>
+      
       
     </div>
   
@@ -2733,7 +2605,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2021/09/20/%E6%96%AD%E7%82%B9/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2775,7 +2647,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%A3%B3%E8%BD%AF%E4%BB%B6%E4%B8%8E%E6%9F%A5%E5%A3%B3%E8%BD%AF%E4%BB%B6"><span class="toc-text">加壳软件与查壳软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AF%86%E5%88%ABOEP"><span class="toc-text">如何识别OEP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%B1%E5%A3%B3%E6%96%B9%E6%B3%95"><span class="toc-text">脱壳方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%AD%A5%E8%B7%9F%E8%B8%AA"><span class="toc-text">单步跟踪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ESP%E5%AE%9A%E5%BE%8B"><span class="toc-text">ESP定律</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%AF%8D%E6%90%9C%E7%B4%A2"><span class="toc-text">关键词搜索</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E6%96%AD%E7%82%B9"><span class="toc-text">软断点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E6%96%AD%E7%82%B9"><span class="toc-text">硬断点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%96%AD%E7%82%B9"><span class="toc-text">内存断点</span></a></li></ol>
     </div>
   </section>
 
@@ -2862,22 +2734,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <div class="aplayer-container">
           
-
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='320px'
-      server='netease'
-      type='playlist'
-      id='3175833810'
-      list-folded='true'>
-    </meting-js>
-  
 
 
         </div>
@@ -2968,122 +2824,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <!-- rightmenu要在darkmode之前（ToggleButton） darkmode要在comments之前（volantis.dark.push）-->
 
-  <script>
-const rootElement = document.documentElement;
-const darkModeStorageKey = "color-scheme";
-const rootElementDarkModeAttributeName = "color-scheme";
-const setLS = (k, v) => {
-    localStorage.setItem(k, v);
-};
-const removeLS = (k) => {
-    localStorage.removeItem(k);
-};
-const getLS = (k) => {
-    return localStorage.getItem(k);
-};
-const getModeFromCSSMediaQuery = () => {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-};
-const resetRootDarkModeAttributeAndLS = () => {
-  rootElement.removeAttribute(rootElementDarkModeAttributeName);
-  removeLS(darkModeStorageKey);
-};
-const validColorModeKeys = {
-  dark: true,
-  light: true,
-};
-const applyCustomDarkModeSettings = (mode) => {
-  const currentSetting = mode || getLS(darkModeStorageKey);
-  getCustomDarkMode();
-  if (currentSetting === getModeFromCSSMediaQuery()) {
-    resetRootDarkModeAttributeAndLS();
-  } else if (validColorModeKeys[currentSetting]) {
-    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
-  } else {
-    resetRootDarkModeAttributeAndLS();
-  }
-};
-const invertDarkModeObj = {
-  dark: "light",
-  light: "dark",
-};
-/**
- * get target mode
- */
- const getCustomDarkMode = () => {
-  let currentSetting = getLS(darkModeStorageKey);
-  if (validColorModeKeys[currentSetting]) {
-    currentSetting = invertDarkModeObj[currentSetting];
-  } else if (currentSetting === null) {
-    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
-  } else {
-    return;
-  }
-  if(currentSetting=="dark"){
-    volantis.dark.mode="light";
-  }else{
-    volantis.dark.mode="dark";
-  }
-  // console.log(volantis.dark.mode)
-};
-const toggleCustomDarkMode = () => {
-  let currentSetting = getLS(darkModeStorageKey);
-  if (validColorModeKeys[currentSetting]) {
-    currentSetting = invertDarkModeObj[currentSetting];
-  } else if (currentSetting === null) {
-    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
-  } else {
-    return;
-  }
-  setLS(darkModeStorageKey, currentSetting);
-  return currentSetting;
-};
-/**
- * 暗黑模式触发器
- */
-volantis.dark.toggle=()=>{
-  const mode = toggleCustomDarkMode();
-  applyCustomDarkModeSettings(mode);
-  // 使用 volantis.dark.push 方法传入volantis.dark.toggle回调函数 参见layout/_partial/scripts/global.ejs
-  volantis.dark.method.toggle.start();
-}
-/**
- * bind event for toggle button
- */
-
-function bindToggleButton() {
-  var btn= document.querySelectorAll("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn")
-  btn.forEach(function (e) {
-    volantis.dom.$(e).on('click',volantis.dark.toggle);
-  })
-}
-applyCustomDarkModeSettings();
-document.addEventListener("DOMContentLoaded", ()=>{
-  volantis.requestAnimationFrame(bindToggleButton)
-});
-volantis.pjax.push(bindToggleButton);
-
-const darkModelListeners={
-  dark:(mediaQueryList )=>{
-    if(mediaQueryList.matches){
-      volantis.dark.mode = "dark";
-    }
-    volantis.dark.method.toggle.start();
-  },
-  light:(mediaQueryList)=>{
-    if(mediaQueryList.matches){
-      volantis.dark.mode = "light";
-    }
-    volantis.dark.method.toggle.start();
-  }
-}
-window.matchMedia('(prefers-color-scheme: dark)').addListener(darkModelListeners.dark)
-window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListeners.light)
-</script>
-
-
 
 
 <script>
@@ -3162,79 +2902,6 @@ window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListener
 
 
 
-
-
-  <script>
-  volantis.css("https://unpkg.com/volantis-static@0.0.1654736714924/libs/aplayer/dist/APlayer.min.css");
-  (async () => {
-    // APlayer 需要在  MetingJS 之前加载
-    await volantis.js("https://unpkg.com/volantis-static@0.0.1654736714924/libs/aplayer/dist/APlayer.min.js")
-    await volantis.js("https://unpkg.com/volantis-static@0.0.1654736714924/libs/meting/dist/Meting.min.js")
-  
-  })();
-
-  function SetAPlayerPlugin(){
-    let Metings = document.querySelectorAll('meting-js');
-    if (Metings.length === 0) {return;};
-    if (Metings[0].aplayer && Metings[0].aplayer.on) {
-      // improve the accessibility https://web.dev/button-name/
-      document.querySelectorAll(".aplayer-icon-menu").forEach(e=>{
-        e.setAttribute("aria-label","Aplayer Menu")
-      })
-      // message see: /layout/_plugins/message/script.ejs
-      
-        try {
-          setTimeout(() => {
-            Metings.forEach((item, index) => {
-              const aplayerItem = item.aplayer; if(!aplayerItem) return;
-              const rightAplayerCheck = 'true' === 'true'
-                && item.meta.id === '3175833810';
-              if(rightAplayerCheck && typeof RightMenuAplayer !="undefined") RightMenuAplayer.checkAPlayer();
-              if(aplayerItem.events.events.play.every(item => {return item.name !== 'messagePlay'})) {
-                aplayerItem.on('play', function messagePlay() {
-                  let index = aplayerItem.list.index;
-                  let title = aplayerItem.list.audios[index].title;
-                  let artist = aplayerItem.list.audios[index].artist;
-                  setTimeout(() => {
-                    VolantisApp.message('音乐通知', title + ' - ' + artist, {
-                      icon: 'fa-solid fa-play',
-                      transitionIn: 'flipInX',
-                      transitionOut: 'flipOutX'
-                    });
-                  }, 100)
-                });
-              }
-              if(aplayerItem.events.events.pause.every(item => {return item.name !== 'messagePause'})) {
-                aplayerItem.on('pause', function messagePause() {
-                  let index = aplayerItem.list.index;
-                  let title = aplayerItem.list.audios[index].title;
-                  let artist = aplayerItem.list.audios[index].artist;
-                  setTimeout(() => {
-                    // 歌曲播放结束也会触发 pause 事件，为了避免错误提示，等待一会儿
-                    if(aplayerItem.paused) {
-                      VolantisApp.message('音乐通知', title + ' - ' + artist, {
-                        icon: 'fa-solid fa-pause',
-                        transitionIn: 'flipInX',
-                        transitionOut: 'flipOutX'
-                      });
-                    }
-                  }, 100)
-                });
-              }
-            });
-          }, 500)
-        } catch (error) { console.error(error); }
-      
-    }else{
-      volantis.requestAnimationFrame(SetAPlayerPlugin)
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", ()=>{
-    SetAPlayerPlugin();
-  });
-  volantis.pjax.push(SetAPlayerPlugin);
-</script>
 
 
 
@@ -3567,7 +3234,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2024/04/15/程序加壳与脱壳/","name":"程序加壳与脱壳"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"程序加壳与脱壳","description":"学习记录","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2024/04/15/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/","wordCount":0,"datePublished":"2024-04-15T10:56:40.000Z","dateModified":"2024-04-16T08:36:55.389Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/调试基础/","name":"调试基础"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2021/09/20/断点/","name":"断点"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"断点","description":"​\t断点是用于帮助程序员分析bug和调试程序的一种技术，让程序在合适的地方暂停运行，查看内存信息。最开始是只顾着用了，没有了解过背后的原理。今天就来简单了解一下背后的机制原理。","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2021/09/20/%E6%96%AD%E7%82%B9/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2021/09/20/%E6%96%AD%E7%82%B9/","wordCount":88,"datePublished":"2021-09-19T16:00:00.000Z","dateModified":"2024-05-12T12:28:18.697Z","articleSection":"调试基础","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

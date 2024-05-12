@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.8.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://e1ectr0nlc.github.io/categories/"/>
+  
+  <link rel="canonical" href="https://e1ectr0nlc.github.io/2021/09/20/pe文件结构/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>文章分类 - e1ectr0nlc's Blog</title>
+  <title>PE文件结构 - e1ectr0nlc's Blog</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="学习记录 - e1ectr0nlc - e1ectr0nlc's Blog">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="文章分类">
-<meta property="og:url" content="https://e1ectr0nlc.github.io/categories/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PE文件结构">
+<meta property="og:url" content="https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="e1ectr0nlc&#39;s Blog">
-<meta property="og:description" content="学习记录">
+<meta property="og:description" content="​	可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：DOS头，NT头，节表以及节数据。 PE文件结构说明DOS头DOS头 是用来兼容 MS-DOS 操作系统的，目的是当这个文件在 MS-DOS 上运行时提示一段">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2024-05-12T09:41:26.763Z">
-<meta property="article:modified_time" content="2024-05-12T09:41:26.763Z">
+<meta property="article:published_time" content="2021-09-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-12T12:31:30.832Z">
 <meta property="article:author" content="e1ectr0nlc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2056,13 +2056,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin end-->
     <!-- front-matter body_begin begin -->
     <!-- front-matter body_begin end -->
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
       <p class="title"></p>
       <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
         <li><a id="s-comment" class="fa-solid fa-comments fa-fw" target="_self"  href="/" onclick="return false;" title="comment"></a></li>
+        
+          <li><a id="s-toc" class="s-toc fa-solid fa-list fa-fw" target="_self"  href="/" onclick="return false;" title="toc"></a></li>
         
       </ul>
     </div>
@@ -2289,7 +2291,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper category search' style="display: ;">
+      <div id="none" class='cover-wrapper post search' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://p.sda1.dev/17/2005b1cca052f02e08808c7145e25043/preview.gif"></div>
 
@@ -2350,100 +2352,338 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
-<div id="l_main" class=' no_sidebar'>
+<div id="l_main" class=''>
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2021/09/20/PE文件结构/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="e1ectr0nlc's Blog">
+    <meta itemprop="description" content="学习记录">
+  </span>
   
+
+
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  <div class="article-meta" id="top">
     
-      <div class='post-wrapper'>
-        <article id="cat" class="post article white-box reveal shadow floatable blur">
-          <h2>文章分类</h2>
-          <div class="all-cats">
-            
-              
-                <a class="" href="/categories/Dll%E6%B3%A8%E5%85%A5/">
-                  <span><i class='fa-solid fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;Dll注入</span>
-                  <span class="title">
-                    (1)
-                  </span>
-                </a>
-              
-                <a class="" href="/categories/Hook/">
-                  <span><i class='fa-solid fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;Hook</span>
-                  <span class="title">
-                    (0)
-                  </span>
-                </a>
-              
-                <a class="" href="/categories/Hookkuan/">
-                  <span><i class='fa-solid fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;Hookkuan</span>
-                  <span class="title">
-                    (0)
-                  </span>
-                </a>
-              
-                <a class="" href="/categories/Hook%E6%A1%86%E6%9E%B6/">
-                  <span><i class='fa-solid fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;Hook框架</span>
-                  <span class="title">
-                    (2)
-                  </span>
-                </a>
-              
-                <a class="" href="/categories/bypass/">
-                  <span><i class='fa-solid fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;bypass</span>
-                  <span class="title">
-                    (1)
-                  </span>
-                </a>
-              
-                <a class="" href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/">
-                  <span><i class='fa-solid fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;二进制基础</span>
-                  <span class="title">
-                    (1)
-                  </span>
-                </a>
-              
-                <a class="" href="/categories/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4/">
-                  <span><i class='fa-solid fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;代码保护</span>
-                  <span class="title">
-                    (2)
-                  </span>
-                </a>
-              
-                <a class="" href="/categories/%E6%BC%8F%E6%B4%9Eli-yong/">
-                  <span><i class='fa-solid fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;漏洞li&#39;yong</span>
-                  <span class="title">
-                    (0)
-                  </span>
-                </a>
-              
-                <a class="" href="/categories/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/">
-                  <span><i class='fa-solid fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;漏洞利用</span>
-                  <span class="title">
-                    (1)
-                  </span>
-                </a>
-              
-                <a class="" href="/categories/%E8%B0%83%E8%AF%95%E5%9F%BA%E7%A1%80/">
-                  <span><i class='fa-solid fa-folder-open fa-fw' aria-hidden="true"></i>&nbsp;&nbsp;调试基础</span>
-                  <span class="title">
-                    (1)
-                  </span>
-                </a>
-              
-            
-          </div>
-          <br>
+    
+    
+      <h1 class="title" itemprop="name headline">
+        PE文件结构
+      </h1>
+      <div class='new-meta-box'>
+        
           
-        </article>
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg" class="lazyload" data-srcset="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">e1ectr0nlc</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/">二进制基础</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/" itemprop="url"><span itemprop="name">二进制基础</span></a>
+      </span>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2021-09-20T00:00:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年9月20日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
       </div>
     
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <p>​	可执行文件是指可以由操作系统直接加载执行的文件，而PE文件是Windows下的可执行文件。我们既然要学习PE文件，了解文件格式就是必须的。我们一般称具有PE结构的文件为PE文件，常见的有EXE、DLL。一个完整的PE文件主要有四部分组成：<strong>DOS头</strong>，<strong>NT头</strong>，<strong>节表</strong>以及<strong>节数据</strong>。</p>
+<h2 id="PE文件结构说明"><a href="#PE文件结构说明" class="headerlink" title="PE文件结构说明"></a>PE文件结构说明</h2><h3 id="DOS头"><a href="#DOS头" class="headerlink" title="DOS头"></a>DOS头</h3><p>DOS头 是用来兼容 MS-DOS 操作系统的，目的是当这个文件在 MS-DOS 上运行时提示一段文字：This program cannot be run in DOS mode. 还有一个目的，就是指明 NT 头在文件中的位置。</p>
+<h3 id="NT头"><a href="#NT头" class="headerlink" title="NT头"></a>NT头</h3><p>NT头 包含 windows PE 文件的主要信息，其中包括一个 ‘PE’ 字样的签名，PE文件头（IMAGE_FILE_HEADER）和 PE可选头（IMAGE_OPTIONAL_HEADER32）。</p>
+<h3 id="节表"><a href="#节表" class="headerlink" title="节表"></a>节表</h3><p>节表是 PE 文件后续节的描述，windows 根据节表的描述加载每个节。</p>
+<h3 id="节数据"><a href="#节数据" class="headerlink" title="节数据"></a>节数据</h3><p>每个节实际上是一个容器，可以包含 代码、数据 等等，每个节可以有独立的内存权限，比如代码节默认有读&#x2F;执行权限，节的名字和数量可以自己定义。</p>
+<h2 id="DOS头-1"><a href="#DOS头-1" class="headerlink" title="DOS头"></a>DOS头</h2><p>首先看到文件前两个字节<code>4D 5A</code>也就是”MZ”，“MZ”是MS-DOS开发者之一的马克·茨柏克沃斯基（Mark Zbikowski）的姓名首字母缩写。PE文件的第一个字节位于一个传统的MS-DOS头部，叫作IMAGE_DOS_HEADERDOS，主要是为了向后兼容以前的DOS系统，DOS部分可以分为DOS MZ文件头（IMAGE_DOS_HEADER）和DOS块（DOS Stub）。DOS头的总长为0x40h，DOS块总长不定。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_DOS_HEADER</span> &#123;</span>      <span class="comment">// DOS .EXE header</span></span><br><span class="line">    WORD   e_magic;                     <span class="comment">// Magic number</span></span><br><span class="line">    WORD   e_cblp;                      <span class="comment">// Bytes on last page of file</span></span><br><span class="line">    WORD   e_cp;                        <span class="comment">// Pages in file</span></span><br><span class="line">    WORD   e_crlc;                      <span class="comment">// Relocations</span></span><br><span class="line">    WORD   e_cparhdr;                   <span class="comment">// Size of header in paragraphs</span></span><br><span class="line">    WORD   e_minalloc;                  <span class="comment">// Minimum extra paragraphs needed</span></span><br><span class="line">    WORD   e_maxalloc;                  <span class="comment">// Maximum extra paragraphs needed</span></span><br><span class="line">    WORD   e_ss;                        <span class="comment">// Initial (relative) SS value</span></span><br><span class="line">    WORD   e_sp;                        <span class="comment">// Initial SP value</span></span><br><span class="line">    WORD   e_csum;                      <span class="comment">// Checksum</span></span><br><span class="line">    WORD   e_ip;                        <span class="comment">// Initial IP value</span></span><br><span class="line">    WORD   e_cs;                        <span class="comment">// Initial (relative) CS value</span></span><br><span class="line">    WORD   e_lfarlc;                    <span class="comment">// File address of relocation table</span></span><br><span class="line">    WORD   e_ovno;                      <span class="comment">// Overlay number</span></span><br><span class="line">    WORD   e_res[<span class="number">4</span>];                    <span class="comment">// Reserved words</span></span><br><span class="line">    WORD   e_oemid;                     <span class="comment">// OEM identifier (for e_oeminfo)</span></span><br><span class="line">    WORD   e_oeminfo;                   <span class="comment">// OEM information; e_oemid specific</span></span><br><span class="line">    WORD   e_res2[<span class="number">10</span>];                  <span class="comment">// Reserved words</span></span><br><span class="line">    LONG   e_lfanew;                    <span class="comment">// File address of new exe header</span></span><br><span class="line">  &#125; IMAGE_DOS_HEADER, *PIMAGE_DOS_HEADER;</span><br></pre></td></tr></table></figure>
+
+<p>在DOS头我们只需要重点关注<code>e_magic</code>和<code>e_lfanew</code>即可。前者就是<code>MZ</code>标识，后者指向PE结构开始的地方。</p>
+<p><img src="https://p.sda1.dev/16/1efecbd8dbe89b2abe8827b55ede1ae4/image.png" class="lazyload" data-srcset="https://p.sda1.dev/16/1efecbd8dbe89b2abe8827b55ede1ae4/image.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image.png"></p>
+<h2 id="NT头-1"><a href="#NT头-1" class="headerlink" title="NT头"></a>NT头</h2><p>NT头由PE文件头标志，标准PE头，扩展PE头三部分组成。PE文件头标志是<code>50 40 00 00</code>，也就是PE，我们从结构体的角度看一下PE文件头的详细信息。</p>
+<h3 id="PE文件头标识"><a href="#PE文件头标识" class="headerlink" title="PE文件头标识"></a>PE文件头标识</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_NT_HEADERS</span> &#123;</span></span><br><span class="line">    DWORD Signature; 						<span class="comment">//PE文件头标志 =&gt; 4字节</span></span><br><span class="line">    IMAGE_FILE_HEADER FileHeader; 			<span class="comment">//标准PE头 =&gt; 20字节</span></span><br><span class="line">    IMAGE_OPTIONAL_HEADER32 OptionalHeader; <span class="comment">//扩展PE头 =&gt; 32位下224字节(0xE0) 64位下240字节(0xF0)</span></span><br><span class="line">&#125; IMAGE_NT_HEADERS32, *PIMAGE_NT_HEADERS32;</span><br></pre></td></tr></table></figure>
+
+<p>这是用来判断是否是一个有效的PE文件的标识</p>
+<p>我们使用十六进制工具载入一个EXE文件查看</p>
+<p><img src="https://p.sda1.dev/16/dbadc1f619f08520cadd5addbd3d9086/image.png" class="lazyload" data-srcset="https://p.sda1.dev/16/dbadc1f619f08520cadd5addbd3d9086/image.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image.png"></p>
+<p>在第四排四个字节指向的地址为PE头开始的地方，<code>50 45</code>也就是PE，在PE标识后存在机器码用来标识程序为<code>x64(0x8664)</code>还是<code>x32(0x014C)</code>，例如这里用来展示的文件就是一个64位可执行程序。</p>
+<h3 id="标准PE头"><a href="#标准PE头" class="headerlink" title="标准PE头"></a>标准PE头</h3><p>共有20个字节</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_FILE_HEADER</span> &#123;</span></span><br><span class="line">    WORD    Machine; 				<span class="comment">//可以运行在多少位系统中 0代表任意,32位:0x14C,64位:0x8664</span></span><br><span class="line">    WORD    NumberOfSections; 		<span class="comment">//节的数量</span></span><br><span class="line">    DWORD   TimeDateStamp; 			<span class="comment">//编译器填写的时间戳</span></span><br><span class="line">    DWORD   PointerToSymbolTable;   <span class="comment">//调试相关</span></span><br><span class="line">    DWORD   NumberOfSymbols; 		<span class="comment">//调试相关</span></span><br><span class="line">    WORD    SizeOfOptionalHeader;   <span class="comment">//标识扩展PE头大小</span></span><br><span class="line">    WORD    Characteristics;        <span class="comment">//文件属性 =&gt; 16进制转换为2进制根据哪些位有1,可以查看相关属性</span></span><br><span class="line">&#125; IMAGE_FILE_HEADER, *PIMAGE_FILE_HEADER;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://s2.loli.net/2024/04/30/jPFnH2yRq4TOAdW.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/30/jPFnH2yRq4TOAdW.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240430193851504"></p>
+<h3 id="扩展PE头"><a href="#扩展PE头" class="headerlink" title="扩展PE头"></a>扩展PE头</h3><p>包含以下重要信息</p>
+<ul>
+<li>所有含代码的节的总大小</li>
+<li>所有含已初始化数据的节的总大小</li>
+<li>所有含未初始化数据的节的大小</li>
+<li>程序执行入口RVA</li>
+<li>代码的节的起始RVA</li>
+<li>数据的节的起始RVA</li>
+<li>程序的建议装载地址</li>
+<li>内存中的节的对齐粒度</li>
+<li>文件中的节的对齐粒度</li>
+<li>内存中整个PE映像尺寸</li>
+<li>所有头＋节表的大小</li>
+<li>导出表</li>
+<li>导入表</li>
+<li>资源</li>
+<li>重定位表</li>
+<li>调试信息</li>
+<li>版权信息</li>
+<li>导入函数地址表</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_OPTIONAL_HEADER</span> &#123;</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="comment">// Standard fields.</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line"></span><br><span class="line">    WORD    Magic;						<span class="comment">//PE32: 10B PE64: 20B</span></span><br><span class="line">    BYTE    MajorLinkerVersion;</span><br><span class="line">    BYTE    MinorLinkerVersion;</span><br><span class="line">    DWORD   SizeOfCode;					<span class="comment">//所有含有代码的区块的大小 编译器填入 没用(可改)</span></span><br><span class="line">    DWORD   SizeOfInitializedData;		<span class="comment">//所有初始化数据区块的大小 编译器填入 没用(可改)</span></span><br><span class="line">    DWORD   SizeOfUninitializedData;	<span class="comment">//所有含未初始化数据区块的大小 编译器填入 没用(可改)</span></span><br><span class="line">    DWORD   AddressOfEntryPoint;		<span class="comment">//程序入口RVA</span></span><br><span class="line">    DWORD   BaseOfCode;					<span class="comment">//代码区块起始RVA</span></span><br><span class="line">    DWORD   BaseOfData;					<span class="comment">//数据区块起始RVA</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="comment">// NT additional fields.</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line"></span><br><span class="line">    DWORD   ImageBase;						<span class="comment">//内存镜像基址(程序默认载入基地址)</span></span><br><span class="line">    DWORD   SectionAlignment; 				<span class="comment">//内存中对齐大小</span></span><br><span class="line">    DWORD   FileAlignment; 					<span class="comment">//文件中对齐大小(提高程序运行效率)</span></span><br><span class="line">    WORD    MajorOperatingSystemVersion;</span><br><span class="line">    WORD    MinorOperatingSystemVersion;</span><br><span class="line">    WORD    MajorImageVersion;</span><br><span class="line">    WORD    MinorImageVersion;</span><br><span class="line">    WORD    MajorSubsystemVersion;</span><br><span class="line">    WORD    MinorSubsystemVersion;</span><br><span class="line">    DWORD   Win32VersionValue;</span><br><span class="line">    DWORD   SizeOfImage;					<span class="comment">//内存中整个PE文件的映射的尺寸,可比实际值大,必须是SectionAlignment的整数倍</span></span><br><span class="line">    DWORD   SizeOfHeaders; 					<span class="comment">//所有的头加上节表文件对齐之后的值</span></span><br><span class="line">    DWORD   CheckSum;						<span class="comment">//映像校验和,一些系统.dll文件有要求,判断是否被修改</span></span><br><span class="line">    WORD    Subsystem;						</span><br><span class="line">    WORD    DllCharacteristics;				<span class="comment">//文件特性,不是针对DLL文件的,16进制转换2进制可以根据属性对应的表格得到相应的属性</span></span><br><span class="line">    DWORD   SizeOfStackReserve;</span><br><span class="line">    DWORD   SizeOfStackCommit;</span><br><span class="line">    DWORD   SizeOfHeapReserve;</span><br><span class="line">    DWORD   SizeOfHeapCommit;</span><br><span class="line">    DWORD   LoaderFlags;</span><br><span class="line">    DWORD   NumberOfRvaAndSizes;</span><br><span class="line">    IMAGE_DATA_DIRECTORY DataDirectory[IMAGE_NUMBEROF_DIRECTORY_ENTRIES]; <span class="comment">//数据目录表,结构体数组</span></span><br><span class="line">&#125; IMAGE_OPTIONAL_HEADER32, *PIMAGE_OPTIONAL_HEADER32;</span><br></pre></td></tr></table></figure>
+
+<p>如果想要编写一个PE解析器，那么就需要关注一下<code>FileAlignment</code> 以及 <code>SizeOfHeaders</code> 这两个成员。<code>SizeOfHeaders</code> 表示所有的头加上节表文件对齐之后的值，对齐的大小参考的就是 <code>FileAlignment</code> 成员，如果所有的头加上节表的大小为320，<code>FileAlignment</code> 为 200，那么 <code>SizeOfHeaders</code> 大小就为 400。下图中0x20000就是在内存中对齐的大小，0x400是程序在文件中的对其大小。</p>
+<p><img src="https://p.sda1.dev/16/e62516580cfd25a5ad6cb805df6d881b/image.png" class="lazyload" data-srcset="https://p.sda1.dev/16/e62516580cfd25a5ad6cb805df6d881b/image.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image.png"></p>
+<p>最后一个成员数据目录表很重要。PE扩展头的最后一个成员是<code>IMAGE_DATA_DIRECTORY</code>结构体，定义如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_DATA_DIRECTORY</span> &#123;</span></span><br><span class="line">    DWORD   VirtualAddress;</span><br><span class="line">    DWORD   Size;</span><br><span class="line">&#125; IMAGE_DATA_DIRECTORY, *PIMAGE_DATA_DIRECTORY;</span><br></pre></td></tr></table></figure>
+
+<p>存储了导出表和导入表</p>
+<h4 id="导出表"><a href="#导出表" class="headerlink" title="导出表"></a>导出表</h4><p>结构如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_EXPORT_DIRECTORY</span> &#123;</span></span><br><span class="line">    DWORD   Characteristics;</span><br><span class="line">    DWORD   TimeDateStamp;</span><br><span class="line">    WORD    MajorVersion;</span><br><span class="line">    WORD    MinorVersion;</span><br><span class="line">    DWORD   Name;					<span class="comment">// 指针指向该导出表文件名字符串</span></span><br><span class="line">    DWORD   Base;					<span class="comment">// 导出函数起始序号</span></span><br><span class="line">    DWORD   NumberOfFunctions;		<span class="comment">// 所有导出函数的个数</span></span><br><span class="line">    DWORD   NumberOfNames;			<span class="comment">// 以函数名字导出的函数个数</span></span><br><span class="line">    DWORD   AddressOfFunctions;     <span class="comment">// 指针指向导出函数地址表RVA</span></span><br><span class="line">    DWORD   AddressOfNames;         <span class="comment">// 指针指向导出函数名称表RVA</span></span><br><span class="line">    DWORD   AddressOfNameOrdinals;  <span class="comment">// 指针指向导出函数序号表RVA</span></span><br><span class="line">&#125; IMAGE_EXPORT_DIRECTORY, *PIMAGE_EXPORT_DIRECTORY;</span><br></pre></td></tr></table></figure>
+
+<p>导出表的作用就是记载着动态链接库的一些导出信息。通过导出表，DLL文件可以向系统提供导出函数的名称、序号和入口地址等信息，以便Windows加载器通过这些信息来完成动态连接的整个过程。exe文件不存在导出表，一般存在于Dll文件中，导出 函数给别人用。不清楚Dll文件作用的可自行百度。</p>
+<h4 id="导入表"><a href="#导入表" class="headerlink" title="导入表"></a>导入表</h4><p>结构如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_IMPORT_DESCRIPTOR</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">        DWORD   Characteristics;            <span class="comment">//导入表结束标志</span></span><br><span class="line">        DWORD   OriginalFirstThunk;         <span class="comment">//RVA指向一个结构体数组(INT表)</span></span><br><span class="line">    &#125;;</span><br><span class="line">    DWORD   TimeDateStamp;                  <span class="comment">//时间戳</span></span><br><span class="line">    DWORD   ForwarderChain;                 <span class="comment">// -1 if no forwarders</span></span><br><span class="line">    DWORD   Name;                           <span class="comment">//RVA指向dll名字，以0结尾</span></span><br><span class="line">    DWORD   FirstThunk;                     <span class="comment">//RVA指向一个结构体数组(IAT表)</span></span><br><span class="line">&#125; IMAGE_IMPORT_DESCRIPTOR, *PIMAGE_IMPORT_DESCRIPTOR;</span><br></pre></td></tr></table></figure>
+
+<p>.exe 文件存在导入表，就是导入函数，然后自己使用。导入表在PE文件加载时，会根据这个表里的内容加载依赖的DLL ，并填充所需函数的地址。</p>
+<p><code>OriginalFirstThunk</code>指向INT，<code>FirstThunk</code>指向IAT，当文件在磁盘中时，实际上 INT 和 IAT 的内容是一样的。</p>
+<p><img src="https://p.sda1.dev/16/113e2e6939977bd526ebdc4c113fa11b/image.png" class="lazyload" data-srcset="https://p.sda1.dev/16/113e2e6939977bd526ebdc4c113fa11b/image.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image.png"></p>
+<p>而当文件加载到内存中时</p>
+<p>INT表的结构不变，而IAT表则是直接存储了函数的地址</p>
+<p><img src="https://p.sda1.dev/16/5e7f8708924cc5a16a14c2569ec3f4c2/image.png" class="lazyload" data-srcset="https://p.sda1.dev/16/5e7f8708924cc5a16a14c2569ec3f4c2/image.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image.png"></p>
+<h2 id="节表-1"><a href="#节表-1" class="headerlink" title="节表"></a>节表</h2><p>节表的结构如下，整体为40个字节。存储了PE代码和数据的结构数据，指示装载系统代码段在哪里，数据段在哪里等。</p>
+<p>在标准PE头中定义好了文件节的数目。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_SECTION_HEADER</span> &#123;</span></span><br><span class="line">    BYTE    Name[IMAGE_SIZEOF_SHORT_NAME]; <span class="comment">//ASCII字符串 可自定义 只截取8个字节</span></span><br><span class="line">    <span class="class"><span class="keyword">union</span> &#123;</span>								   <span class="comment">//该节在没有对齐之前的真实尺寸,该值可以不准确</span></span><br><span class="line">            DWORD   PhysicalAddress;</span><br><span class="line">            DWORD   VirtualSize;</span><br><span class="line">    &#125; Misc;</span><br><span class="line">    DWORD   VirtualAddress; 			   <span class="comment">//内存中的偏移地址</span></span><br><span class="line">    DWORD   SizeOfRawData;				   <span class="comment">//节在文件中对齐的尺寸</span></span><br><span class="line">    DWORD   PointerToRawData;			   <span class="comment">//节区在文件中的偏移</span></span><br><span class="line">    DWORD   PointerToRelocations;</span><br><span class="line">    DWORD   PointerToLinenumbers;</span><br><span class="line">    WORD    NumberOfRelocations;</span><br><span class="line">    WORD    NumberOfLinenumbers;</span><br><span class="line">    DWORD   Characteristics;			   <span class="comment">//节的属性</span></span><br><span class="line">&#125; IMAGE_SECTION_HEADER, *PIMAGE_SECTION_HEADER;</span><br></pre></td></tr></table></figure>
+
+<h2 id="节数据-1"><a href="#节数据-1" class="headerlink" title="节数据"></a>节数据</h2><p>常见的节数据：<br>.text：代码段，是在编译或汇编结束时产生的一种块，它的内容全部是指令代码。也有的编译器将该段命名为.code<br>.data：初始化的数据块，是初始化的数据块，包含那些编译时被初始化的变量、字符串<br>.idata：输入表，包含其他外来dll的函数和数据信息，也就是输入表，也有人称之为导入表。<br>.rsrc：资源数据块，包含模块的全部资源数据，如图标、菜单、位图等。<br>.reloc：重定位表，用于保存基址的重定位表。即当装在程序不能按照连接器所指定的地址装载文件是，需要对指令或已经初始化的变量进行调整，该块中也包含了调整过程中所需要的一些数据，如果装载能够正常装在则忽略此段中的数据。<br>.edata：导出表，是pe文件的输出表，以供其他模块使用，并不是每个pe文件都有此数据段，因为有的文件并不需要输出一些函数，该数据段常见于动态连接库文件中。<br>.radata：存放调试目录、说明字符串，该数据块并不常见主要是用于存放一些调试信息。</p>
+
+  </div>
   
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T20:31:30+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2024年5月12日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/&title=PE文件结构 - e1ectr0nlc's Blog&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/&title=PE文件结构 - e1ectr0nlc's Blog&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/&title=PE文件结构 - e1ectr0nlc's Blog&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/10/12/%E7%A8%8B%E5%BA%8F%E5%8A%A0%E5%A3%B3%E4%B8%8E%E8%84%B1%E5%A3%B3/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>程序加壳与脱壳</p>
+          <p class='content'>程序加壳主要分为压缩壳、加密壳，多层壳等等，目的都是为了隐藏程序真正的入口点OEP，防止逆向人员轻松分析程序代码。
+
+
+
+
+概念壳最开始的目的是为了让逆向分析人员无法轻易获取程序的入口函数，在静...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/09/20/%E6%96%AD%E7%82%B9/'>
+          <p class='title'>断点<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>​	断点是用于帮助程序员分析bug和调试程序的一种技术，让程序在合适的地方暂停运行，查看内存信息。最开始是只顾着用了，没有了解过背后的原理。今天就来简单了解一下背后的机制原理。
+
+
+
+
+软断点首...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/index.html#comments">
+    </span>
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
+    
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
 
+  
+    
+    
+      
+    
+  
+
 
 <div class="widget-sticky pjax">
+
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E"><span class="toc-text">PE文件结构说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DOS%E5%A4%B4"><span class="toc-text">DOS头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NT%E5%A4%B4"><span class="toc-text">NT头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E8%A1%A8"><span class="toc-text">节表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%82%E6%95%B0%E6%8D%AE"><span class="toc-text">节数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOS%E5%A4%B4-1"><span class="toc-text">DOS头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NT%E5%A4%B4-1"><span class="toc-text">NT头</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PE%E6%96%87%E4%BB%B6%E5%A4%B4%E6%A0%87%E8%AF%86"><span class="toc-text">PE文件头标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86PE%E5%A4%B4"><span class="toc-text">标准PE头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95PE%E5%A4%B4"><span class="toc-text">扩展PE头</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E8%A1%A8"><span class="toc-text">导出表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E8%A1%A8"><span class="toc-text">导入表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E8%A1%A8-1"><span class="toc-text">节表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E6%95%B0%E6%8D%AE-1"><span class="toc-text">节数据</span></a></li></ol>
+    </div>
+  </section>
+
+  
 
 </div>
 
@@ -2488,13 +2728,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2503,14 +2744,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="half";
-      cover_wrapper.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
       scroll_down.style.display="none";
     
   
@@ -3025,7 +3266,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"文章分类","description":"学习记录","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/categories/index.html"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/categories/index.html","wordCount":0,"datePublished":"2024-05-12T09:41:26.763Z","dateModified":"2024-05-12T09:41:26.763Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/二进制基础/","name":"二进制基础"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2021/09/20/PE文件结构/","name":"PE文件结构"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"PE文件结构","description":"学习记录","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2021/09/20/PE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/","wordCount":0,"datePublished":"2021-09-19T16:00:00.000Z","dateModified":"2024-05-12T12:31:30.832Z","articleSection":"二进制基础","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
