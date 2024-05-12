@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="https://e1ectr0nlc.github.io/2024/04/15/hello-world/"/>
+  <link rel="canonical" href="https://e1ectr0nlc.github.io/2024/04/18/断点/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Hello World - e1ectr0nlc's Blog</title>
+  <title>e1ectr0nlc's Blog</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="e1ectr0nlc's Blog - e1ectr0nlc - e1ectr0nlc's Blog">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://e1ectr0nlc.github.io/2024/04/15/hello-world/index.html">
+<meta property="og:title" content="e1ectr0nlc&#39;s Blog">
+<meta property="og:url" content="https://e1ectr0nlc.github.io/2024/04/18/%E6%96%AD%E7%82%B9/index.html">
 <meta property="og:site_name" content="e1ectr0nlc&#39;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="​	断点是用于帮助程序员分析bug和调试程序的一种技术，让程序在合适的地方暂停运行，查看内存信息。最开始是只顾着用了，没有了解过背后的原理。今天就来简单了解一下背后的机制原理。 软断点首先看一条指令 120x44332211    8BC3    MOV EAX, EBX#指令地址       #机器码     #汇编指令  这时我们设置一个软断点，一般我们是通过中断指令INT3来实现，设置后指令">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2024-04-15T03:47:08.246Z">
-<meta property="article:modified_time" content="2024-04-15T12:00:15.691Z">
+<meta property="article:published_time" content="2024-04-18T12:50:59.437Z">
+<meta property="article:modified_time" content="2024-04-24T09:01:44.490Z">
 <meta property="article:author" content="e1ectr0nlc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2103,7 +2103,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=true;
+  pdata.ispage=false;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2442,7 +2442,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="https://schema.org.cn/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/15/hello-world/">
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/18/断点/">
   <span hidden itemprop="publisher" itemscope itemtype="https://schema.org.cn/Organization">
     <meta itemprop="name" content="e1ectr0nlc's Blog">
   </span>
@@ -2462,68 +2462,62 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
     
-      <h1 class="title" itemprop="name headline">
-        Hello World
-      </h1>
-      <div class='new-meta-box'>
+      <span hidden itemprop="name headline">
         
-          
-            
-<div class='new-meta-item author' itemprop="author" itemscope itemtype="https://schema.org.cn/Person">
-  <a itemprop="url" class='author' href="/" rel="nofollow">
-    <img itemprop="image" src="https://p.sda1.dev/17/9a12a3e358abec9c1bff9177e51be26f/electronic.jpg" class="lazyload" data-srcset="https://p.sda1.dev/17/9a12a3e358abec9c1bff9177e51be26f/electronic.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-    <p itemprop="name">e1ectr0nlc</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-
-          
-        
-          
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2024-04-15T11:47:08+08:00">
-  <a class='notlink'>
-    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2024年4月15日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-
-
-          
-        
-        <!-- Custom Files topMeta begin-->
-        
-        <!-- Custom Files topMeta end-->
-      </div>
+      </span>
     
   </div>
 
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <p>​	断点是用于帮助程序员分析bug和调试程序的一种技术，让程序在合适的地方暂停运行，查看内存信息。最开始是只顾着用了，没有了解过背后的原理。今天就来简单了解一下背后的机制原理。</p>
+<h2 id="软断点"><a href="#软断点" class="headerlink" title="软断点"></a>软断点</h2><p>首先看一条指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0x44332211    8BC3    MOV EAX, EBX</span><br><span class="line">#指令地址       #机器码     #汇编指令</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>这时我们设置一个软断点，一般我们是通过中断指令INT3来实现，设置后指令如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0x44332211    CCC3    MOV EAX, EBX</span><br><span class="line">#指令地址       #机器码     #汇编指令</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>这里要明白一个概念：<strong>指令的机器码&#x3D;操作码+操作数</strong></p>
+<p>CPU在执行完INT3指令后会触发异常，此异常会使操作系统从中断向量表中调用3号中断处理程序，首先检查是否存在调试器，如果存在调试器把异常交给调试器，调试器处理结束再返回。如果调试器不处理或者就不存在调试器则异常会传递到程序自身的异常处理中（如果最后依然没处理就会进行异常的第二次分发）。</p>
+<p>但我们平常使用INT3断点调试时，汇编指令并没有发生变化，而是维持原样，之所以我们下断点的地址处字节没有发生任何变化是因为调试器为了维持汇编代码的可读性并没有将改变后的指令进行重新反汇编。我们先用程序验证一下，随便加载一个程序,在地址0x4015CE处下一个断点。</p>
+<p><img src="https://s2.loli.net/2024/04/18/ElGBovcWYq4XS96.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/18/ElGBovcWYq4XS96.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240418202106461"></p>
+<p>接下来把即将运行的下一条指令改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov  al , byte ptr ds:[0x4015CE]</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>将下完断点地址处的值读入到寄存器$al$中</p>
+<p><img src="https://s2.loli.net/2024/04/18/cjn7N9mrMAbzyV8.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/18/cjn7N9mrMAbzyV8.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240418202246065"></p>
+<p>当我们执行完地址<code>0x4015B1</code>的代码后，可以看到$al$的值为<code>0xCC</code>。所以当$cpu$执行到断点(0x4015CE)时就会执行<code>0xCC</code>（INT3指令），接着产生异常去执行函数<code>nt!KiTrap03( )</code>，接着会调用<code>nt!KiDisPatchException( )</code>函数并将异常分发给调试器，其刚执行完<code>0xCC</code>此时$eip$指向<code>0xCC</code>的下一个字节，调试器会让$eip$减一，然后$eip$重新指向<code>0xCC</code>（断点处）而调试器将先还原此断点处的原字节，然后使返回程序将停在此断点处等待用户的进一步操作。</p>
+<p>我们来验证一下这个过程。</p>
+<p>这次我们把断点处的汇编指令改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov  al , byte ptr ds:[0x4015CE]</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p><img src="https://s2.loli.net/2024/04/18/XYVlWSUoNcHBe6i.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/18/XYVlWSUoNcHBe6i.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240418203732694"></p>
+<p>对应的原字节<code>A0</code>，我们运行到断点后查看寄存器EAX</p>
+<p><img src="https://s2.loli.net/2024/04/18/WrhOTj7ptYJZm2A.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/18/WrhOTj7ptYJZm2A.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240418203552146"></p>
+<p>$al$的值等于<code>A0</code>，说明断点处的字节已被修复。</p>
+<p>为了让这个断点一直生效，程序会利用单步异常来把断点处的值再改为<code>0xCC</code>。其在执行完断点处的指令后，会产生单步异常从而被调试器捕捉，然后调试器会将此断点处的值更改为<code>0xCC</code>。我们可以利用如下方法验证。</p>
+<p>将断点后的指令改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov  al , byte ptr ds:[0x4015CE]</span><br></pre></td></tr></table></figure>
+
+<p>我们在断点执行语句后看到$al$值为<code>A0</code></p>
+<p><img src="https://s2.loli.net/2024/04/18/ul96mWAo1TECdSi.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/18/ul96mWAo1TECdSi.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240418204234086"></p>
+<p>执行后就改为<code>0xCC</code></p>
+<p><img src="https://s2.loli.net/2024/04/18/wM8HYkeLoI6JWGO.png" class="lazyload" data-srcset="https://s2.loli.net/2024/04/18/wM8HYkeLoI6JWGO.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20240418204342799"></p>
+<blockquote>
+<p>实际上，一般情况下，调试器维护了一大组调试断点，并把他们都换成了INT 3。在被运行结束后，会回填回去，并通过现在的地址判断是到了那个断点。软件断点没有数目限制。</p>
+</blockquote>
+<h2 id="硬断点"><a href="#硬断点" class="headerlink" title="硬断点"></a>硬断点</h2><p>硬件断点是通过位于 CPU 上的一组特殊寄存器来实现的，称为调试寄存器，与被调试程序无关。比如 x86 架构的 CPU 上有 8 个调试寄存器（DR0-DR7），分别用于设置和管理硬件断点。硬件断点比软件断点的功能更强，除了函数断点外，还可以数据断点，可以指定当数据被读或写时中断。硬件断点的本质就是在指定内存下断点，内存可以位于代码段（函数断点）也可以是数据段（数据断点）。可以设置事件有执行、写入、读写时中断。</p>
+<ul>
+<li>DR0-DR3 负责存储硬件断点的内存地址，所以最多只能同时使用 4 个硬件断点。</li>
+<li>DR4 和 DR5 保留使用。</li>
+<li>DR6 为调试状态寄存器，记录上一次断点触发所产生的调试事件类型信息。</li>
+<li>DR7 是硬件断点的激活开关，存储着各个断点的触发信息条件。 与软断点不同的是，硬件断点使用 1 号中断（INT1）实现，INT1 一般被用于硬件断点和单步事件。</li>
+</ul>
+<p>CPU 每次试图执行一条指令时，都会首先检查当前指令所在地址是否被设置了有效的硬件断点，除此之外还会检查当前指令包含的操作数是否位于被设置了硬件断点的内存地址。</p>
+<h2 id="内存断点"><a href="#内存断点" class="headerlink" title="内存断点"></a>内存断点</h2><p>内存断点本质上不是一个真正的断点。当调试器设置一个内存断点时，实际上是改变一个内存区域或一个内存页的权限。操作系统对内存页会设置访问权限，可执行、可读、可写、保护页，这些访问权限可以组合。</p>
+<p><strong>保护页的特性可以帮助我们实现断点机制。</strong></p>
+<p>任何对于有页保护的区域的内存访问都会导致 CPU 暂停执行当前进程并处发一个保护页调试异常，然后我们就可以对访问缓冲取得指令代码进行仔细的检查，并判断出应用程序如何处理缓冲区中的内容。</p>
 
   </div>
   
@@ -2548,10 +2542,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-04-15T20:00:15+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-04-24T17:01:44+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年4月15日</p>
+    <p>更新于：2024年4月24日</p>
   </a>
 </div>
 
@@ -2570,7 +2564,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2024/04/15/hello-world/&title=Hello World - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2024/04/18/%E6%96%AD%E7%82%B9/&title= - e1ectr0nlc's Blog&summary="
           
           >
           
@@ -2582,7 +2576,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2024/04/15/hello-world/&title=Hello World - e1ectr0nlc's Blog&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2024/04/18/%E6%96%AD%E7%82%B9/&title= - e1ectr0nlc's Blog&summary="
           
           >
           
@@ -2594,7 +2588,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2024/04/15/hello-world/&title=Hello World - e1ectr0nlc's Blog&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2024/04/18/%E6%96%AD%E7%82%B9/&title= - e1ectr0nlc's Blog&summary="
           
           >
           
@@ -2627,12 +2621,18 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2024/04/15/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4--%E8%8A%B1%E6%8C%87%E4%BB%A4/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>程序加壳与脱壳</p>
-          <p class='content'>花指令的作用是用来隐藏反汇编后的代码，对于动态调试来说无法隐藏，但是对于静态分析来说就成为必须绕过去的一个问题。
-花指令如何实现代码隐藏花指令能成功干扰反编译器识别代码，主要是与反编译器的实现技...</p>
+        <a class='prev' href='/2024/04/19/shellcode%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>2024年4月18日</p>
+          <p class='content'>shellcode的加载方式动态内存分配概念在进程的内存空间中，你有没有想过执行一段shellcode需要什么？为了执行你的shellcode，需要完成三个检查：
+
+1.内存是否被标记为可执行的...</p>
         </a>
       
+      
+        <a class='next' href='/2024/04/16/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/'>
+          <p class='title'>2024年4月18日<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Frida脚本的概念FRIDA脚本就是利用FRIDA动态插桩框架，使用FRIDA导出的API和方法，对内存空间里的对象方法进行监视、修改或者替换的一段代码。FRIDA的API是使用JavaScr...</p>
+        </a>
       
     </div>
   
@@ -2650,7 +2650,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2024/04/15/hello-world/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2024/04/18/%E6%96%AD%E7%82%B9/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2692,7 +2692,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AF%E6%96%AD%E7%82%B9"><span class="toc-text">软断点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A1%AC%E6%96%AD%E7%82%B9"><span class="toc-text">硬断点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%96%AD%E7%82%B9"><span class="toc-text">内存断点</span></a></li></ol>
   </div>
 </section>
 
@@ -3203,7 +3203,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2024/04/15/hello-world/","name":"Hello World"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":""},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","headline":"Hello World","description":"","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2024/04/15/hello-world/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2024/04/15/hello-world/","wordCount":0,"datePublished":"2024-04-15T03:47:08.246Z","dateModified":"2024-04-15T12:00:15.691Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"https://schema.org.cn","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"https://schema.org.cn","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"https://schema.org.cn","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2024/04/18/断点/"}}]},{"@context":"https://schema.org.cn","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":""},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"https://schema.org.cn","@type":"BlogPosting","description":"","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2024/04/18/%E6%96%AD%E7%82%B9/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2024/04/18/%E6%96%AD%E7%82%B9/","wordCount":0,"datePublished":"2024-04-18T12:50:59.437Z","dateModified":"2024-04-24T09:01:44.490Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
