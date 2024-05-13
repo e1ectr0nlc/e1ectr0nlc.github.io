@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.8.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  
-  <link rel="canonical" href="https://e1ectr0nlc.github.io/2024/04/15/frida学习(二)/"/>
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://e1ectr0nlc.github.io/page/3/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,17 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Frida学习(二) - e1ectr0nlc's Blog</title>
+  <title>e1ectr0nlc's Blog</title>
   <meta name="keywords" content="null">
-  <meta desc name="description" content="这篇文章用来记录Frida在Hook各种方法时的脚本编写。 - e1ectr0nlc - e1ectr0nlc's Blog">
+  <meta desc name="description" content="学习记录 - e1ectr0nlc - e1ectr0nlc's Blog">
   
-<meta property="og:type" content="article">
-<meta property="og:title" content="Frida学习(二)">
-<meta property="og:url" content="https://e1ectr0nlc.github.io/2024/04/15/Frida%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="e1ectr0nlc&#39;s Blog">
+<meta property="og:url" content="https://e1ectr0nlc.github.io/page/3/index.html">
 <meta property="og:site_name" content="e1ectr0nlc&#39;s Blog">
-<meta property="og:description" content="这篇文章用来记录Frida在Hook各种方法时的脚本编写。">
+<meta property="og:description" content="学习记录">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2024-04-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-12T13:37:39.427Z">
 <meta property="article:author" content="e1ectr0nlc">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2291,7 +2289,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper post search' style="display: none;">
+      <div id="none" class='cover-wrapper  search' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://p.sda1.dev/17/2005b1cca052f02e08808c7145e25043/preview.gif"></div>
 
@@ -2353,8 +2351,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2024/04/15/Frida学习(二)/">
+  
+  <section class="post-list">
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://e1ectr0nlc.github.io/2021/09/20/栈帧/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="e1ectr0nlc's Blog">
   </span>
@@ -2363,254 +2368,83 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="学习记录">
   </span>
   
-
-
+  
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  <div class="article-meta" id="top">
+  
     
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2021/09/20/%E6%A0%88%E5%B8%A7/"  itemprop="url">
+        栈帧
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
     
-    
-      <h1 class="title" itemprop="name headline">
-        Frida学习(二)
-      </h1>
-      <div class='new-meta-box'>
-        
-          
-            
-<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <a itemprop="url" class='author' href="/" rel="nofollow">
-    <img itemprop="image" src="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg" class="lazyload" data-srcset="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-    <p itemprop="name">e1ectr0nlc</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  <div class='new-meta-item category'>
-    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/Hook%E6%A1%86%E6%9E%B6/">Hook框架</a>
-    
-      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/Hook%E6%A1%86%E6%9E%B6/" itemprop="url"><span itemprop="name">Hook框架</span></a>
-      </span>
+      <p>栈作为重要的数据结构，主要用于管理程序的执行过程中的函数调用和局部变量。它通过后进先出的原则存储和管理数据，包括函数的参数、返回地址、局部变量等。</p>
     
   </div>
-
-
-          
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2024-04-15T00:00:00+08:00">
-  <a class='notlink'>
-    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2024年4月15日</p>
-  </a>
+          <a class='avatar' href='/'><img src='https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://p.sda1.dev/17/b34ee4fae71a87c5156c3e133bc354a4/下载.jpg">
+            <meta itemprop="name" content="e1ectr0nlc">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2021-09-20T00:00:00+08:00">2021-09-20</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/">二进制基础</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/" itemprop="url"><span itemprop="name">二进制基础</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/09/20/%E6%A0%88%E5%B8%A7/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
 </div>
 
-          
+          </div>
         
-          
-            
-
-
-
-          
+      
+    
+  </section>
+  
+    
+      <br>
+      <div class="prev-next">
         
-        <!-- Custom Files topMeta begin-->
+          <a class="prev" rel="prev" href="/page/2/">
+            <section class="post prev white-box shadow floatable blur" >
+              <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
+            </section>
+          </a>
         
-        <!-- Custom Files topMeta end-->
+        <p class="current">
+          3 / 3
+        </p>
+        
       </div>
     
-  </div>
-
-
-  <div id="layoutHelper-page-plugins"></div>
-  <div id="post-body" itemprop="articleBody">
-    <p>这篇文章用来记录Frida在Hook各种方法时的脚本编写。</p>
-<span id="more"></span>
-
-
-
-<p>测试源码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.lesson4one;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> m;</span><br><span class="line">            m = fun(<span class="number">50</span>, <span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">fun</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span>&#123;</span><br><span class="line">        Log.d(<span class="string">&quot;e1ectr0nlc&quot;</span>, String.valueOf(x + y));</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>控制台运行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frida -U -l xxx.js com.example.lesson4one</span><br></pre></td></tr></table></figure>
-
-<h2 id="Hook调用的方法"><a href="#Hook调用的方法" class="headerlink" title="Hook调用的方法"></a>Hook调用的方法</h2><p> 使用Frida获取到调用的fun（）函数。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.lesson4one.MainActivity&quot;</span>).<span class="property">fun</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params">arg1,arg2</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> result = <span class="variable language_">this</span>.<span class="title function_">fun</span>(arg1,arg2);<span class="comment">//或者这里将参数改为两个整数例如（48，56）</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg1, arg2, result&quot;</span>, arg1, arg2, result);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">setImmediate</span>(main)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://p.sda1.dev/17/dc626de619df002439662069d220c339/image.png" class="lazyload" data-srcset="https://p.sda1.dev/17/dc626de619df002439662069d220c339/image.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image.png"></p>
-<h2 id="Hook重载的方法"><a href="#Hook重载的方法" class="headerlink" title="Hook重载的方法"></a>Hook重载的方法</h2><p>更改源码如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.lesson4one;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">total</span> <span class="operator">=</span> <span class="string">&quot;@@@@####@@@@&quot;</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> fun(<span class="number">50</span>,<span class="number">80</span>);</span><br><span class="line">            Log.d(<span class="string">&quot;e1ectr0nlc m = &quot;</span>, String.valueOf(m));</span><br><span class="line">            Log.d(<span class="string">&quot;e1ectr0nlc tolowercase&quot;</span>, fun(<span class="string">&quot;LOWERCASEME!&quot;</span>));</span><br><span class="line">	</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">	String <span class="title function_">fun</span><span class="params">(String x )</span>&#123;</span><br><span class="line">    total +=x ;</span><br><span class="line">    <span class="keyword">return</span> x.toLowerCase();<span class="comment">//大写改小写</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> <span class="title function_">fun</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span>&#123;</span><br><span class="line">        Log.d(<span class="string">&quot;e1ectr0nlc&quot;</span>, String.valueOf(x + y));</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>JS脚本如下</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123; </span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.lesson4one.MainActivity&quot;</span>).<span class="property">fun</span>.<span class="title function_">overload</span>(<span class="string">&#x27;int&#x27;</span>, <span class="string">&#x27;int&#x27;</span>).<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params">arg1, arg2</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> result = <span class="variable language_">this</span>.<span class="title function_">fun</span>(<span class="number">100</span>, <span class="number">200</span>);    <span class="comment">// 更改参数</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;android.util.Log&quot;</span>).<span class="title function_">getStackTraceString</span>(<span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;java.lang.Throwable&quot;</span>).$new()));	<span class="comment">// 打印调用栈,不需要的话可以注释掉。</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg1, arg2, result&quot;</span>, arg1, arg2, result);</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;    </span><br><span class="line">    					 	  <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.lesson4one.MainActivity&quot;</span>).<span class="property">fun</span>.<span class="title function_">overload</span>(<span class="string">&#x27;java.lang.String&#x27;</span>).<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">arg1 </span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> result = <span class="variable language_">this</span>.<span class="title function_">fun</span>(<span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&#x27;java.lang.String&#x27;</span>).$new(<span class="string">&quot;NIHAOJAVA&quot;</span>));</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;arg1,result&quot;</span>,arg1,result)</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">            <span class="comment">//return Java.use(&#x27;java.lang.String&#x27;).$new(&quot;NIHAOJS&quot;);直接更改返回值 </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">setImmediate</span>(main)</span><br></pre></td></tr></table></figure>
-
-<p>打印结果如下</p>
-<p><img src="https://p.sda1.dev/17/7ac4dd4b9da26cc8d96512e9e099ef03/image.png" class="lazyload" data-srcset="https://p.sda1.dev/17/7ac4dd4b9da26cc8d96512e9e099ef03/image.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image.png"></p>
-<p>同时App内的日志信息也会改变</p>
-<p><img src="https://p.sda1.dev/17/853fe114e0dc684c2c3f8d9488471ee7/image.png" class="lazyload" data-srcset="https://p.sda1.dev/17/853fe114e0dc684c2c3f8d9488471ee7/image.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image.png"></p>
-<h2 id="Hook未调用的方法"><a href="#Hook未调用的方法" class="headerlink" title="Hook未调用的方法"></a>Hook未调用的方法</h2><p>在源码中添加一个没有调用过的函数</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//添加函数但不调用</span></span><br><span class="line">String <span class="title function_">secret</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> total;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>脚本代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="title class_">Java</span>.<span class="title function_">choose</span>(<span class="string">&quot;com.example.lesson4one.MainActivity&quot;</span>,&#123;</span><br><span class="line">            <span class="attr">onMatch</span>:<span class="keyword">function</span>(<span class="params">instance</span>)&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;found instance :&quot;</span>,instance)</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;found instance :&quot;</span>,instance.<span class="title function_">secret</span>())</span><br><span class="line">            &#125;,<span class="attr">onComplete</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">setImmediate</span>(main)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://p.sda1.dev/17/70183c4696997d62208d8418cb785a60/image.png" class="lazyload" data-srcset="https://p.sda1.dev/17/70183c4696997d62208d8418cb785a60/image.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image.png"></p>
-<h2 id="Hook未调用的静态方法"><a href="#Hook未调用的静态方法" class="headerlink" title="Hook未调用的静态方法"></a>Hook未调用的静态方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试代码中添加未调用的静态方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">secret2</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> total;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>Hook脚本</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> result = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.example.lesson4one.MainActivity&quot;</span>).<span class="title function_">secret2</span>();</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">setImmediate</span>(main)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://p.sda1.dev/17/48294e6fe775fc30e13d887c47d39830/image.png" class="lazyload" data-srcset="https://p.sda1.dev/17/48294e6fe775fc30e13d887c47d39830/image.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image.png"></p>
-<p>总的测试代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.lesson4one;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.appcompat.app.AppCompatActivity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> <span class="keyword">extends</span> <span class="title class_">AppCompatActivity</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">total</span> <span class="operator">=</span> <span class="string">&quot;@@@@####@@@@&quot;</span>;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">(Bundle savedInstanceState)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> fun(<span class="number">50</span>,<span class="number">80</span>);</span><br><span class="line">            Log.d(<span class="string">&quot;e1ectr0nlc m = &quot;</span>, String.valueOf(m));</span><br><span class="line">            Log.d(<span class="string">&quot;e1ectr0nlc tolowercase&quot;</span>, fun(<span class="string">&quot;LOWERCASEME!&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    String <span class="title function_">fun</span><span class="params">(String x )</span>&#123;</span><br><span class="line">        total +=x ;</span><br><span class="line">        <span class="keyword">return</span> x.toLowerCase();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">fun</span><span class="params">(<span class="type">int</span> x ,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">        Log.d(<span class="string">&quot;e1ectr0nlc&quot;</span>, String.valueOf((x+y)));</span><br><span class="line">        <span class="keyword">return</span> x+y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    String <span class="title function_">secret</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> total;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">secret2</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> total;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-  </div>
   
-  
-    
-    <div class='footer'>
-       <!-- 参考资料、相关资料等 -->
-      
-       <!-- 相关文章 -->
-      
-      <!-- 版权声明组件 -->
-      
-      <!-- 打赏组件 -->
-      
-    </div>
-  
-  
-    
-
-
-  <div class='article-meta' id="bottom">
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-12T21:37:39+08:00">
-  <a class='notlink'>
-    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年5月12日</p>
-  </a>
-</div>
-
-        
-      
-        
-          
-
-        
-      
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    
-      
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://e1ectr0nlc.github.io/2024/04/15/Frida%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/&title=Frida学习(二) - e1ectr0nlc's Blog&summary=这篇文章用来记录Frida在Hook各种方法时的脚本编写。"
-          
-          >
-          
-            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://e1ectr0nlc.github.io/2024/04/15/Frida%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/&title=Frida学习(二) - e1ectr0nlc's Blog&summary=这篇文章用来记录Frida在Hook各种方法时的脚本编写。"
-          
-          >
-          
-            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://service.weibo.com/share/share.php?url=https://e1ectr0nlc.github.io/2024/04/15/Frida%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/&title=Frida学习(二) - e1ectr0nlc's Blog&summary=这篇文章用来记录Frida在Hook各种方法时的脚本编写。"
-          
-          >
-          
-            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
-          
-        </a>
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-
-
-        
-      
-    </div>
-    <!-- Custom Files bottomMeta begin -->
-    
-    <!-- Custom Files bottomMeta end -->
-  </div>
-
-
-  
-  
-
-  
-    <div class="prev-next">
-      
-      
-        <a class='next' href='/2024/04/12/Frida%E5%AD%A6%E4%B9%A0(%E4%B8%80)/'>
-          <p class='title'>Frida学习(一)<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>学习Frida脚本的编写
-
-
-
-
-Frida脚本的概念FRIDA脚本就是利用FRIDA动态插桩框架，使用FRIDA导出的API和方法，对内存空间里的对象方法进行监视、修改或者替换的一段代码。FR...</p>
-        </a>
-      
-    </div>
-  
-  <!-- Custom Files postEnd begin-->
-  
-  <!-- Custom Files postEnd end-->
-</article>
-
-<!-- 
-  
-
-
-  <article class="post white-box shadow floatable blur" id="comments">
-    <span hidden>
-      <meta itemprop="discussionUrl" content="/2024/04/15/Frida%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/index.html#comments">
-    </span>
-    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
-    
-
-    <div id="layoutHelper-comments"></div>
-
-  </article>
-
-
-
- -->
 
 
 </div>
@@ -2621,48 +2455,149 @@ Frida脚本的概念FRIDA脚本就是利用FRIDA动态插桩框架，使用FRIDA
     
     
       
+<section class="widget blogger desktop mobile pjax">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img no-lazy src='https://p.sda1.dev/17/ab361e474c293cbb843f9567b4d4fed5/下载.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">e1ectr0nlc's Blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fa-solid fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:me@xxx.com"
+              class="social fa-solid fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/volantis-x/"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="/"
+              class="social fa-solid fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
     
   
 
-
-<div class="widget-sticky pjax">
-
   
+    
+    
+      
   
-
-
-  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+  <section class="widget category desktop pjax">
     
   <header>
     
-      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+      <a href='/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
     
   </header>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hook%E8%B0%83%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">Hook调用的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hook%E9%87%8D%E8%BD%BD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">Hook重载的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hook%E6%9C%AA%E8%B0%83%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">Hook未调用的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hook%E6%9C%AA%E8%B0%83%E7%94%A8%E7%9A%84%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="toc-text">Hook未调用的静态方法</span></a></li></ol>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/Dll%E6%B3%A8%E5%85%A5/" href="/categories/Dll%E6%B3%A8%E5%85%A5/"
+            active-action="action-categoriesDllE6B3A8E585A5"
+            ><div class='name'>Dll注入</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Hook%E6%A1%86%E6%9E%B6/" href="/categories/Hook%E6%A1%86%E6%9E%B6/"
+            active-action="action-categoriesHookE6A186E69EB6"
+            ><div class='name'>Hook框架</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/bypass/" href="/categories/bypass/"
+            active-action="action-categoriesbypass"
+            ><div class='name'>bypass</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/" href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80/"
+            active-action="action-categoriesE4BA8CE8BF9BE588B6E59FBAE7A180"
+            ><div class='name'>二进制基础</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4/" href="/categories/%E4%BB%A3%E7%A0%81%E4%BF%9D%E6%8A%A4/"
+            active-action="action-categoriesE4BBA3E7A081E4BF9DE68AA4"
+            ><div class='name'>代码保护</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" href="/categories/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/"
+            active-action="action-categoriesE6BC8FE6B49EE588A9E794A8"
+            ><div class='name'>漏洞利用</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E8%84%9A%E6%9C%AC%E5%B7%A5%E5%85%B7/" href="/categories/%E8%84%9A%E6%9C%AC%E5%B7%A5%E5%85%B7/"
+            active-action="action-categoriesE8849AE69CACE5B7A5E585B7"
+            ><div class='name'>脚本工具</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
     </div>
   </section>
 
+
+    
   
+
+  
+    
+    
+      
+
+    
+  
+
+  
+
+
+<div class="widget-sticky pjax">
 
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
-
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
-
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
-
-  <div class="pjax">
-    <!-- pjax占位 -->
-  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2697,7 +2632,7 @@ Frida脚本的概念FRIDA脚本就是利用FRIDA动态插桩框架，使用FRIDA
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=true;
+  pdata.ispage=false;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3221,7 +3156,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}},{"@type":"ListItem","position":2,"item":{"@id":"https://e1ectr0nlc.github.io/categories/Hook框架/","name":"Hook框架"}},{"@type":"ListItem","position":3,"item":{"@id":"https://e1ectr0nlc.github.io/2024/04/15/Frida学习(二)/","name":"Frida学习(二)"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Frida学习(二)","description":"这篇文章用来记录Frida在Hook各种方法时的脚本编写。","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage","@id":"https://e1ectr0nlc.github.io/2024/04/15/Frida%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://e1ectr0nlc.github.io/2024/04/15/Frida%E5%AD%A6%E4%B9%A0(%E4%BA%8C)/","wordCount":29,"datePublished":"2024-04-14T16:00:00.000Z","dateModified":"2024-05-12T13:37:39.427Z","articleSection":"Hook框架","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","sameAs":["https://github.com/volantis-x"],"description":"学习记录"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://e1ectr0nlc.github.io/","name":"e1ectr0nlc's Blog"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","keywords":null,"description":"学习记录","author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/","description":"学习记录"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","url":"https://e1ectr0nlc.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://e1ectr0nlc.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"学习记录","inLanguage":"zh_CN","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"e1ectr0nlc","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://e1ectr0nlc.github.io/"},"publisher":{"@type":"Organization","name":"e1ectr0nlc's Blog","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
